@@ -1,3 +1,4 @@
+import { client } from "../../tina/__generated__/client";
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import EventCard from '@/components/EventCard';
@@ -23,11 +24,13 @@ const events = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const pageResponse = await client.queries.homepage({ relativePath: 'hero.md' });
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      <Hero />
+      <Hero data={pageResponse.data} />
       
       <section id="whats-on" className="py-16 px-4 max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold mb-8">What's on</h2>
