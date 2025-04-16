@@ -11,7 +11,8 @@ module.exports = {
     ],
   },
   webpack(config) {
-    config.resolve.alias["@" ] = path.resolve(__dirname, "src");
+    config.resolve.alias["@"] = path.resolve(__dirname, "src");
+    config.resolve.alias["@componentsRoot"] = path.resolve(__dirname, "components");
 
     config.module.rules.push({
       test: /\.svg$/i,
