@@ -9,9 +9,10 @@ import Page from "./collection/page";
 const config = defineConfig({
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID!,
   branch:
-    process.env.NEXT_PUBLIC_TINA_BRANCH! || // custom branch env override
-    process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF! || // Vercel branch env
-    process.env.HEAD!, // Netlify branch env
+    process.env.GITHUB_BRANCH! || // custom branch env override
+    process.env.VERCEL_GIT_COMMIT_REF! || // Vercel branch env
+    process.env.HEAD! || // Netlify branch env
+    "main",
   token: process.env.TINA_TOKEN!,
   media: {
     // If you wanted cloudinary do this
@@ -31,7 +32,100 @@ const config = defineConfig({
     basePath: nextConfig.basePath?.replace(/^\//, '') || '', // The base path of the app (could be /blog)
   },
   schema: {
-    collections: [Page, Post, Author, Global],
+    collections: [
+      Page, 
+      Post, 
+      Author, 
+      Global,
+      {
+        name: "homepage",
+        label: "Homepage",
+        path: "content/homepage",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: false,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "subtitle",
+            label: "Subtitle",
+            isTitle: false,
+            required: true,
+          },
+          {
+            type: "image",
+            name: "heroImage",
+            label: "Image",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "day",
+            label: "Day",
+            isTitle: false,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "time",
+            label: "Time",
+            isTitle: false,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "addressLine1",
+            label: "Address Line 1",
+            isTitle: false,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "addressLine2",
+            label: "Address Line 2",
+            isTitle: false,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "addressLine3",
+            label: "Address Line 3",
+            isTitle: false,
+            required: true,
+          },
+        ],
+        ui: {
+          router: ({ document }) => {
+            if (document._sys.filename === "hero") {
+              return "/";
+            }
+          },
+        },
+      },
+      {
+        name: "global",
+        label: "Global Settings",
+        path: "content/global", // Path to your global content
+        fields: [
+          {
+            type: "string",
+            name: "siteTitle",
+            label: "Site Title",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "siteDescription",
+            label: "Site Description",
+          },
+          // other global fields
+        ],
+      },
+    ],
   },
 });
 
