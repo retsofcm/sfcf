@@ -96,6 +96,26 @@ export default defineConfig({
           },
         },
       },
+      {
+        name: "global",
+        label: "Global Settings",
+        path: "content/global", // Path to your global content
+        fields: [
+          {
+            type: "string",
+            name: "siteTitle",
+            label: "Site Title",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "siteDescription",
+            label: "Site Description",
+          },
+          // other global fields
+        ],
+      },
     ],
   },
 });
+
