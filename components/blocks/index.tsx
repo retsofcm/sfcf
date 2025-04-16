@@ -4,7 +4,6 @@ import { Hero } from "./hero";
 import { Content } from "./content";
 import { Features } from "./features";
 import { Testimonial } from "./testimonial";
-import { Video } from "./video";
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
   return (
@@ -24,8 +23,6 @@ export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
 
 const Block = (block: PageBlocks) => {
   switch (block.__typename) {
-    case "PageBlocksVideo":
-      return <Video data={block} />;
     case "PageBlocksHero":
       return <Hero data={block} />;
     case "PageBlocksContent":
