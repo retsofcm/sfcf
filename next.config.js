@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   images: {
     remotePatterns: [
@@ -9,6 +11,8 @@ module.exports = {
     ],
   },
   webpack(config) {
+    config.resolve.alias["@" ] = path.resolve(__dirname, "src");
+
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
@@ -18,7 +22,6 @@ module.exports = {
     return config;
   },
   async headers() {
-    // these are also defined in the root layout since github pages doesn't support headers
     const headers = [
       {
         key: "X-Frame-Options",
