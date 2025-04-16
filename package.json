@@ -16,7 +16,7 @@
     "tinacms": "^2.7.5"
   },
   "devDependencies": {
-    "@tinacms/cli": "^1.9.3",
+    "@tinacms/cli": "^1.9.5",
     "@types/node": "^20.17.30",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
