@@ -1,0 +1,265 @@
+1:"$Sreact.fragment"
+2:I[13078,["2270","static/chunks/2270-74747b6a90be39d3.js","7177","static/chunks/app/layout-6b9a52307dcd8850.js"],"VideoDialogProvider"]
+3:I[87555,[],""]
+4:I[31295,[],""]
+5:I[38885,["2270","static/chunks/2270-74747b6a90be39d3.js","7177","static/chunks/app/layout-6b9a52307dcd8850.js"],"default"]
+7:I[59665,[],"MetadataBoundary"]
+9:I[59665,[],"OutletBoundary"]
+c:I[74911,[],"AsyncMetadataOutlet"]
+e:I[59665,[],"ViewportBoundary"]
+10:I[26614,[],""]
+:HL["/sfcf/_next/static/media/21ed5661b47f7f6d-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/sfcf/_next/static/media/4de1fea1a954a5b6-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/sfcf/_next/static/media/a34f9d1faa5f3315-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/sfcf/_next/static/css/e4fe9f424f978e76.css","style"]
+:HL["/sfcf/_next/static/css/c8f321858017d0b5.css","style"]
+0:{"P":null,"b":"HVNx312FGBvarsER8u4MM","p":"/sfcf","c":["","about"],"i":false,"f":[[["",{"children":[["urlSegments","about","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/sfcf/_next/static/css/e4fe9f424f978e76.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/sfcf/_next/static/css/c8f321858017d0b5.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"__variable_1ad637 __variable_8ea98e __variable_b816f8","children":["$","body",null,{"className":"min-h-screen bg-background font-sans antialiased","children":[["$","$L2",null,{"children":[["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}]]}],null]}]}]]}],{"children":[["urlSegments","about","c"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6",["$","$L7",null,{"children":"$L8"}],null,["$","$L9",null,{"children":["$La","$Lb",["$","$Lc",null,{"promise":"$@d"}]]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","hAFq0bdk0NFcOBPtNKCgU",{"children":[["$","$Le",null,{"children":"$Lf"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],null]}],false]],"m":"$undefined","G":["$10","$undefined"],"s":false,"S":true}
+11:"$Sreact.suspense"
+12:I[74911,[],"AsyncMetadata"]
+8:["$","$11",null,{"fallback":null,"children":["$","$L12",null,{"promise":"$@13"}]}]
+b:null
+f:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+a:null
+13:{"metadata":[["$","title","0",{"children":"Tina"}],["$","meta","1",{"name":"description","content":"Tina Cloud Starter"}]],"error":null,"digest":"$undefined"}
+d:{"metadata":"$13:metadata","error":null,"digest":"$undefined"}
+14:I[29592,["6446","static/chunks/53c13509-04c68a958c4a3152.js","3873","static/chunks/3d47b92a-be451718a11a7eb9.js","3380","static/chunks/479ba886-f9562411929502f9.js","9940","static/chunks/b3514255-97334ecbdaf31c1e.js","8688","static/chunks/18506940-b30fde1148450967.js","8305","static/chunks/6f939b2a-7e299cfd3cc7adff.js","2113","static/chunks/eeac573e-21b58e7604566095.js","2202","static/chunks/eec3d76d-1231fd66a4023f8e.js","7926","static/chunks/ccd63cfe-c7f86e2d1ce24302.js","7564","static/chunks/8ace8c09-de2b31547de0e79d.js","586","static/chunks/13b76428-dcf2a0220d03f575.js","2545","static/chunks/c16f53c3-a04041b562e8ca42.js","4237","static/chunks/4237-aa3ca39b1d384658.js","1383","static/chunks/1383-6ccfb0e24302e6d3.js","5842","static/chunks/5842-7f3e3acd62268dcc.js","2270","static/chunks/2270-74747b6a90be39d3.js","134","static/chunks/134-d159efe475c89c98.js","814","static/chunks/814-d45c386a2468dd6e.js","9371","static/chunks/9371-4c3ad636157e5313.js","7976","static/chunks/7976-aa02773b13482465.js","3617","static/chunks/3617-ca229dc3f977c79a.js","3480","static/chunks/app/%5B...urlSegments%5D/page-7e095abf961fa7d3.js"],"LayoutProvider"]
+16:I[18833,["6446","static/chunks/53c13509-04c68a958c4a3152.js","3873","static/chunks/3d47b92a-be451718a11a7eb9.js","3380","static/chunks/479ba886-f9562411929502f9.js","9940","static/chunks/b3514255-97334ecbdaf31c1e.js","8688","static/chunks/18506940-b30fde1148450967.js","8305","static/chunks/6f939b2a-7e299cfd3cc7adff.js","2113","static/chunks/eeac573e-21b58e7604566095.js","2202","static/chunks/eec3d76d-1231fd66a4023f8e.js","7926","static/chunks/ccd63cfe-c7f86e2d1ce24302.js","7564","static/chunks/8ace8c09-de2b31547de0e79d.js","586","static/chunks/13b76428-dcf2a0220d03f575.js","2545","static/chunks/c16f53c3-a04041b562e8ca42.js","4237","static/chunks/4237-aa3ca39b1d384658.js","1383","static/chunks/1383-6ccfb0e24302e6d3.js","5842","static/chunks/5842-7f3e3acd62268dcc.js","2270","static/chunks/2270-74747b6a90be39d3.js","134","static/chunks/134-d159efe475c89c98.js","814","static/chunks/814-d45c386a2468dd6e.js","9371","static/chunks/9371-4c3ad636157e5313.js","7976","static/chunks/7976-aa02773b13482465.js","3617","static/chunks/3617-ca229dc3f977c79a.js","3480","static/chunks/app/%5B...urlSegments%5D/page-7e095abf961fa7d3.js"],"Header"]
+17:I[97122,["6446","static/chunks/53c13509-04c68a958c4a3152.js","3873","static/chunks/3d47b92a-be451718a11a7eb9.js","3380","static/chunks/479ba886-f9562411929502f9.js","9940","static/chunks/b3514255-97334ecbdaf31c1e.js","8688","static/chunks/18506940-b30fde1148450967.js","8305","static/chunks/6f939b2a-7e299cfd3cc7adff.js","2113","static/chunks/eeac573e-21b58e7604566095.js","2202","static/chunks/eec3d76d-1231fd66a4023f8e.js","7926","static/chunks/ccd63cfe-c7f86e2d1ce24302.js","7564","static/chunks/8ace8c09-de2b31547de0e79d.js","586","static/chunks/13b76428-dcf2a0220d03f575.js","2545","static/chunks/c16f53c3-a04041b562e8ca42.js","4237","static/chunks/4237-aa3ca39b1d384658.js","1383","static/chunks/1383-6ccfb0e24302e6d3.js","5842","static/chunks/5842-7f3e3acd62268dcc.js","2270","static/chunks/2270-74747b6a90be39d3.js","134","static/chunks/134-d159efe475c89c98.js","814","static/chunks/814-d45c386a2468dd6e.js","9371","static/chunks/9371-4c3ad636157e5313.js","7976","static/chunks/7976-aa02773b13482465.js","3617","static/chunks/3617-ca229dc3f977c79a.js","3480","static/chunks/app/%5B...urlSegments%5D/page-7e095abf961fa7d3.js"],"default"]
+19:I[23499,["6446","static/chunks/53c13509-04c68a958c4a3152.js","3873","static/chunks/3d47b92a-be451718a11a7eb9.js","3380","static/chunks/479ba886-f9562411929502f9.js","9940","static/chunks/b3514255-97334ecbdaf31c1e.js","8688","static/chunks/18506940-b30fde1148450967.js","8305","static/chunks/6f939b2a-7e299cfd3cc7adff.js","2113","static/chunks/eeac573e-21b58e7604566095.js","2202","static/chunks/eec3d76d-1231fd66a4023f8e.js","7926","static/chunks/ccd63cfe-c7f86e2d1ce24302.js","7564","static/chunks/8ace8c09-de2b31547de0e79d.js","586","static/chunks/13b76428-dcf2a0220d03f575.js","2545","static/chunks/c16f53c3-a04041b562e8ca42.js","4237","static/chunks/4237-aa3ca39b1d384658.js","1383","static/chunks/1383-6ccfb0e24302e6d3.js","5842","static/chunks/5842-7f3e3acd62268dcc.js","2270","static/chunks/2270-74747b6a90be39d3.js","134","static/chunks/134-d159efe475c89c98.js","814","static/chunks/814-d45c386a2468dd6e.js","9371","static/chunks/9371-4c3ad636157e5313.js","7976","static/chunks/7976-aa02773b13482465.js","3617","static/chunks/3617-ca229dc3f977c79a.js","3480","static/chunks/app/%5B...urlSegments%5D/page-7e095abf961fa7d3.js"],"Footer"]
+15:T6f5,
+    query page($relativePath: String!) {
+  page(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...PageParts
+  }
+}
+    
+    fragment PageParts on Page {
+  __typename
+  blocks {
+    __typename
+    ... on PageBlocksHero {
+      background
+      headline
+      tagline
+      actions {
+        __typename
+        label
+        type
+        icon {
+          __typename
+          name
+          color
+          style
+        }
+        link
+      }
+      image {
+        __typename
+        src
+        alt
+        videoUrl
+      }
+    }
+    ... on PageBlocksCallout {
+      background
+      text
+      url
+    }
+    ... on PageBlocksFeatures {
+      background
+      title
+      description
+      items {
+        __typename
+        icon {
+          __typename
+          name
+          color
+          style
+        }
+        title
+        text
+      }
+    }
+    ... on PageBlocksStats {
+      background
+      title
+      description
+      stats {
+        __typename
+        stat
+        type
+      }
+    }
+    ... on PageBlocksCta {
+      title
+      description
+      actions {
+        __typename
+        label
+        type
+        icon {
+          __typename
+          name
+          color
+          style
+        }
+        link
+      }
+    }
+    ... on PageBlocksContent {
+      background
+      body
+    }
+    ... on PageBlocksTestimonial {
+      background
+      title
+      description
+      testimonials {
+        __typename
+        quote
+        author
+        role
+        avatar
+      }
+    }
+    ... on PageBlocksVideo {
+      background
+      color
+      url
+      autoPlay
+      loop
+    }
+  }
+}
+    18:T6f5,
+    query page($relativePath: String!) {
+  page(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...PageParts
+  }
+}
+    
+    fragment PageParts on Page {
+  __typename
+  blocks {
+    __typename
+    ... on PageBlocksHero {
+      background
+      headline
+      tagline
+      actions {
+        __typename
+        label
+        type
+        icon {
+          __typename
+          name
+          color
+          style
+        }
+        link
+      }
+      image {
+        __typename
+        src
+        alt
+        videoUrl
+      }
+    }
+    ... on PageBlocksCallout {
+      background
+      text
+      url
+    }
+    ... on PageBlocksFeatures {
+      background
+      title
+      description
+      items {
+        __typename
+        icon {
+          __typename
+          name
+          color
+          style
+        }
+        title
+        text
+      }
+    }
+    ... on PageBlocksStats {
+      background
+      title
+      description
+      stats {
+        __typename
+        stat
+        type
+      }
+    }
+    ... on PageBlocksCta {
+      title
+      description
+      actions {
+        __typename
+        label
+        type
+        icon {
+          __typename
+          name
+          color
+          style
+        }
+        link
+      }
+    }
+    ... on PageBlocksContent {
+      background
+      body
+    }
+    ... on PageBlocksTestimonial {
+      background
+      title
+      description
+      testimonials {
+        __typename
+        quote
+        author
+        role
+        avatar
+      }
+    }
+    ... on PageBlocksVideo {
+      background
+      color
+      url
+      autoPlay
+      loop
+    }
+  }
+}
+    6:["$","$L14",null,{"globalSettings":{"_sys":{"filename":"index","basename":"index.json","hasReferences":false,"breadcrumbs":["index"],"path":"content/global/index.json","relativePath":"index.json","extension":".json"},"id":"content/global/index.json","__typename":"Global","header":{"__typename":"GlobalHeader","icon":{"__typename":"GlobalHeaderIcon","name":"Tina","color":"orange","style":"float"},"name":"Tina Starter","color":"default","nav":[{"__typename":"GlobalHeaderNav","href":"/","label":"Home"},{"__typename":"GlobalHeaderNav","href":"/about","label":"About"},{"__typename":"GlobalHeaderNav","href":"/posts","label":"Blog"}]},"footer":{"__typename":"GlobalFooter","social":[{"__typename":"GlobalFooterSocial","icon":{"__typename":"GlobalFooterSocialIcon","name":"FaLinkedin","color":null,"style":null},"url":"https://www.linkedin.com/company/tinacms"},{"__typename":"GlobalFooterSocial","icon":{"__typename":"GlobalFooterSocialIcon","name":"FaGithub","color":null,"style":null},"url":"https://github.com/tinacms/tinacms"},{"__typename":"GlobalFooterSocial","icon":{"__typename":"GlobalFooterSocialIcon","name":"FaYoutube","color":null,"style":null},"url":"https://www.youtube.com/@TinaCMS"},{"__typename":"GlobalFooterSocial","icon":{"__typename":"GlobalFooterSocialIcon","name":"FaXTwitter","color":null,"style":null},"url":"https://x.com/TinaCMS"}]},"theme":{"__typename":"GlobalTheme","color":"blue","font":"sans","darkMode":"light"}},"pageData":{"data":{"page":{"_sys":{"filename":"about","basename":"about.mdx","hasReferences":false,"breadcrumbs":["about"],"path":"content/pages/about.mdx","relativePath":"about.mdx","extension":".mdx"},"id":"content/pages/about.mdx","__typename":"Page","blocks":[{"__typename":"PageBlocksContent","background":null,"body":{"type":"root","children":[{"type":"h1","children":[{"type":"text","text":"What is this?"}]},{"type":"p","children":[{"type":"text","text":"This is a "},{"type":"a","url":"https://tina.io","title":null,"children":[{"type":"text","text":"TinaCMS"}]},{"type":"text","text":"-enabled Next.js app, so you can edit your content on a live page. In this project the Tina file-based CMS is used via GraphQL: it's powered by a schema that "},{"type":"text","text":"you","italic":true},{"type":"text","text":" define. It not only serves content from Markdown files in your repository, but it also generates TinaCMS forms for you automatically ✨."}]},{"type":"h2","children":[{"type":"text","text":"New to TinaCMS?"}]},{"type":"p","children":[{"type":"text","text":"TinaCMS is feature-rich, and leaves a lot of power up to the user on how it's configured."}]},{"type":"p","children":[{"type":"text","text":"There can be a learning curve as you get to grips with how it all fits together."}]},{"type":"p","children":[{"type":"text","text":"The tutorials in our docs will guide you through the basics, to the more advanced ways to use the tool."}]},{"type":"p","children":[{"type":"text","text":"Check out the "},{"type":"a","url":"https://tina.io/docs/beginner-tutorials/tutorial-overview","title":null,"children":[{"type":"text","text":"Learning Guide"}]},{"type":"text","text":" it covers all you need to get up and running with TinaCMS."}]},{"type":"h2","children":[{"type":"text","text":"Requirements"}]},{"type":"ul","children":[{"type":"li","children":[{"type":"lic","children":[{"type":"text","text":"Git"}]}]},{"type":"li","children":[{"type":"lic","children":[{"type":"a","url":"https://nodejs.org/en/about/releases/","title":null,"children":[{"type":"text","text":"Node.js Active LTS"}]}]}]},{"type":"li","children":[{"type":"lic","children":[{"type":"text","text":"NPM, Yarn, pnpm, or bun"}]}]}]},{"type":"h2","children":[{"type":"text","text":"Install"}]},{"type":"blockquote","children":[{"type":"text","text":"ℹ️ This guide uses "},{"type":"text","text":"pnpm","code":true},{"type":"text","text":" as a package manager, you should be able to use change the commands with minimal changes"}]},{"type":"p","children":[{"type":"text","text":"Install the project's dependencies:"}]},{"type":"code_block","value":"pnpm install","children":[{"type":"text","text":""}]},{"type":"h2","children":[{"type":"text","text":"Run the project locally"}]},{"type":"p","children":[{"type":"text","text":"To run the local development server:"}]},{"type":"code_block","value":"pnpm run dev","children":[{"type":"text","text":""}]},{"type":"p","children":[{"type":"text","text":"This command starts the GraphQL server and the Next.js application in development mode. It also regenerates your schema types for TypeScript and GraphQL so changes to your "},{"type":"text","text":"/tina/config.ts","code":true},{"type":"text","text":" are reflected immediately."}]},{"type":"p","children":[{"type":"text","text":"One of the most interesting aspects of the TinaCloud Content API is that it doesn't actually require anything from the cloud to work locally. Since TinaCMS is by default a Git-backed CMS, everything can be run from your local filesystem via the CLI. 😎"}]},{"type":"p","children":[{"type":"text","text":"This is ideal for development workflows and the API is identical to the one used in TinaCloud, so once you're ready to deploy your application you won't face any challenges there."}]},{"type":"p","children":[{"type":"text","text":"Open "},{"type":"a","url":"http://localhost:3000","title":null,"children":[{"type":"text","text":"http://localhost:3000","code":true}]},{"type":"text","text":" in your browser to see your file-based content being loaded from the GraphQL API."}]},{"type":"p","children":[{"type":"text","text":"Want to learn more? Go through the "},{"type":"a","url":"https://tina.io/docs/beginner-tutorials/tutorial-overview","title":null,"children":[{"type":"text","text":"Learning Guide"}]},{"type":"text","text":" to understand how to customise your TinaCMS experience."}]},{"type":"h2","children":[{"type":"text","text":"Connect to Tina Cloud"}]},{"type":"p","children":[{"type":"text","text":"While the fully-local development workflow is the recommended way for developers to work,\nyou'll obviously want other editors and collaborators to be able to make changes on a hosted website with authentication."}]},{"type":"p","children":[{"type":"text","text":"Check out the docs on how to connect to our hosted backend - "},{"type":"a","url":"https://tina.io/docs/tina-cloud/overview","title":null,"children":[{"type":"text","text":"Going to Production with TinaCloud"}]}]},{"type":"h2","children":[{"type":"text","text":"Deploy"}]},{"type":"p","children":[{"type":"text","text":"Sites using TinaCMS and TinaCloud can be deployed to lots of hosting providers."}]},{"type":"p","children":[{"type":"text","text":"We have documented some of the popular ones:"}]},{"type":"ul","children":[{"type":"li","children":[{"type":"lic","children":[{"type":"a","url":"https://tina.io/docs/tina-cloud/deployment-options/vercel","title":null,"children":[{"type":"text","text":"Vercel"}]}]}]},{"type":"li","children":[{"type":"lic","children":[{"type":"a","url":"https://tina.io/docs/tina-cloud/deployment-options/netlify","title":null,"children":[{"type":"text","text":"Netlify"}]}]}]},{"type":"li","children":[{"type":"lic","children":[{"type":"a","url":"https://tina.io/docs/tina-cloud/deployment-options/github-pages","title":null,"children":[{"type":"text","text":"GitHub Pages"}]}]}]},{"type":"li","children":[{"type":"lic","children":[{"type":"a","url":"https://tina.io/docs/tina-cloud/deployment-options/alibaba-cloud","title":null,"children":[{"type":"text","text":"Alibaba Cloud"}]}]}]}]},{"type":"p","children":[{"type":"text","text":"If your favourite isn't listed here, it doesn't mean that it isn't supported - we just don't have documentation for it yet."}]},{"type":"hr","children":[{"type":"text","text":""}]},{"type":"h2","children":[{"type":"text","text":"Getting Help"}]},{"type":"p","children":[{"type":"text","text":"You might face issues, want to provide feedback or get help with any challenges you may have:"}]},{"type":"ul","children":[{"type":"li","children":[{"type":"lic","children":[{"type":"text","text":"Read the "},{"type":"a","url":"https://tina.io/docs/tina-cloud/","title":null,"children":[{"type":"text","text":"TinaCloud documentation"}]},{"type":"text","text":"."}]}]},{"type":"li","children":[{"type":"lic","children":[{"type":"a","url":"https://discord.gg/zumN63Ybpf","title":null,"children":[{"type":"text","text":"Join our Discord"}]},{"type":"text","text":"."}]}]},{"type":"li","children":[{"type":"lic","children":[{"type":"text","text":"Visit the "},{"type":"a","url":"https://community.tinacms.org/","title":null,"children":[{"type":"text","text":"community forum"}]},{"type":"text","text":" to ask questions."}]}]},{"type":"li","children":[{"type":"lic","children":[{"type":"text","text":"Reach out to us on Twitter at "},{"type":"a","url":"https://x.com/tinacms","title":null,"children":[{"type":"text","text":"@TinaCMS"}]},{"type":"text","text":"."}]}]},{"type":"li","children":[{"type":"lic","children":[{"type":"a","url":"mailto:support@tina.io","title":null,"children":[{"type":"text","text":"Email us"}]},{"type":"text","text":" to schedule a call with our team and share more about your context and what you're trying to achieve."}]}]}]},{"type":"h2","children":[{"type":"text","text":"LICENSE"}]},{"type":"p","children":[{"type":"text","text":"Licensed under the "},{"type":"a","url":"./LICENSE","title":null,"children":[{"type":"text","text":"Apache 2.0 license"}]},{"type":"text","text":"."}]}]}}]}},"errors":null,"query":"$15","variables":{"relativePath":"about.mdx"}},"children":[["$","$L16",null,{}],["$","main",null,{"className":"overflow-x-hidden pt-20","children":["$","div",null,{"className":"bg-default","children":["$","section",null,{"className":"py-12 mx-auto max-w-7xl px-6","children":["$","$L17",null,{"data":"$6:props:pageData:data","errors":null,"query":"$18","variables":"$6:props:pageData:variables"}]}]}]}],["$","$L19",null,{}]]}]
