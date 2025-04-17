@@ -1,5 +1,5 @@
 import type { NextConfig } from 'next'
- 
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
@@ -15,8 +15,11 @@ const nextConfig: NextConfig = {
       }
     ],
   },
+  basePath: '/sfcf',
+  assetPrefix: '/sfcf/',
+  output: 'export',
+
   async headers() {
-    // these are also defined in the root layout since github pages doesn't support headers
     const headers = [
       {
         key: 'X-Frame-Options',
@@ -34,6 +37,7 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
   async rewrites() {
     return [
       {
@@ -42,6 +46,6 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-};
+}
 
 export default nextConfig
