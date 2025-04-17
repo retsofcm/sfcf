@@ -19,15 +19,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
 
-      - name: Install pnpm
-        run: npm install -g pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8  # or your preferred version
 
       - name: Install dependencies and update lockfile
         run: pnpm install
 
-      - name: Check for changes
+      - name: Check for lockfile changes
         id: git-check
         run: |
           git diff --quiet pnpm-lock.yaml || echo "lockfile_changed=true" >> $GITHUB_ENV
@@ -38,6 +39,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add pnpm-lock.yaml
-          git commit -m "chore: update pnpm-lock.yaml"
-          git push
+          git commit -m "chore: update pnpm-lock.yaml
           
