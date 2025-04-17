@@ -92,17 +92,11 @@ jobs:
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} next build
 
-      - name: Commit out folder
-        run: |
-          git add out
-          git commit -m "Deploy to GitHub Pages"
-          git push https://github.com/retsofcm/sfcf.git HEAD:main --token ${{ secrets.GITHUB_TOKEN }}
-
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
+          name: sfcf
 
   # Deployment job
   deploy:
@@ -119,4 +113,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          artifact_name: ./out
+          artifact_name: sfcf
