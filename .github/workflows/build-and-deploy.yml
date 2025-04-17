@@ -97,13 +97,11 @@ jobs:
           ${{ steps.detect-package-manager.outputs.runner }} next build
 
       - name: Commit out folder
-        env:
-          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           git add out
           if ! git diff --cached --quiet; then
             git commit -m "Deploy to GitHub Pages"
-            git push https://x-access-token:${PERSONAL_ACCESS_TOKEN}@github.com/${{ github.repository }} HEAD:main
+            git push https://github.com/${{ github.repository }} HEAD:main
           else
             echo "No changes to commit"
           fi
@@ -112,7 +110,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
-          name: sfcf
 
   # Deployment job
   deploy:
@@ -129,4 +126,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          artifact_name: sfcf
+          artifact_name: ./out
