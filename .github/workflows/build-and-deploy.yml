@@ -85,6 +85,12 @@ jobs:
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} next build
 
+      - name: Commit out folder
+        run: |
+          git add out
+          git commit -m "Add generated static files for GitHub Pages"
+          git push origin main
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
