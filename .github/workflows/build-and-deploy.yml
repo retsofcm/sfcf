@@ -105,4 +105,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          path: ./out
+          artifact_name: ./out
