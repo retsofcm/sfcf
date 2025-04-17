@@ -4,6 +4,8 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
+    paths:
+        - 'content/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -80,6 +82,11 @@ jobs:
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
           GITHUB_BRANCH: ${{ github.ref_name }}
         run: npx tinacms build
+
+      - name: Set Git user name and email
+        run: |
+          git config --global user.name "retsofcm"
+          git config --global user.email "louise.mcconnell@gmail.com"
 
       - name: Build and export Next.js app
         run: |
