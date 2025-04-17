@@ -95,8 +95,9 @@ jobs:
       - name: Commit out folder
         run: |
           git add out
-          git commit -m "Add generated static files for GitHub Pages"
-          git push origin main
+          git commit -m "Deploy to GitHub Pages"
+          git push https://github.com/retsofcm/sfcf.git HEAD:main --token ${{ secrets.GITHUB_TOKEN }}
+
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
