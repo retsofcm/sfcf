@@ -1,10 +1,9 @@
 name: Update pnpm lockfile
 
 on:
-  workflow_dispatch:
   push:
-    paths:
-      - 'package.json'
+    branches:
+      - '**'  # Run on every commit to any branch
 
 jobs:
   update-lockfile:
