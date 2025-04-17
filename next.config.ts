@@ -18,8 +18,8 @@ const nextConfig: NextConfig = {
   },
   output: 'export',
   distDir: 'docs',
-  basePath: process.env.GITHUB_PAGES ? '/sfcf' : '',
-  assetPrefix: process.env.GITHUB_PAGES ? '/sfcf/' : '',
+  basePath: isGithubPages ? '/sfcf' : '',
+  assetPrefix: isGithubPages ? '/sfcf/' : '',
   trailingSlash: true,
 
   async headers() {
