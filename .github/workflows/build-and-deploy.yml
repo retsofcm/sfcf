@@ -95,8 +95,12 @@ jobs:
       - name: Commit out folder
         run: |
           git add out
-          git commit -m "Deploy to GitHub Pages"
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/retsofcm/sfcf.git HEAD:main
+          if ! git diff --cached --quiet; then
+            git commit -m "Deploy to GitHub Pages"
+            git push https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/retsofcm/sfcf.git HEAD:main
+          else
+            echo "No changes to commit"
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
