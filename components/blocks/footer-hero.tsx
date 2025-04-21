@@ -3,7 +3,7 @@ import * as React from 'react';
 import Image from 'next/image';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
-import { PageBlocksFooter_Hero, PageBlocksFooter_heroImageOrVideo } from '../../tina/__generated__/types';
+import { PageBlocksFooter_Hero, PageBlocksFooter_HeroImageOrVideo } from '../../tina/__generated__/types';
 import { AnimatedGroup } from '../motion-primitives/animated-group';
 import { TextEffect } from '../motion-primitives/text-effect';
 import { TinaMarkdown } from 'tinacms/dist/rich-text';
@@ -74,7 +74,7 @@ export const FooterHero = ({ data }: { data: PageBlocksFooter_Hero }) => {
   );
 };
 
-const ImageBlock = ({ image }: { image: PageBlocksFooter_heroImageOrVideo }) => {
+const ImageBlock = ({ image }: { image: PageBlocksFooter_HeroImageOrVideo }) => {
   // Check if the uploaded file is a video or an image
   const isVideo = image?.videoSrc && !image?.imageSrc;
 
