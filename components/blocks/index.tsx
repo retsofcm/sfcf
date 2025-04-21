@@ -31,7 +31,7 @@ const Block = (block: PageBlocks) => {
       return <Video data={block} />;
     case "PageBlocksHero":
       return <Hero data={block} />;
-    case "PageBlocksFooterHero":
+    case "PageBlocksFooter_Hero":
       return <FooterHero data={block} />;
     case "PageBlocksCallout":
       return <Callout data={block} />;

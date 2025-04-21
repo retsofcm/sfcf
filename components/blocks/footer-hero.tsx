@@ -3,7 +3,7 @@ import * as React from 'react';
 import Image from 'next/image';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
-import { PageBlocksFooterHero, PageBlocksHeroImage } from '../../tina/__generated__/types';
+import { PageBlocksFooter_Hero, PageBlocksHeroImage } from '../../tina/__generated__/types';
 import { AnimatedGroup } from '../motion-primitives/animated-group';
 import { TextEffect } from '../motion-primitives/text-effect';
 import { TinaMarkdown } from 'tinacms/dist/rich-text';
@@ -36,7 +36,7 @@ const transitionVariants = {
   },
 };
 
-export const FooterHero = ({ data }: { data: PageBlocksFooterHero }) => {
+export const FooterHero = ({ data }: { data: PageBlocksFooter_Hero }) => {
   const headline = data.headline || ''; // Default to an empty string if headline is undefined
 
   return (
