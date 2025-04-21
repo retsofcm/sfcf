@@ -3,7 +3,7 @@ import * as React from 'react';
 import Image from 'next/image';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
-import { PageBlocksHero, PageBlocksHeroImage } from '../../tina/__generated__/types';
+import { PageBlocksFooterHero, PageBlocksHeroImage } from '../../tina/__generated__/types';
 import { AnimatedGroup } from '../motion-primitives/animated-group';
 import { TextEffect } from '../motion-primitives/text-effect';
 import { TinaMarkdown } from 'tinacms/dist/rich-text';
@@ -36,7 +36,7 @@ const transitionVariants = {
   },
 };
 
-export const Hero = ({ data }: { data: PageBlocksHero }) => {
+export const FooterHero = ({ data }: { data: PageBlocksFooterHero }) => {
   const headline = data.headline || ''; // Default to an empty string if headline is undefined
 
   return (
@@ -80,7 +80,7 @@ const ImageBlock = ({ image }: { image: PageBlocksHeroImage }) => {
 
   if (isVideo) {
     return (
-      <video className="inset-0 w-full h-screen object-cover z-0" autoPlay loop muted>
+      <video className="inset-0 w-full object-cover z-0" autoPlay loop muted>
         <source src={image.videoSrc} type="video/mp4" />
         <source src={image.videoSrc} type="video/webm" />
         <source src={image.videoSrc} type="video/ogg" />
@@ -92,7 +92,7 @@ const ImageBlock = ({ image }: { image: PageBlocksHeroImage }) => {
   if (image?.imageSrc) {
     return (
       <Image
-        className="inset-0 w-full h-screen object-cover z-0"
+        className="inset-0 w-full object-cover z-0"
         alt={image.alt || 'Hero Image'}
         src={image.imageSrc}
         height={4000}
@@ -104,9 +104,9 @@ const ImageBlock = ({ image }: { image: PageBlocksHeroImage }) => {
   return null; // In case no valid image or video is provided
 };
 
-export const heroBlockSchema: Template = {
-  name: 'hero',
-  label: 'Hero',
+export const footerHeroBlockSchema: Template = {
+  name: 'footer_hero',
+  label: 'Footer Hero',
   ui: {
     previewSrc: '/blocks/hero.png',
     defaultItem: {

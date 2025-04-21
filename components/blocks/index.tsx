@@ -1,6 +1,7 @@
 import { tinaField } from "tinacms/dist/react";
 import { Page, PageBlocks } from "../../tina/__generated__/types";
 import { Hero } from "./hero";
+import { FooterHero } from "./footer-hero";
 import { Content } from "./content";
 import { Features } from "./features";
 import { Testimonial } from "./testimonial";
@@ -30,6 +31,8 @@ const Block = (block: PageBlocks) => {
       return <Video data={block} />;
     case "PageBlocksHero":
       return <Hero data={block} />;
+    case "PageBlocksFooterHero":
+      return <FooterHero data={block} />;
     case "PageBlocksCallout":
       return <Callout data={block} />;
     case "PageBlocksStats":

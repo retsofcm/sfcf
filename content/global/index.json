@@ -1,24 +1,31 @@
 {
   "header": {
     "icon": {
-      "name": "Tina",
-      "color": "orange",
+      "color": "green",
       "style": "float"
     },
-    "name": "Tina Starter",
+    "name": "Stenson Fields Christian Fellowship",
     "color": "default",
     "nav": [
       {
-        "href": "/",
-        "label": "Home"
-      },
-      {
         "href": "/about",
-        "label": "About"
+        "label": "About us"
       },
       {
-        "href": "/posts",
-        "label": "Events"
+        "href": "/sundays",
+        "label": "Sundays"
+      },
+      {
+        "href": "/children-youth",
+        "label": "Children & Youth"
+      },
+      {
+        "href": "/whats-on",
+        "label": "What's on"
+      },
+      {
+        "href": "/get-in-touch",
+        "label": "Get in touch"
       }
     ]
   },

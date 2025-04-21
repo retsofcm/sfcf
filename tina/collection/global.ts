@@ -107,17 +107,13 @@ const Global: Collection = {
           label: "Font Family",
           options: [
             {
-              label: "System Sans",
-              value: "sans",
-            },
-            {
-              label: "Nunito",
-              value: "nunito",
-            },
-            {
               label: "Lato",
               value: "lato",
             },
+            {
+              label: "Merriweather",
+              value: "merriweather",
+            }
           ],
         },
         {

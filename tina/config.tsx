@@ -1,5 +1,4 @@
 import { defineConfig } from "tinacms";
-import nextConfig from '../next.config'
 
 import Post from "./collection/post";
 import Global from "./collection/global";
@@ -36,75 +35,6 @@ const config = defineConfig({
       Post, 
       Author, 
       Global,
-      {
-        name: "homepage",
-        label: "Homepage",
-        path: "content/homepage",
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: false,
-            required: true,
-          },
-          {
-            type: "string",
-            name: "subtitle",
-            label: "Subtitle",
-            isTitle: false,
-            required: true,
-          },
-          {
-            type: "image",
-            name: "heroImage",
-            label: "Image",
-            required: true,
-          },
-          {
-            type: "string",
-            name: "day",
-            label: "Day",
-            isTitle: false,
-            required: true,
-          },
-          {
-            type: "string",
-            name: "time",
-            label: "Time",
-            isTitle: false,
-            required: true,
-          },
-          {
-            type: "string",
-            name: "addressLine1",
-            label: "Address Line 1",
-            isTitle: false,
-            required: true,
-          },
-          {
-            type: "string",
-            name: "addressLine2",
-            label: "Address Line 2",
-            isTitle: false,
-            required: true,
-          },
-          {
-            type: "string",
-            name: "addressLine3",
-            label: "Address Line 3",
-            isTitle: false,
-            required: true,
-          },
-        ],
-        ui: {
-          router: ({ document }) => {
-            if (document._sys.filename === "hero") {
-              return "/";
-            }
-          },
-        },
-      },
     ],
   },
 });
