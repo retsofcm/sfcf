@@ -75,8 +75,8 @@ export const FooterHero = ({ data }: { data: PageBlocksFooter_Hero }) => {
 };
 
 const ImageBlock = ({ image }: { image: PageBlocksFooter_HeroImageOrVideo }) => {
-  // Check if the uploaded file is a video or an image
-  const isVideo = image?.videoSrc && !image?.imageSrc;
+  const videoSrc = image?.videoSrc ?? undefined;
+  const isVideo = !!videoSrc && !image?.imageSrc;
 
   if (isVideo) {
     return (
