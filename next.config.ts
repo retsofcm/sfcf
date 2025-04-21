@@ -16,8 +16,6 @@ const nextConfig: NextConfig = {
       }
     ],
   },
-  output: 'export',
-  distDir: 'docs',
   basePath: isGithubPages ? '/sfcf' : '',
   assetPrefix: isGithubPages ? '/sfcf/' : '',
   trailingSlash: true,
