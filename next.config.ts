@@ -1,5 +1,4 @@
 import type { NextConfig } from 'next'
-const isGithubPages = process.env.GITHUB_PAGES === 'true';
 
 const nextConfig: NextConfig = {
   images: {
@@ -16,9 +15,7 @@ const nextConfig: NextConfig = {
       }
     ],
   },
-  basePath: isGithubPages ? '/sfcf' : '',
-  assetPrefix: isGithubPages ? '/sfcf/' : '',
-  trailingSlash: true,
+  trailingSlash: true,  // Ensures trailing slashes on all URLs
 
   async headers() {
     const headers = [
