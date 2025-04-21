@@ -76,32 +76,35 @@ export const FooterHero = ({ data }: { data: PageBlocksFooter_Hero }) => {
 
 const ImageBlock = ({ image }: { image: PageBlocksFooter_HeroImageOrVideo }) => {
   const videoSrc = image?.videoSrc ?? undefined;
-  const isVideo = !!videoSrc && !image?.imageSrc;
+  const imageSrc = image?.imageSrc ?? undefined;
+  const alt = image?.alt ?? 'Hero Image';
+
+  const isVideo = !!videoSrc && !imageSrc;
 
   if (isVideo) {
     return (
       <video className="inset-0 w-full object-cover z-0" autoPlay loop muted>
-        <source src={image.videoSrc} type="video/mp4" />
-        <source src={image.videoSrc} type="video/webm" />
-        <source src={image.videoSrc} type="video/ogg" />
+        <source src={videoSrc} type="video/mp4" />
+        <source src={videoSrc} type="video/webm" />
+        <source src={videoSrc} type="video/ogg" />
         Your browser does not support the video tag.
       </video>
     );
   }
 
-  if (image?.imageSrc) {
+  if (imageSrc) {
     return (
       <Image
         className="inset-0 w-full object-cover z-0"
-        alt={image.alt || 'Hero Image'}
-        src={image.imageSrc}
+        alt={alt}
+        src={imageSrc}
         height={4000}
         width={3000}
       />
     );
   }
 
-  return null; // In case no valid image or video is provided
+  return null;
 };
 
 export const footerHeroBlockSchema: Template = {
