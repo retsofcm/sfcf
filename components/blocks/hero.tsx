@@ -3,7 +3,7 @@ import * as React from 'react';
 import Image from 'next/image';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
-import { PageBlocksHero, PageBlocksHeroImage } from '../../tina/__generated__/types';
+import { PageBlocksHero, PageBlocksHeroImageOrVideo } from '../../tina/__generated__/types';
 import { AnimatedGroup } from '../motion-primitives/animated-group';
 import { TextEffect } from '../motion-primitives/text-effect';
 import { TinaMarkdown } from 'tinacms/dist/rich-text';
@@ -74,7 +74,7 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
   );
 };
 
-const ImageBlock = ({ image }: { image: PageBlocksHeroImage }) => {
+const ImageBlock = ({ image }: { image: PageBlocksHeroImageOrVideo }) => {
   // Check if the uploaded file is a video or an image
   const isVideo = image?.videoSrc && !image?.imageSrc;
 
