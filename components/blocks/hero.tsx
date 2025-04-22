@@ -40,35 +40,37 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
   const headline = data.headline || ''; // Default to an empty string if headline is undefined
 
   return (
-    <section className="mx-auto relative with-overlay">
+    <section className="mx-auto relative with-overlay h-screen overflow-hidden">
       {data.imageOrVideo && (
         <AnimatedGroup variants={transitionVariants}>
           <ImageBlock image={data.imageOrVideo} />
         </AnimatedGroup>
       )}
 
-      <div className="absolute bottom-16 left-20 max-w-7xl w-full">
-        {data.headline && (
-          <div
-            data-tina-field={tinaField(data, 'headline')}
-            className="text-white text-[64px] leading-tight whitespace-pre-line"
-          >
-            <TinaMarkdown content={data.headline} />
-          </div>
-        )}
-        {data.tagline && (
-          <div data-tina-field={tinaField(data, 'tagline')}>
-            <TextEffect
-              per="line"
-              preset="fade-in-blur"
-              speedSegment={0.3}
-              delay={0.5}
-              as="p"
-              className="mt-6 max-w-2xl text-white text-xl leading-[36px]">
-              {data.tagline!}
-            </TextEffect>
-          </div>
-        )}
+      <div className="absolute inset-0 w-full px-20 py-16 z-10">
+        <div className="flex flex-col justify-end h-full max-w-7xl m-auto">
+          {data.headline && (
+            <div
+              data-tina-field={tinaField(data, 'headline')}
+              className="text-white text-[64px] leading-tight whitespace-pre-line"
+            >
+              <TinaMarkdown content={data.headline} />
+            </div>
+          )}
+          {data.tagline && (
+            <div data-tina-field={tinaField(data, 'tagline')}>
+              <TextEffect
+                per="line"
+                preset="fade-in-blur"
+                speedSegment={0.3}
+                delay={0.5}
+                as="p"
+                className="mt-6 max-w-2xl text-white text-xl leading-[36px]">
+                {data.tagline!}
+              </TextEffect>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );

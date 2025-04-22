@@ -1,9 +1,11 @@
 'use client';
 import * as React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
 import { PageBlocksFooter_Hero, PageBlocksFooter_HeroImageOrVideo } from '../../tina/__generated__/types';
+import { Button } from '../ui/button';
 import { AnimatedGroup } from '../motion-primitives/animated-group';
 import { TextEffect } from '../motion-primitives/text-effect';
 import { TinaMarkdown } from 'tinacms/dist/rich-text';
@@ -40,14 +42,14 @@ export const FooterHero = ({ data }: { data: PageBlocksFooter_Hero }) => {
   const headline = data.headline || ''; // Default to an empty string if headline is undefined
 
   return (
-    <section className="mx-auto relative with-overlay">
+    <section className="mx-auto relative with-overlay h-[236px] overflow-hidden">
       {data.imageOrVideo && (
         <AnimatedGroup variants={transitionVariants}>
           <ImageBlock image={data.imageOrVideo} />
         </AnimatedGroup>
       )}
 
-      <div className="absolute bottom-16 left-20 max-w-7xl w-full">
+      <div className="absolute bottom-16 left-20 max-w-7xl w-full z-10">
         {data.headline && (
           <div
             data-tina-field={tinaField(data, 'headline')}
@@ -56,19 +58,28 @@ export const FooterHero = ({ data }: { data: PageBlocksFooter_Hero }) => {
             <TinaMarkdown content={data.headline} />
           </div>
         )}
-        {data.tagline && (
-          <div data-tina-field={tinaField(data, 'tagline')}>
-            <TextEffect
-              per="line"
-              preset="fade-in-blur"
-              speedSegment={0.3}
-              delay={0.5}
-              as="p"
-              className="mt-6 max-w-2xl text-white text-xl leading-[36px]">
-              {data.tagline!}
-            </TextEffect>
-          </div>
-        )}
+
+        <AnimatedGroup
+          variants={transitionVariants}
+          className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row">
+
+          {data.actions && data.actions.map(action => (
+            <div
+              key={action!.label}
+              data-tina-field={tinaField(action)}
+              className="bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5">
+              <Button
+                asChild
+                size="lg"
+                variant={action!.type === 'link' ? 'ghost' : 'default'}
+                className="rounded-xl px-5 text-base">
+                <Link href={action!.link!}>
+                  <span className="text-nowrap">{action!.label}</span>
+                </Link>
+              </Button>
+            </div>
+          ))}
+        </AnimatedGroup>
       </div>
     </section>
   );
@@ -125,9 +136,40 @@ export const footerHeroBlockSchema: Template = {
       name: 'headline',
     },
     {
-      type: 'string',
-      label: 'Tagline',
-      name: 'tagline',
+      label: 'Actions',
+      name: 'actions',
+      type: 'object',
+      list: true,
+      required: false,
+      ui: {
+        defaultItem: {
+          label: 'Action Label',
+          type: 'button',
+          link: '/',
+        },
+        itemProps: (item) => ({ label: item.label }),
+      },
+      fields: [
+        {
+          label: 'Label',
+          name: 'label',
+          type: 'string',
+        },
+        {
+          label: 'Type',
+          name: 'type',
+          type: 'string',
+          options: [
+            { label: 'Button', value: 'button' },
+            { label: 'Link', value: 'link' },
+          ],
+        },
+        {
+          label: 'Link',
+          name: 'link',
+          type: 'string'
+        },
+      ],
     },
     {
       type: 'object',
