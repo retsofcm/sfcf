@@ -2,6 +2,9 @@ import type { Collection } from 'tinacms';
 import { heroBlockSchema } from '@/components/blocks/hero';
 import { contentBlockSchema } from '@/components/blocks/content';
 import { eventCollageBlockSchema } from "@/components/blocks/event-collage";
+import { staticImageBlockSchema } from "@/components/blocks/StaticImageBlock";
+import { parallaxImageBlockSchema } from "@/components/blocks/ParallaxImageBlock";
+import { ImageTextSignupBlockSchema } from "@/components/blocks/image-text-signup-block";
 import { testimonialBlockSchema } from '@/components/blocks/testimonial';
 import { featureBlockSchema } from '@/components/blocks/features';
 import { videoBlockSchema } from '@/components/blocks/video';
@@ -37,6 +40,9 @@ const Page: Collection = {
         heroBlockSchema,
         calloutBlockSchema,
         eventCollageBlockSchema,
+        staticImageBlockSchema,
+        parallaxImageBlockSchema,
+        ImageTextSignupBlockSchema,
         featureBlockSchema,
         statsBlockSchema,
         ctaBlockSchema,

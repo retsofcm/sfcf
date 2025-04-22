@@ -17,12 +17,12 @@ export default async function Page({
   const data = await client.queries.page({
     relativePath: `${filepath}.mdx`,
   });
-  const latestEvents = Events().slice(0, 3);
+  const upcomingEvents = Events().slice(0, 3);
 
   return (
     <Layout rawPageData={data}>
       <Section>
-        <ClientPage {...data} latestEvents={latestEvents} />
+        <ClientPage {...data} latestEvents={upcomingEvents} />
       </Section>
     </Layout>
   );

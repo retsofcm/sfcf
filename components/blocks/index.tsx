@@ -3,6 +3,10 @@
 import { tinaField } from "tinacms/dist/react";
 import { Page, PageBlocks } from "../../tina/__generated__/types";
 import { Hero } from "./hero";
+import { EventCollageBlock, Event } from "./event-collage";
+import { StaticImageBlock } from "./StaticImageBlock";
+import { ParallaxImageBlock } from "./ParallaxImageBlock";
+import { ImageTextSignupBlock } from "./image-text-signup-block";
 import { FooterHero } from "./footer-hero";
 import { Content } from "./content";
 import { Features } from "./features";
@@ -11,7 +15,7 @@ import { Video } from "./video";
 import { Callout } from "./callout";
 import { Stats } from "./stats";
 import { CallToAction } from "./call-to-action";
-import { EventCollageBlock, Event } from "./event-collage";
+
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values"> & { latestEvents?: Event[] }) => {
   if (!props.blocks) return null;
@@ -38,6 +42,14 @@ const Block = (
       return <Video data={block} />;
     case "PageBlocksHero":
       return <Hero data={block} />;
+    case "PageBlocksEventCollage":
+      return <EventCollageBlock events={block.latestEvents ?? []} />;
+    case "PageBlocksStaticImage":
+      return <StaticImageBlock data={block} />;
+    case "PageBlocksParallaxImage":
+      return <ParallaxImageBlock data={block} />;
+    case "PageBlocksImageTextSignup":
+      return <ImageTextSignupBlock data={block} />;
     case "PageBlocksFooter_hero":
       return <FooterHero data={block} />;
     case "PageBlocksCallout":
@@ -52,8 +64,6 @@ const Block = (
       return <Testimonial data={block} />;
     case "PageBlocksCta":
       return <CallToAction data={block} />;
-    case "PageBlocksEventCollage":
-      return <EventCollageBlock events={block.latestEvents ?? []} />; // Adjusted here
     default:
       return null;
   }

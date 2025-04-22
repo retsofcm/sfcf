@@ -10,12 +10,11 @@ export default async function Home() {
   const data = await client.queries.page({
     relativePath: `home.mdx`,
   });
-
-  const latestEvents = Events().slice(0, 3);
+  const upcomingEvents = Events().slice(0, 3);
 
   return (
     <Layout rawPageData={data}>
-      <ClientPage {...data} latestEvents={latestEvents} />
+      <ClientPage {...data} latestEvents={upcomingEvents} />
     </Layout>
   );
 }

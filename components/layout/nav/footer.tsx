@@ -35,16 +35,18 @@ export const Footer = () => {
 
         {/* Footer Columns */}
         {footer?.columns?.map((col, idx) => (
-          col ? ( // Check if col is not null or undefined
+          col ? ( 
             <div key={idx} className="flex flex-col gap-2 text-sm">
               <span className="font-semibold mb-2">{col.title}</span>
               {col.links?.map((link, i) => (
-                <Link key={i} href={link.url || "#"} className="hover:underline text-muted-foreground">
-                  {link.label}
-                </Link>
+                link ? (
+                  <Link key={i} href={link.url || "#"} className="hover:underline text-muted-foreground">
+                    {link.label}
+                  </Link>
+                ) : null
               ))}
             </div>
-          ) : null // If col is null, return null instead of rendering the content
+          ) : null
         ))}
 
         {/* Contact Info */}

@@ -4,8 +4,8 @@ import matter from "gray-matter";
 
 export type Event = {
   title: string;
-  startDate: string;
-  endDate?: string;
+  startDate: Date;  // Start date as a Date object
+  endDate?: Date;   // End date as a Date object (optional)
   heroImg?: string;
   slug: string;
 };
@@ -17,27 +17,36 @@ export const Events = (): Event[] => {
   const events: Event[] = filenames
     .map((filename) => {
       const filePath = path.join(eventsDir, filename);
-
-      // Check if the item is a file, not a directory
       const stats = fs.statSync(filePath);
-      if (stats.isDirectory()) return null; // Skip directories
+      if (stats.isDirectory()) return null;
 
       const fileContent = fs.readFileSync(filePath, "utf8");
       const { data } = matter(fileContent);
 
-      // Return the event data
-      return data.title && data.startDate ? {
-        title: data.title,
-        startDate: data.startDate,
-        endDate: data.endDate,
-        heroImg: data.heroImg,
-        slug: filename.replace(/\.mdx$/, ""),
-      } : null;
-    })
-    .filter((event): event is Event => event !== null); // Ensuring proper filtering and type assertion
+      if (data.title && data.startDate) {
+        const event: Event = {
+          title: data.title,
+          startDate: new Date(data.startDate), // Ensure startDate is a Date object
+          heroImg: data.heroImg,
+          slug: filename.replace(/\.mdx$/, ""),
+        };
 
-  // Ensure events have a valid date and sort by most recent
-  return events
-    .filter((e) => e.date)
-    .sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
+        // Ensure endDate is treated as a Date object (if it exists)
+        if (data.endDate) {
+          const parsedEndDate = new Date(data.endDate);
+          if (!isNaN(parsedEndDate.getTime())) {
+            event.endDate = parsedEndDate; // Only assign if it's a valid date
+          }
+        }
+
+        return event;
+      }
+
+      return null;
+    })
+    .filter((event): event is Event => event !== null)
+    .filter((e) => new Date(e.startDate) >= new Date()) // Filter out past events
+    .sort((a, b) => a.startDate.getTime() - b.startDate.getTime()); // Sort events by start date
+
+  return events;
 };
