@@ -12,13 +12,14 @@ export interface ClientPageProps {
     relativePath: string;
   };
   query: string;
+  latestEvents: Event[]; // Add latestEvents to the prop interface
 }
 
 export default function ClientPage(props: ClientPageProps) {
   const { data } = useTina({ ...props });
   return (
     <ErrorBoundary>
-      <Blocks {...data?.page} />
+      <Blocks {...data?.page} latestEvents={props.latestEvents} />
     </ErrorBoundary>
   );
 }

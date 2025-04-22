@@ -1,6 +1,7 @@
 import type { Collection } from 'tinacms';
 import { heroBlockSchema } from '@/components/blocks/hero';
 import { contentBlockSchema } from '@/components/blocks/content';
+import { eventCollageBlockSchema } from "@/components/blocks/event-collage";
 import { testimonialBlockSchema } from '@/components/blocks/testimonial';
 import { featureBlockSchema } from '@/components/blocks/features';
 import { videoBlockSchema } from '@/components/blocks/video';
@@ -35,6 +36,7 @@ const Page: Collection = {
       templates: [
         heroBlockSchema,
         calloutBlockSchema,
+        eventCollageBlockSchema,
         featureBlockSchema,
         statsBlockSchema,
         ctaBlockSchema,

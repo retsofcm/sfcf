@@ -52,7 +52,10 @@ const presetVariants: Record<PresetType, Variants> = {
   },
   blur: {
     hidden: { filter: 'blur(4px)' },
-    visible: { filter: 'blur(0px)' },
+    visible: {
+      filter: 'blur(0px)',
+      transition: { type: 'spring', stiffness: 300, damping: 20 },
+    },
   },
   'blur-slide': {
     hidden: { filter: 'blur(4px)', y: 20 },

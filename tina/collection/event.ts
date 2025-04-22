@@ -1,14 +1,14 @@
 import { videoBlockSchema } from "@/components/blocks/video";
 import type { Collection } from "tinacms";
 
-const Post: Collection = {
-  label: "Blog Posts",
-  name: "post",
-  path: "content/posts",
+const Event: Collection = {
+  label: "Events",
+  name: "event",
+  path: "content/events",
   format: "mdx",
   ui: {
-    router: ({ document }) => {                  
-      return `/posts/${document._sys.breadcrumbs.join("/")}`;
+    router: ({ document }) => {
+      return `/events/${document._sys.breadcrumbs.join("/")}`;
     },
   },
   fields: [
@@ -25,23 +25,18 @@ const Post: Collection = {
       label: "Hero Image",
     },
     {
-      type: "rich-text",
-      label: "Excerpt",
-      name: "excerpt",
-      overrides: {
-        toolbar: ["bold", "italic", "link"],
-      }
-    },
-    {
-      type: "reference",
-      label: "Author",
-      name: "author",
-      collections: ["author"],
+      type: "datetime",
+      label: "Start Date",
+      name: "startDate",
+      ui: {
+        dateFormat: "MMMM DD YYYY",
+        timeFormat: "hh:mm A",
+      },
     },
     {
       type: "datetime",
-      label: "Posted Date",
-      name: "date",
+      label: "End Date",
+      name: "endDate",
       ui: {
         dateFormat: "MMMM DD YYYY",
         timeFormat: "hh:mm A",
@@ -62,7 +57,7 @@ const Post: Collection = {
               type: "rich-text",
               overrides: {
                 toolbar: ["bold", "italic", "link"],
-              }
+              },
             },
             {
               name: "authorName",
@@ -109,7 +104,7 @@ const Post: Collection = {
               type: "rich-text",
               overrides: {
                 toolbar: ["bold", "italic", "link"],
-              }
+              },
             },
           ],
           ui: {
@@ -126,4 +121,4 @@ const Post: Collection = {
   ],
 };
 
-export default Post;
+export default Event;

@@ -1,8 +1,7 @@
 import { defineConfig } from "tinacms";
 
-import Post from "./collection/post";
+import Event from "./collection/event";
 import Global from "./collection/global";
-import Author from "./collection/author";
 import Page from "./collection/page";
 
 const config = defineConfig({
@@ -32,8 +31,7 @@ const config = defineConfig({
   schema: {
     collections: [
       Page, 
-      Post, 
-      Author, 
+      Event, 
       Global,
     ],
   },
