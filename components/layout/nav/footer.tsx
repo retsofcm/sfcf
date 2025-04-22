@@ -3,36 +3,62 @@ import React from "react";
 import Link from "next/link";
 import { Icon } from "../../icon";
 import { useLayout } from "../layout-context";
+import { Logo } from "./logo";
 
 export const Footer = () => {
   const { globalSettings } = useLayout();
   const { header, footer } = globalSettings!;
+  const contact = footer?.contact;
 
   return (
-    <footer className="border-b bg-white pt-20 dark:bg-transparent">
-      <div className="mx-auto max-w-5xl px-6">
-        <div className="mt-12 flex flex-wrap items-center gap-6 border-t py-6 flex-col md:flex-row md:justify-between">
-
-          <div className="order-last flex justify-center md:order-first md:justify-start">
-            <Link href="/" aria-label="go home">
-              <Icon
-                parentColor={header!.color!}
-                data={header!.icon}
-              />
-            </Link>
-            <span className="self-center text-muted-foreground text-sm ml-2">© {new Date().getFullYear()} {header?.name}, All rights reserved</span>
-          </div>
-
-          <div className="order-first flex justify-center gap-6 text-sm md:order-last md:justify-end">
+    <footer className="bg-white pt-20 dark:bg-transparent">
+      <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-5 gap-8">
+        {/* Logo */}
+        <div className="md:col-span-1 flex flex-col gap-4">
+          <Logo />
+          <div className="flex gap-4">
             {footer?.social?.map((link, index) => (
-              <Link key={`${link!.icon}${index}`} href={link!.url!} target="_blank" rel="noopener noreferrer" >
-                <Icon data={{ ...link!.icon, size: 'small' }} className="text-muted-foreground hover:text-primary block" />
+              <Link
+                key={`${link!.icon}${index}`}
+                href={link!.url!}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon
+                  data={{ ...link!.icon, size: "small" }}
+                  className="text-muted-foreground hover:text-primary"
+                />
               </Link>
             ))}
           </div>
-
         </div>
+
+        {/* Footer Columns */}
+        {footer?.columns?.map((col, idx) => (
+          <div key={idx} className="flex flex-col gap-2 text-sm">
+            <span className="font-semibold mb-2">{col.title}</span>
+            {col.links?.map((link, i) => (
+              <Link key={i} href={link.url || "#"} className="hover:underline text-muted-foreground">
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        ))}
+
+        {/* Contact Info */}
+        <div className="text-sm text-muted-foreground flex flex-col gap-1">
+          <span>{contact?.line1}</span>
+          <span>{contact?.line2}</span>
+          <span>{contact?.postcode}</span>
+          <a href={`mailto:${contact?.email}`} className="hover:underline">
+            {contact?.email}
+          </a>
+        </div>
+      </div>
+
+      <div className="mt-12 border-t pt-6 text-center text-sm text-muted-foreground">
+        © {new Date().getFullYear()} {header?.name}, All rights reserved
       </div>
     </footer>
   );
-}
+};

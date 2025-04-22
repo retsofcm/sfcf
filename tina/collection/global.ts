@@ -85,6 +85,74 @@ const Global: Collection = {
             },
           ],
         },
+        {
+          type: "object",
+          label: "Link Columns",
+          name: "columns",
+          list: true,
+          ui: {
+            itemProps: (item) => {
+              return { label: item?.title || "Column" };
+            },
+          },
+          fields: [
+            {
+              type: "string",
+              label: "Column Title",
+              name: "title",
+            },
+            {
+              type: "object",
+              label: "Links",
+              name: "links",
+              list: true,
+              ui: {
+                itemProps: (item) => ({
+                  label: item?.label || "Link",
+                }),
+              },
+              fields: [
+                {
+                  type: "string",
+                  label: "Label",
+                  name: "label",
+                },
+                {
+                  type: "string",
+                  label: "URL",
+                  name: "url",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "object",
+          label: "Contact Info",
+          name: "contact",
+          fields: [
+            {
+              type: "string",
+              label: "Line 1",
+              name: "line1",
+            },
+            {
+              type: "string",
+              label: "Line 2",
+              name: "line2",
+            },
+            {
+              type: "string",
+              label: "Postcode",
+              name: "postcode",
+            },
+            {
+              type: "string",
+              label: "Email",
+              name: "email",
+            },
+          ],
+        }        
       ],
     },
     {

@@ -33,29 +33,82 @@
     "social": [
       {
         "icon": {
-          "name": "FaLinkedin"
+          "name": "BiLogoFacebookCircle"
         },
-        "url": "https://www.linkedin.com/company/tinacms"
-      },
-      {
-        "icon": {
-          "name": "FaGithub"
-        },
-        "url": "https://github.com/tinacms/tinacms"
+        "url": "https://www.facebook.com/profile.php?id=100064812573698"
       },
       {
         "icon": {
           "name": "FaYoutube"
         },
-        "url": "https://www.youtube.com/@TinaCMS"
+        "url": "https://www.youtube.com/channel/UCu7_YktOgK7R7-VAhIV8Z5w"
       },
       {
         "icon": {
-          "name": "FaXTwitter"
+          "name": "BiLogoInstagram"
         },
-        "url": "https://x.com/TinaCMS"
+        "url": ""
       }
-    ]
+    ],
+    "columns": [
+      {
+        "title": "About",
+        "links": [
+          {
+            "label": "Our beliefs",
+            "url": "/our-beliefs"
+          },
+          {
+            "label": "Sundays",
+            "url": "/sundays"
+          },
+          {
+            "label": "Listen",
+            "url": "/sermons"
+          }
+        ]
+      },
+      {
+        "title": "Children & Youth",
+        "links": [
+          {
+            "label": "Smiley Tots",
+            "url": "/smiley-tots"
+          },
+          {
+            "label": "Explorers",
+            "url": "/explorers"
+          },
+          {
+            "label": "YP",
+            "url": "/yp"
+          }
+        ]
+      },
+      {
+        "title": "What's on",
+        "links": [
+          {
+            "label": "Weekly Program",
+            "url": "/weekly-program"
+          },
+          {
+            "label": "Upcoming Events",
+            "url": "/events"
+          },
+          {
+            "label": "Get in touch",
+            "url": "/get-in-touch"
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "line1": "Pilgrims Way",
+      "line2": "Stenson Fields",
+      "postcode": "DE24 3JG",
+      "email": "stensonfieldschurch@gmail.com"
+    }
   },
   "theme": {
     "color": "blue",
