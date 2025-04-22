@@ -3,6 +3,7 @@ import client from '@/tina/__generated__/client';
 import Layout from '@/components/layout/layout';
 import { Section } from '@/components/layout/section';
 import ClientPage from './client-page';
+import { Events } from "@/lib/events";
 
 export const revalidate = 300;
 
@@ -16,11 +17,12 @@ export default async function Page({
   const data = await client.queries.page({
     relativePath: `${filepath}.mdx`,
   });
+  const latestEvents = Events().slice(0, 3);
 
   return (
     <Layout rawPageData={data}>
       <Section>
-        <ClientPage {...data} />
+        <ClientPage {...data} latestEvents={latestEvents} />
       </Section>
     </Layout>
   );

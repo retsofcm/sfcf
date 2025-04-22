@@ -34,7 +34,7 @@ export default function EventClientPage(props: ClientEventProps) {
   const { data } = useTina({ ...props });
   const event = data.event;
 
-  const date = new Date(event.date!);
+  const date = new Date(event.startDate!);
   let formattedDate = '';
   if (!isNaN(date.getTime())) {
     formattedDate = format(date, 'MMM dd, yyyy');
@@ -48,7 +48,7 @@ export default function EventClientPage(props: ClientEventProps) {
         </h2>
         <div className='flex items-center justify-center mb-16'>
           <p
-            data-tina-field={tinaField(event, 'date')}
+            data-tina-field={tinaField(event, 'startDate')}
             className='text-base text-gray-400 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-150'
           >
             {formattedDate}

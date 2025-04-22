@@ -6,7 +6,7 @@ export type Event = {
   title: string;
   startDate: string;
   endDate?: string;
-  heroImg: string;
+  heroImg?: string;
   slug: string;
 };
 
@@ -26,9 +26,10 @@ export const Events = (): Event[] => {
       const { data } = matter(fileContent);
 
       // Return the event data
-      return data.title && data.date ? {
+      return data.title && data.startDate ? {
         title: data.title,
-        date: data.date,
+        startDate: data.startDate,
+        endDate: data.endDate,
         heroImg: data.heroImg,
         slug: filename.replace(/\.mdx$/, ""),
       } : null;
@@ -38,5 +39,5 @@ export const Events = (): Event[] => {
   // Ensure events have a valid date and sort by most recent
   return events
     .filter((e) => e.date)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    .sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
 };

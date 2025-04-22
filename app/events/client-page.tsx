@@ -20,7 +20,7 @@ export default function EventsClientPage(props: ClientEventProps) {
     <ErrorBoundary>
       {props.data?.eventConnection.edges!.map((eventData) => {
         const event = eventData!.node!;
-        const date = new Date(event.date!);
+        const date = new Date(event.startDate!);
         let formattedDate = '';
         if (!isNaN(date.getTime())) {
           formattedDate = format(date, 'MMM dd, yyyy');

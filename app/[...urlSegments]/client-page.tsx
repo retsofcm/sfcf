@@ -3,6 +3,7 @@ import { useTina } from "tinacms/dist/react";
 import { Blocks } from "@/components/blocks";
 import { PageQuery } from "@/tina/__generated__/types";
 import ErrorBoundary from "@/components/error-boundary";
+import type { Event } from "@/components/blocks/event-collage";
 
 export interface ClientPageProps {
   data: {
@@ -12,14 +13,20 @@ export interface ClientPageProps {
     relativePath: string;
   };
   query: string;
-  latestEvents: Event[]; // Add latestEvents to the prop interface
+  latestEvents: Event[];
 }
 
 export default function ClientPage(props: ClientPageProps) {
   const { data } = useTina({ ...props });
+
+  // Optional safety check if needed:
+  const filteredEvents = props.latestEvents.filter(
+    (e) => e.title && e.slug && e.startDate
+  );
+
   return (
     <ErrorBoundary>
-      <Blocks {...data?.page} latestEvents={props.latestEvents} />
+      <Blocks {...data?.page} latestEvents={filteredEvents} />
     </ErrorBoundary>
   );
 }

@@ -3,12 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { parseISO, format } from "date-fns";
 import type { Template } from "tinacms";
-
 export interface Event {
   title: string;
   slug: string;
   heroImg?: string;
-  excerpt?: string;
   startDate: string;
   endDate?: string;
 }
