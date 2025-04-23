@@ -124,6 +124,7 @@ export const ImageTextSignupBlockSchema: Template = {
       type: "string",
       label: "Button URL",
       name: "buttonUrl",
+      required: false,
     },
   ],
 };
