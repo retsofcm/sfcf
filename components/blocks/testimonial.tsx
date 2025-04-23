@@ -69,7 +69,6 @@ export const testimonialBlockSchema: Template = {
       type: "string",
       label: "Title",
       name: "title",
-      required: true,
     },
     {
       type: "string",

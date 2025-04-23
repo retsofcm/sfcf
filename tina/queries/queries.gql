@@ -6,7 +6,7 @@ query pageQuery {
         id
         startDate
         endDate
-        title
+        eventName
         _sys {
           filename
         }

@@ -5,7 +5,7 @@ import { parseISO, format } from "date-fns";
 import type { Template } from "tinacms";
 
 export interface Event {
-  title: string;
+  eventName: string;
   slug: string;
   heroImg?: string;
   startDate: Date;
@@ -68,14 +68,14 @@ export function EventCollageBlock({ events }: EventCollageBlockProps) {
               {mainEvent.heroImg && (
                 <Image
                   src={mainEvent.heroImg}
-                  alt={mainEvent.title}
+                  alt={mainEvent.eventName}
                   width={727}
                   height={720}
                   className="object-cover w-full h-full"
                 />
               )}
               <div className="absolute inset-0 bg-black/20 flex flex-col justify-end p-6 text-white">
-                <h3 className="text-3xl font-bold mb-2">{mainEvent.title}</h3>
+                <h3 className="text-3xl font-bold mb-2">{mainEvent.eventName}</h3>
                 <p className="text-md mb-4">{formatDateRange(mainEvent.startDate, mainEvent.endDate)}</p>
                 <Link href={`/events/${mainEvent.slug}`} className="underline text-white font-semibold font-heading">
                   Find out more
@@ -91,14 +91,14 @@ export function EventCollageBlock({ events }: EventCollageBlockProps) {
                 {event.heroImg && (
                   <Image
                     src={event.heroImg}
-                    alt={event.title}
+                    alt={event.eventName}
                     width={515}
                     height={340}
                     className="object-cover w-full h-full"
                   />
                 )}
                 <div className="absolute inset-0 bg-black/20 flex flex-col justify-end p-4 text-white">
-                  <h3 className="text-xl font-semibold mb-1">{event.title}</h3>
+                  <h3 className="text-xl font-semibold mb-1">{event.eventName}</h3>
                   <p className="text-sm mb-2">{formatDateRange(event.startDate, event.endDate)}</p>
                   <Link href={`/events/${event.slug}`} className="underline text-white font-semibold font-heading">
                     Find out more

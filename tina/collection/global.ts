@@ -100,7 +100,6 @@ const Global: Collection = {
               type: "string",
               label: "Column Title",
               name: "title",
-              required: true,
             },
             {
               type: "object",

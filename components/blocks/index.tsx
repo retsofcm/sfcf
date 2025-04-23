@@ -1,3 +1,5 @@
+// components/blocks/index.tsx
+
 import { tinaField } from "tinacms/dist/react";
 import { Page, PageBlocks } from "../../tina/__generated__/types";
 import { Hero } from "./hero";
@@ -21,7 +23,7 @@ export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values"> & { latestEv
       {props.blocks.map(function (block, i) {
         return (
           <div key={i} data-tina-field={tinaField(block)}>
-            <Block block={block} latestEvents={props.latestEvents} />
+            <Block {...block} latestEvents={props.latestEvents} />
           </div>
         );
       })}
@@ -29,32 +31,29 @@ export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values"> & { latestEv
   );
 };
 
-type BlockProps = {
-  block: PageBlocks;
-  latestEvents?: Event[];
-};
-
-const Block = ({ block, latestEvents }: BlockProps) => {
+const Block = (block: PageBlocks & { latestEvents?: Event[] }) => {
   switch (block.__typename) {
     case "PageBlocksVideo":
       return <Video data={block} />;
     case "PageBlocksHero":
       return <Hero data={block} />;
     case "PageBlocksEventCollage":
-      return <EventCollageBlock events={latestEvents ?? []} />;
+      return <EventCollageBlock events={block.latestEvents ?? []} />;
     case "PageBlocksStaticImage":
-      return <StaticImageBlock data={{ src: block.src ?? '' }} />;
+      const staticImageSrc = block.src ?? '';
+      return <StaticImageBlock data={{ src: staticImageSrc }} />;
     case "PageBlocksParallaxImage":
-      return <ParallaxImageBlock data={{ src: block.src ?? '' }} />;
+      const parallaxImageSrc = block.src ?? '';
+      return <ParallaxImageBlock data={{ src: parallaxImageSrc }} />;
     case "PageBlocksImageTextSignup":
       return (
         <ImageTextSignupBlock
           data={{
-            imageSrc: block.imageSrc ?? '',
-            title: block.title ?? '',
-            content: block.content ?? '',
-            buttonText: block.buttonText ?? '',
-            buttonUrl: block.buttonUrl ?? '',
+            imageSrc: block.imageSrc ?? '', // Use imageSrc from block
+            title: block.title ?? '', // Use title from block
+            content: block.content ?? '', // Use content from block
+            buttonText: block.buttonText ?? '', // Use buttonText from block
+            buttonUrl: block.buttonUrl ?? '', // Use buttonUrl from block
           }}
         />
       );
@@ -73,8 +72,6 @@ const Block = ({ block, latestEvents }: BlockProps) => {
     case "PageBlocksCta":
       return <CallToAction data={block} />;
     default:
-      // Optional: Fallback or log for unrecognized block type
-      console.warn(`Unrecognized block type: ${block.__typename}`);
-      return <div className="error-message">Unrecognized block type: {block.__typename}</div>;
+      return null;
   }
 };

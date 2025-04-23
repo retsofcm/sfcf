@@ -70,9 +70,8 @@ export const ImageTextSignupBlock = ({ data }: Props) => {
             <Image
               src={imageUrl}
               alt={data.title}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-none"
+              fill
+              style={{ objectFit: "cover" }}
             />
           </div>
         </div>
@@ -105,7 +104,6 @@ export const ImageTextSignupBlockSchema: Template = {
       type: "string",
       label: "Title",
       name: "title",
-      required: true,
     },
     {
       type: "rich-text",
@@ -126,7 +124,6 @@ export const ImageTextSignupBlockSchema: Template = {
       type: "string",
       label: "Button URL",
       name: "buttonUrl",
-      required: true,
     },
   ],
 };

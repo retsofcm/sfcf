@@ -14,8 +14,8 @@ const Event: Collection = {
   fields: [
     {
       type: "string",
-      label: "Title",
-      name: "title",
+      label: "Event Name",
+      name: "eventName",
       isTitle: true,
       required: true,
     },

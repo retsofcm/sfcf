@@ -66,7 +66,6 @@ export const ctaBlockSchema: Template = {
             type: "string",
             label: "Title",
             name: "title",
-            required: true,
         },
         {
             type: "string",

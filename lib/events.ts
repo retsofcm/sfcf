@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 
 export type Event = {
-  title: string;
+  eventName: string;
   startDate: Date;  // Start date as a Date object
   endDate?: Date;   // End date as a Date object (optional)
   heroImg?: string;
@@ -23,9 +23,9 @@ export const Events = (): Event[] => {
       const fileContent = fs.readFileSync(filePath, "utf8");
       const { data } = matter(fileContent);
 
-      if (data.title && data.startDate) {
+      if (data.eventName && data.startDate) {
         const event: Event = {
-          title: data.title,
+          eventName: data.eventName,
           startDate: new Date(data.startDate), // Ensure startDate is a Date object
           heroImg: data.heroImg,
           slug: filename.replace(/\.mdx$/, ""),
