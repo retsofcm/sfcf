@@ -35,14 +35,18 @@ export const Footer = () => {
 
         {/* Footer Columns */}
         {footer?.columns?.map((col, idx) => (
-          <div key={idx} className="flex flex-col gap-2 text-sm">
-            <span className="font-semibold mb-2">{col.title}</span>
-            {col.links?.map((link, i) => (
-              <Link key={i} href={link.url || "#"} className="hover:underline text-muted-foreground">
-                {link.label}
-              </Link>
-            ))}
-          </div>
+          col ? ( 
+            <div key={idx} className="flex flex-col gap-2 text-sm">
+              <span className="font-semibold mb-2">{col.title}</span>
+              {col.links?.map((link, i) => (
+                link ? (
+                  <Link key={i} href={link.url || "#"} className="hover:underline text-muted-foreground">
+                    {link.label}
+                  </Link>
+                ) : null
+              ))}
+            </div>
+          ) : null
         ))}
 
         {/* Contact Info */}
