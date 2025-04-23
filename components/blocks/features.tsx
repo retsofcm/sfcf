@@ -97,6 +97,7 @@ export const featureBlockSchema: Template = {
       type: "string",
       label: "Title",
       name: "title",
+      required: true,
     },
     {
       type: "string",
@@ -124,6 +125,7 @@ export const featureBlockSchema: Template = {
           type: "string",
           label: "Title",
           name: "title",
+          required: true,
         },
         {
           type: "rich-text",

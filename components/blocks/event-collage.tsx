@@ -8,8 +8,8 @@ export interface Event {
   title: string;
   slug: string;
   heroImg?: string;
-  startDate: string;
-  endDate?: string;
+  startDate: Date;
+  endDate?: Date;
 }
 
 export interface EventCollageBlockProps {
@@ -55,7 +55,6 @@ function formatDateRange(startDate?: Date, endDate?: Date) {
 
 export function EventCollageBlock({ events }: EventCollageBlockProps) {
   const [mainEvent, ...restEvents] = events || [];
-  console.log(events);
 
   return (
     <div className="event-collage-container py-20 max-w-7xl m-auto">

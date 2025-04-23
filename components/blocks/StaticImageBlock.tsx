@@ -1,45 +1,48 @@
 "use client";
 
-import Image from "next/image";
-import { TinaField } from "tinacms";
+import { Template } from 'tinacms';
 
 type Props = {
   data: {
-    src: string;
+    src: string | null | undefined;
     alt?: string;
   };
 };
 
 export const StaticImageBlock = ({ data }: Props) => {
+  const imageUrl = data.src ?? '';
+
   return (
     <div className="relative w-full h-[560px]">
-      {/* Static background image */}
       <div
         className="w-full h-full bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(${data.src})`,
-          backgroundColor: "white", // white background color for empty space
+          backgroundImage: `url(${imageUrl})`,
         }}
-        aria-label={data.alt}
+        aria-label={data.alt || 'Static Image'} // Fallback for alt text
       />
     </div>
   );
 };
 
-export const staticImageBlockSchema: TinaField = {
-  type: "object",
-  label: "Static Image",
-  name: "staticImage",
+export const staticImageBlockSchema: Template = {
+  name: 'staticImageBlock',
+  label: 'Static Image Block',
+  ui: {
+    previewSrc: '/blocks/static-image.png',
+  },
   fields: [
     {
-      type: "image",
-      label: "Image",
-      name: "src",
+      type: 'image',
+      label: 'Image Source',
+      name: 'src',
+      required: true,
     },
     {
-      type: "string",
-      label: "Alt Text",
-      name: "alt",
+      type: 'string',
+      label: 'Alt Text',
+      name: 'alt',
+      required: false,
     },
   ],
 };
