@@ -21,7 +21,7 @@ export default function ClientPage(props: ClientPageProps) {
 
   // Optional safety check if needed:
   const filteredEvents = props.latestEvents.filter(
-    (e) => e.title && e.slug && e.startDate
+    (e) => e.eventName && e.slug && e.startDate
   );
 
   return (
