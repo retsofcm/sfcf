@@ -39,7 +39,7 @@ const Block = (block: PageBlocks & { latestEvents?: Event[] }) => {
       return <Hero data={block} />;
     case "PageBlocksEventCollage":
       return <EventCollageBlock events={block.latestEvents ?? []} />;
-    case "PageBlocksStaticImage":
+    case "PageBlocksStaticImageBlock":
       const staticImageSrc = block.src ?? '';
       return <StaticImageBlock data={{ src: staticImageSrc }} />;
     case "PageBlocksParallaxImage":
