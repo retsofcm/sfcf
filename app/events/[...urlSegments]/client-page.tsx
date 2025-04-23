@@ -43,8 +43,8 @@ export default function EventClientPage(props: ClientEventProps) {
   return (
     <ErrorBoundary>
       <Section>
-        <h2 data-tina-field={tinaField(event, 'title')} className={`w-full relative\tmb-8 text-6xl font-extrabold tracking-normal text-center title-font`}>
-          <span className={`bg-clip-text text-transparent bg-linear-to-r ${titleColorClasses[theme!.color!]}`}>{event.title}</span>
+        <h2 data-tina-field={tinaField(event, 'eventName')} className={`w-full relative\tmb-8 text-6xl font-extrabold tracking-normal text-center title-font`}>
+          <span className={`bg-clip-text text-transparent bg-linear-to-r ${titleColorClasses[theme!.color!]}`}>{event.eventName}</span>
         </h2>
         <div className='flex items-center justify-center mb-16'>
           <p
@@ -60,7 +60,7 @@ export default function EventClientPage(props: ClientEventProps) {
               <Image
                 priority={true}
                 src={event.heroImg}
-                alt={event.title}
+                alt={event.eventName}
                 className='absolute block mx-auto rounded-lg w-full h-auto blur-2xl brightness-150 contrast-[0.9] dark:brightness-150 saturate-200 opacity-50 dark:opacity-30 mix-blend-multiply dark:mix-blend-hard-light'
                 aria-hidden='true'
                 width={500}
@@ -70,7 +70,7 @@ export default function EventClientPage(props: ClientEventProps) {
               <Image
                 priority={true}
                 src={event.heroImg}
-                alt={event.title}
+                alt={event.eventName}
                 width={500}
                 height={500}
                 className='relative z-10 mb-14 mx-auto block rounded-lg w-full h-auto opacity-100'
