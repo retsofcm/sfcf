@@ -8,9 +8,7 @@ query pageQuery {
         title
         excerpt
         author {
-          ... on Author {
-            ...AuthorParts
-          }
+          ...AuthorParts
         }
         _sys {
           filename
@@ -32,10 +30,23 @@ query blogPostQuery($relativePath: String!) {
   post(relativePath: $relativePath) {
     ...PostParts
     author {
-      ... on Author {
-        name
-        avatar
+      ...AuthorParts
+    }
+  }
+}
+
+query eventConnectionQuery {
+  eventConnection {
+    edges {
+      node {
+        ...EventParts
       }
     }
+  }
+}
+
+query eventQuery($relativePath: String!) {
+  event(relativePath: $relativePath) {
+    ...EventParts
   }
 }

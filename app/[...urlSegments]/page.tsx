@@ -13,9 +13,22 @@ export default async function Page({
 }) {
   const resolvedParams = await params;
   const filepath = resolvedParams.urlSegments.join('/');
-  const data = await client.queries.page({
-    relativePath: `${filepath}.mdx`,
-  });
+
+  let data;
+
+  // Handle events separately
+  console.log(filepath)
+  if (filepath.startsWith('events/')) {
+    const slug = filepath.replace(/^events\//, '');
+    console.log(slug)
+    data = await client.queries.event({
+      relativePath: `${slug}.mdx`,
+    });
+  } else {
+    data = await client.queries.page({
+      relativePath: `${filepath}.mdx`,
+    });
+  }
 
   return (
     <Layout rawPageData={data}>
@@ -27,31 +40,22 @@ export default async function Page({
 }
 
 export async function generateStaticParams() {
-  let pages = await client.queries.pageConnection();
-  const allPages = pages;
+  const pages = await client.queries.pageConnection();
+  const events = await client.queries.eventConnection();
 
-  if (!allPages.data.pageConnection.edges) {
-    return [];
-  }
+  const allPages = pages.data.pageConnection.edges || [];
+  const allEvents = events.data.eventConnection.edges || [];
 
-  while (pages.data.pageConnection.pageInfo.hasNextPage) {
-    pages = await client.queries.pageConnection({
-      after: pages.data.pageConnection.pageInfo.endCursor,
-    });
-
-    if (!pages.data.pageConnection.edges) {
-      break;
-    }
-
-    allPages.data.pageConnection.edges.push(...pages.data.pageConnection.edges);
-  }
-
-  const params = allPages.data?.pageConnection.edges
+  const pageParams = allPages
     .map((edge) => ({
       urlSegments: edge?.node?._sys.breadcrumbs || [],
     }))
     .filter((x) => x.urlSegments.length >= 1)
     .filter((x) => !x.urlSegments.every((x) => x === 'home')); // exclude the home page
 
-  return params;
+  const eventParams = allEvents.map((edge) => ({
+    urlSegments: ['events', ...(edge?.node?._sys.breadcrumbs || [])],
+  }));
+
+  return [...pageParams, ...eventParams];
 }
