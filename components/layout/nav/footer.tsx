@@ -25,7 +25,12 @@ export const Footer = () => {
                 rel="noopener noreferrer"
               >
                 <Icon
-                  data={{ ...link!.icon, size: "small" }}
+                  data={{ 
+                    ...link!.icon, 
+                    size: "small", 
+                    name: link!.icon?.name || "default-icon-name",
+                    style: link!.icon?.style as "circle" | "regular" | null,
+                  }}
                   className="text-muted-foreground hover:text-primary"
                 />
               </Link>

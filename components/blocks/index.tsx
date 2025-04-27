@@ -6,12 +6,6 @@ import { ParallaxImageBlock } from "./ParallaxImageBlock";
 import { ImageTextSignupBlock } from "./image-text-signup-block";
 import { FooterHero } from "./footer-hero";
 import { Content } from "./content";
-import { Features } from "./features";
-import { Testimonial } from "./testimonial";
-import { Video } from "./video";
-import { Callout } from "./callout";
-import { Stats } from "./stats";
-import { CallToAction } from "./call-to-action";
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
   if (!props.blocks) return null;
@@ -30,8 +24,6 @@ export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
 
 const Block = (block: PageBlocks) => {
   switch (block.__typename) {
-    case "PageBlocksVideo":
-      return <Video data={block} />;
     case "PageBlocksHero":
       return <Hero data={block} />;
     case "PageBlocksStaticImageBlock":
@@ -54,18 +46,8 @@ const Block = (block: PageBlocks) => {
       );
     case "PageBlocksFooter_hero":
       return <FooterHero data={block} />;
-    case "PageBlocksCallout":
-      return <Callout data={block} />;
-    case "PageBlocksStats":
-      return <Stats data={block} />;
     case "PageBlocksContent":
       return <Content data={block} />;
-    case "PageBlocksFeatures":
-      return <Features data={block} />;
-    case "PageBlocksTestimonial":
-      return <Testimonial data={block} />;
-    case "PageBlocksCta":
-      return <CallToAction data={block} />;
     default:
       return null;
   }
