@@ -1,4 +1,3 @@
-"use client";
 import * as BoxIcons from "react-icons/bi";
 import {
   FaFacebookF,
@@ -11,8 +10,20 @@ import { AiFillInstagram } from "react-icons/ai";
 import React from "react";
 import { useLayout } from "./layout/layout-context";
 
+interface IconProps {
+  data: {
+    name: string;
+    color?: string;
+    size?: 'xs' | 'small' | 'medium' | 'large' | 'xl' | 'custom';
+    style?: 'regular' | 'circle';
+  };
+  parentColor?: string;
+  className?: string;
+  tinaField?: string;
+}
+
 export const IconOptions = {
-  Tina: (props) => (
+  Tina: (props: IconProps['data']) => (
     <svg
       {...props}
       viewBox="0 0 66 80"
@@ -94,7 +105,7 @@ export const Icon = ({
   parentColor = "",
   className = "",
   tinaField = "",
-}) => {
+}: IconProps) => {
   const { theme } = useLayout();
 
   if (IconOptions[data.name] === null || IconOptions[data.name] === undefined) {
@@ -119,7 +130,7 @@ export const Icon = ({
   if (style == "circle") {
     return (
       <div
-        {...(tinaField ? { "data-tina-field": tinaField } : {})} // only render data-tina-field if it exists
+        {...(tinaField ? { "data-tina-field": tinaField } : {})}
         className={`relative z-10 inline-flex items-center justify-center shrink-0 ${iconSizeClasses} rounded-full ${iconColorClass[iconColor].circle} ${className}`}
       >
         <IconSVG className="w-2/3 h-2/3" />
@@ -135,7 +146,7 @@ export const Icon = ({
       ].regular;
     return (
       <IconSVG
-        {...(tinaField ? { "data-tina-field": tinaField } : {})} // only render data-tina-field if it exists
+        {...(tinaField ? { "data-tina-field": tinaField } : {})}
         className={`${iconSizeClasses} ${iconColorClasses} ${className}`}
       />
     );

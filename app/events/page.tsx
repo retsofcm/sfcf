@@ -5,20 +5,41 @@ import { EventConnectionQuery } from '@/tina/__generated__/types';
 
 export default async function EventsPage() {
   const eventsData = await client.queries.eventConnectionQuery();
-  console.log(eventsData.data.eventConnection.edges);  // Log the entire event data structure
+
+  // Use optional chaining to check if edges exists
+  const edges = eventsData?.data?.eventConnection?.edges;
+
+  if (!edges || edges.length === 0) {
+    return (
+      <Layout>
+        <h1>Upcoming Events</h1>
+        <p>No events available.</p>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
       <h1>Upcoming Events</h1>
-      {eventsData.data.eventConnection.edges.map((edge, index) => {
-        const event = edge.node;
+      {edges.map((edge, index) => {
+        const event = edge?.node;  // Use optional chaining to check for null or undefined edge.node
+        if (!event) {
+          return null; // Skip this iteration if event is undefined or null
+        }
+
+        const heroImg = event.heroImg || '/default-image.jpg';  // Fallback to default image if heroImg is null or undefined
+
+        // Check if startDate and endDate are valid
+        const startDate = event.startDate ? new Date(event.startDate) : null;
+        const endDate = event.endDate ? new Date(event.endDate) : null;
+
         return (
           <div key={index}>
             <h2>{event.eventName}</h2>
-            <img src={event.heroImg} alt={event.eventName} />
+            <img src={heroImg} alt={event.eventName} />
             <p>
-              {new Date(event.startDate).toLocaleDateString()} -{' '}
-              {new Date(event.endDate).toLocaleDateString()}
+              {startDate ? startDate.toLocaleDateString() : 'No start date'} -{' '}
+              {endDate ? endDate.toLocaleDateString() : 'Ongoing'}
             </p>
             <Link href={`/events/${event.slug}`}>Read More</Link>
           </div>

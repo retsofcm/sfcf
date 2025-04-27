@@ -1,69 +1,34 @@
 import client from '@/tina/__generated__/client';
 import Layout from '@/components/layout/layout';
-import { type PageProps } from 'next';
-import { format, parseISO } from 'date-fns';
-import { formatInTimeZone } from 'date-fns-tz';
+import { Section } from '@/components/layout/section';
+import ClientPage from './page.client';
 
 export const revalidate = 300;
 
-function formatTime(date: Date) {
-  const hours = format(date, 'h');
-  const minutes = format(date, 'mm');
-  const ampm = format(date, 'a').toLowerCase();
-  return minutes === '00' ? `${hours}${ampm}` : `${hours}:${minutes}${ampm}`;
-}
+type Params = Promise<{ event: string[] }>;
 
-function formatEventDate(startDate: string, endDate?: string): string {
-  const start = parseISO(startDate);
-  const startDateStr = format(start, 'MMMM do');
-  const startTimeStr = formatTime(start);
-
-  if (!endDate) {
-    return `${startDateStr}, ${startTimeStr}`;
-  }
-
-  const end = parseISO(endDate);
-  const endTimeStr = formatTime(end);
-
-  // Same month
-  if (start.getMonth() === end.getMonth()) {
-    const endDay = format(end, 'do');
-    return `${startDateStr}–${endDay}, ${endTimeStr}`;
-  }
-
-  // Different months
-  const endDateStr = format(end, 'MMMM do');
-  return `${startDateStr} – ${endDateStr}, ${endTimeStr}`;
-}
-
-export default async function EventPage({ params }: PageProps) {
-  const { event } = await params;
-  console.log('Fetching event from:', `${event}.mdx`);
-
-  let result;
+export default async function EventPage(props: { params: Params }) {
+  const { event } = await props.params;
+  
+  let data;
   try {
-    result = await client.queries.event({
+    data = await client.queries.event({
       relativePath: `${event}.mdx`,
     });
   } catch (err) {
-    console.error('Failed to fetch event:', err);
-    return <h1>Event not found</h1>;
+    console.error('Error loading event:', err);
+    return (
+      <Layout>
+        <h1>Event not found</h1>
+      </Layout>
+    );
   }
-
-  console.log(result)
-
-  if (!result?.data?.event) {
-    return <h1>Event not found</h1>;
-  }
-
-  const { eventName, heroImg, startDate, endDate, body } = result.data.event;
 
   return (
-    <Layout>
-      <h1>{eventName}</h1>
-      <img src={heroImg || '/default-image.jpg'} alt={eventName || 'Event image'} />
-      <p>{formatEventDate(startDate, endDate)}</p>
-      <div>{/* render MDX body */}</div>
+    <Layout rawPageData={data}>
+      <Section>
+        <ClientPage data={data.data.event} />
+      </Section>
     </Layout>
   );
 }
