@@ -4,12 +4,6 @@ import { contentBlockSchema } from '@/components/blocks/content';
 import { staticImageBlockSchema } from "@/components/blocks/StaticImageBlock";
 import { parallaxImageBlockSchema } from "@/components/blocks/ParallaxImageBlock";
 import { ImageTextSignupBlockSchema } from "@/components/blocks/image-text-signup-block";
-import { testimonialBlockSchema } from '@/components/blocks/testimonial';
-import { featureBlockSchema } from '@/components/blocks/features';
-import { videoBlockSchema } from '@/components/blocks/video';
-import { calloutBlockSchema } from '@/components/blocks/callout';
-import { statsBlockSchema } from '@/components/blocks/stats';
-import { ctaBlockSchema } from '@/components/blocks/call-to-action';
 import { footerHeroBlockSchema } from '@/components/blocks/footer-hero';
 
 const Page: Collection = {
@@ -37,16 +31,10 @@ const Page: Collection = {
       },
       templates: [
         heroBlockSchema,
-        calloutBlockSchema,
         staticImageBlockSchema,
         parallaxImageBlockSchema,
         ImageTextSignupBlockSchema,
-        featureBlockSchema,
-        statsBlockSchema,
-        ctaBlockSchema,
         contentBlockSchema,
-        testimonialBlockSchema,
-        videoBlockSchema,
         footerHeroBlockSchema,
       ],
     },
