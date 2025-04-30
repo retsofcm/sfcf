@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Template } from "tinacms";
-import { Event as TinaEvent } from "@/tina/__generated__/types";
+import { EventSummary } from "@/types/EventSummary";
 import { formatDateRange } from "@/utils/formatDate";
 import { handleize } from "@/utils/handleize";
 
@@ -12,7 +12,7 @@ function isValidDate(value: any): value is Date {
 }
 
 interface EventCollageBlockProps {
-  events: TinaEvent[];
+  events: EventSummary[];
 }
 
 export function EventCollageBlock({ events }: EventCollageBlockProps) {

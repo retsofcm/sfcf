@@ -1,5 +1,6 @@
 import { tinaField } from "tinacms/dist/react";
-import { Page, PageBlocks, Event } from "../../tina/__generated__/types";
+import { Page, PageBlocks } from "../../tina/__generated__/types";
+import { EventSummary } from "@/types/EventSummary";
 import { Hero } from "./hero";
 import { EventCollageBlock } from "./event-collage";
 import { StaticImageBlock } from "./StaticImageBlock";
@@ -8,9 +9,7 @@ import { ImageTextSignupBlock } from "./image-text-signup-block";
 import { FooterHero } from "./footer-hero";
 import { Content } from "./content";
 
-export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values"> & { events: Event[] }) => {
-  console.log("Events passed to Blocks: ", props.events);  // <-- Check this
-
+export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values"> & { events: EventSummary[] }) => {
   if (!props.blocks) return null;
   return (
     <>
@@ -25,7 +24,7 @@ export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values"> & { events: 
   );
 };
 
-const Block = ({ block, events }: { block: PageBlocks; events: Event[] }) => {
+const Block = ({ block, events }: { block: PageBlocks; events: EventSummary[] }) => {
   switch (block.__typename) {
     case "PageBlocksHero":
       return <Hero data={block} />;

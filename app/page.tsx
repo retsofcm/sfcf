@@ -2,7 +2,7 @@ import React from "react";
 import client from "@/tina/__generated__/client";
 import Layout from "@/components/layout/layout";
 import { Blocks } from "@/components/blocks";
-import { Event } from "@/tina/__generated__/types";
+import { EventSummary } from "@/types/EventSummary";
 
 export const revalidate = 300;
 
@@ -14,9 +14,18 @@ export default async function Home() {
 
     const eventsQuery = await client.queries.eventConnection();
     
-    const events: Event[] = eventsQuery.data.eventConnection.edges
+    const events: EventSummary[] = (eventsQuery.data.eventConnection.edges ?? [])
       .map((edge) => edge?.node)
-      .filter((node) => node !== null && node !== undefined);
+      .filter((node): node is NonNullable<typeof node> => node !== null && node !== undefined)
+      .map((node) => ({
+        id: node.id,
+        eventName: node.eventName,
+        heroImg: node.heroImg ?? null,
+        startDate: node.startDate ?? null,
+        endDate: node.endDate ?? null,
+        body: node.body ?? null,
+      }));
+
 
     const page = pageData?.data?.page;
 
