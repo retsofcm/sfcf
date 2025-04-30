@@ -1,10 +1,14 @@
 import { format } from "date-fns";
 
-export function formatDateRange(startDate?: Date, endDate?: Date) {
+export function formatDateRange(startDate?: string | Date, endDate?: string | Date) {
+  // Check if startDate is valid
   if (!startDate) return "Date TBC";
 
+  // Ensure startDate is a Date instance, if not, create one
   const start = startDate instanceof Date ? startDate : new Date(startDate);
-  const end = endDate instanceof Date ? endDate : endDate ? new Date(endDate) : null;
+
+  // If endDate is provided, make sure it's a valid Date, otherwise leave it undefined
+  const end = endDate ? (endDate instanceof Date ? endDate : new Date(endDate)) : undefined;
 
   const formatTime = (date: Date) => {
     const hour = format(date, "h");

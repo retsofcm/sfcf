@@ -5,6 +5,11 @@ const Event: Collection = {
   name: "event",
   path: "content/events",
   format: "mdx",
+  ui: {
+    router: ({ document }) => {
+      return `/events/${document._sys.breadcrumbs.join("/")}`;
+    },
+  },
   fields: [
     {
       type: "string",
@@ -35,11 +40,6 @@ const Event: Collection = {
         dateFormat: "MMMM DD YYYY",
         timeFormat: "hh:mm A",
       },
-    },
-    {
-      name: 'slug',
-      label: 'Slug',
-      type: 'string',
     },
     {
       type: "rich-text",
