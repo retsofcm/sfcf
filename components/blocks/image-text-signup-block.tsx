@@ -37,9 +37,18 @@ export const ImageTextSignupBlock = ({ data }: Props) => {
     <div className="w-full max-w-7xl py-20 mx-auto">
       <div className="grid grid-cols-12 gap-4 items-center">
         {/* Text Section (5 cols) */}
-        <div className="col-span-12 lg:col-span-5 order-1 lg:order-1">
-          <h2 className="text-3xl font-bold mb-4">{data.title}</h2>
-          <div className="text-lg mb-6">
+        <div className="col-span-12 lg:col-span-4 lg:col-start-8 order-2 lg:order-2">
+          <h2 
+            className="text-[24px] font-light leading-[1.5] mb-6 underline decoration-green-500 underline-offset-3"
+            style={{
+              textDecorationColor: '#028103',
+              textDecorationThickness: '3px',
+              textUnderlineOffset: '16px',
+            }}
+          >
+            {data.title}
+          </h2>
+          <div className="space-y-6 text-[16px] mb-6">
             {/* Render the rich text content here */}
             <TinaMarkdown content={data.content} />
           </div>
@@ -49,13 +58,13 @@ export const ImageTextSignupBlock = ({ data }: Props) => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="w-full p-3 border border-gray-300"
+                placeholder="you@example.com"
+                className="w-full p-4 border border-[#1B1B1B] placeholder-[#1B1B1B] leading-[1]"
                 required
               />
               <button
                 type="submit"
-                className="py-3 px-6 bg-blue-600 text-white"
+                className="py-4 px-5 bg-[#028103] text-white"
               >
                 {data.buttonText}
               </button>
@@ -65,13 +74,13 @@ export const ImageTextSignupBlock = ({ data }: Props) => {
         </div>
 
         {/* Image Section (6 cols, square aspect ratio) */}
-        <div className="col-span-12 lg:col-span-6 lg:col-start-7 px-4 order-2 lg:order-2">
-          <div className="relative w-full" style={{ paddingTop: "100%" }}>
+        <div className="col-span-12 lg:col-span-6 order-1 lg:order-1">
+          <div className="relative w-full aspect-[3/2]">
             <Image
               src={imageUrl}
               alt={data.title}
               fill
-              style={{ objectFit: "cover" }}
+              className="object-cover object-top"
             />
           </div>
         </div>

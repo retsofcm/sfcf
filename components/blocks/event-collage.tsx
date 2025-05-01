@@ -16,8 +16,6 @@ interface EventCollageBlockProps {
 }
 
 export function EventCollageBlock({ events }: EventCollageBlockProps) {
-  console.log("EVENTS passed to collage:", events);
-
   const sortedEvents = events
     .map((event) => {
       // Check if startDate and endDate are valid and convert them to Date objects
@@ -39,70 +37,46 @@ export function EventCollageBlock({ events }: EventCollageBlockProps) {
   const [mainEvent, ...restEvents] = sortedEvents;
 
   return (
-    <div className="event-collage-container py-20 max-w-7xl m-auto">
+    <div className="max-w-[1440px] px-20 mx-auto py-20">
       <h2 
-        className="text-[48px] font-light mb-12 underline decoration-green-500 underline-offset-3"
+        className="text-[36px] font-light mb-12 underline decoration-green-500 underline-offset-3"
         style={{
           textDecorationColor: '#028103',
           textDecorationThickness: '3px',
           textUnderlineOffset: '16px',
         }}
       >
-          What's on
-        </h2>
-      {events.length === 0 ? (
+        What's on
+      </h2>
+
+      {sortedEvents.length === 0 ? (
         <p className="mb-20">No upcoming events found.</p>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {mainEvent && (
-            <div className="relative lg:col-span-7 aspect-w-1 aspect-h-1">
-              {mainEvent.heroImg && (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {sortedEvents.slice(0, 3).map((event, index) => (
+            <Link
+              key={index}
+              href={`/events/${handleize(event.eventName || "")}`}
+              className="relative aspect-[1] overflow-hidden block group"
+            >
+              {event.heroImg && (
                 <Image
-                  src={mainEvent.heroImg}
-                  alt={mainEvent.eventName}
-                  width={727}
-                  height={720}
-                  className="object-cover w-full h-full"
+                  src={event.heroImg}
+                  alt={event.eventName}
+                  fill
+                  className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                 />
               )}
-              <div className="absolute inset-0 bg-black/20 flex flex-col justify-end p-6 text-white">
-                <h3 className="text-3xl font-bold mb-2">{mainEvent.eventName}</h3>
-                <p className="text-md mb-4">{formatDateRange(mainEvent.startDate, mainEvent.endDate)}</p>
-                <Link
-                  href={`/events/${handleize(mainEvent.eventName || "")}`}
-                  className="underline text-white font-semibold font-heading"
-                >
-                  Find out more
-                </Link>
-              </div>
-            </div>
-          )}
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/80"></div>
 
-          <div className="flex flex-col lg:col-span-5 gap-10">
-            {restEvents.slice(0, 2).map((event, index) => (
-              <div key={index} className="relative flex-1 h-full">
-                {event.heroImg && (
-                  <Image
-                    src={event.heroImg}
-                    alt={event.eventName}
-                    width={515}
-                    height={340}
-                    className="object-cover w-full h-full"
-                  />
-                )}
-                <div className="absolute inset-0 bg-black/20 flex flex-col justify-end p-4 text-white">
-                  <h3 className="text-xl font-semibold mb-1">{event.eventName}</h3>
-                  <p className="text-sm mb-2">{formatDateRange(event.startDate, event.endDate)}</p>
-                  <Link
-                    href={`/events/${handleize(event.eventName || "")}`}
-                    className="underline text-white font-semibold font-heading"
-                  >
-                    Find out more
-                  </Link>
-                </div>
+              {/* Text Content */}
+              <div className="absolute inset-0 flex flex-col justify-end text-white p-6 z-10">
+                <p className="text-sm mb-1 opacity-80">{formatDateRange(event.startDate, event.endDate)}</p>
+                <h3 className="text-2xl font-semibold">{event.eventName}</h3>
               </div>
-            ))}
-          </div>
+            </Link>
+          ))}
         </div>
       )}
     </div>
