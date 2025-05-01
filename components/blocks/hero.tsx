@@ -52,7 +52,7 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
           {data.headline && (
             <div
               data-tina-field={tinaField(data, 'headline')}
-              className="text-white text-[64px] leading-tight whitespace-pre-line"
+              className="text-white font-light text-[64px] leading-tight whitespace-pre-line"
             >
               <TinaMarkdown content={data.headline} />
             </div>

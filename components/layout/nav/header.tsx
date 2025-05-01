@@ -38,7 +38,8 @@ export const Header = () => {
       <nav
         data-state={menuState && "active"}
         className={`
-          fixed top-0 z-20 w-full transition-all duration-300
+          z-20 w-full
+          ${isIndex ? "fixed top-0 transition-all duration-300" : "relative"}
           ${isIndex && !showWhiteBg ? "bg-transparent border-none" : "bg-white border-b backdrop-blur-3xl"}
           ${scrolled && !scrollingUp ? "-translate-y-full" : "translate-y-0"}
         `}

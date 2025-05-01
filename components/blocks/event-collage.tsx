@@ -40,9 +40,18 @@ export function EventCollageBlock({ events }: EventCollageBlockProps) {
 
   return (
     <div className="event-collage-container py-20 max-w-7xl m-auto">
-      <h2 className="text-4xl font-extrabold text-center mb-10">What's on</h2>
+      <h2 
+        className="text-[48px] font-light mb-12 underline decoration-green-500 underline-offset-3"
+        style={{
+          textDecorationColor: '#028103',
+          textDecorationThickness: '3px',
+          textUnderlineOffset: '16px',
+        }}
+      >
+          What's on
+        </h2>
       {events.length === 0 ? (
-        <p className="text-center">No upcoming events found.</p>
+        <p className="mb-20">No upcoming events found.</p>
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           {mainEvent && (

@@ -32,24 +32,57 @@ export default async function EventsPage() {
 
   return (
     <Layout>
-      <h1>Upcoming Events</h1>
-      {sortedEdges.map((edge, index) => {
-        const event = edge?.node;
-        if (!event) return null;
+      <div className="max-w-[1440px] px-20 mx-auto">
+        <h1 className="text-[64px] font-light mb-6">Upcoming Events</h1>
 
-        const heroImg = event.heroImg || '/default-image.jpg';
-        const startDate = event.startDate ? new Date(event.startDate) : undefined;
-        const endDate = event.endDate ? new Date(event.endDate) : undefined;
+        {/* Descriptive Text */}
+        <p className="text-xl text-gray-600 mb-20">
+          Explore our exciting events happening soon. Stay tuned for updates and don't miss out on the fun!
+        </p>
 
-        return (
-          <div key={index}>
-            <h2>{event.eventName}</h2>
-            <img src={heroImg} alt={event.eventName} />
-            <p>{formatDateRange(startDate, endDate)}</p>
-            <Link href={`/events/${handleize(event.eventName || '')}`}>Read More</Link>
-          </div>
-        );
-      })}
+        <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {sortedEdges.map((edge, index) => {
+            const event = edge?.node;
+            if (!event) return null;
+    
+            const heroImg = event.heroImg || '/default-image.jpg';
+            const startDate = event.startDate ? new Date(event.startDate) : undefined;
+            const endDate = event.endDate ? new Date(event.endDate) : undefined;
+    
+            return (
+              <div key={index} className="w-fullmx-auto mb-5">
+                <div className="bg-white border border-gray-200">
+                  <Link href={`/events/${handleize(event.eventName || '')}`}>
+                    <div className="relative w-full pb-[100%] overflow-hiddeng">
+                      <img
+                        src={heroImg}
+                        alt={event.eventName}
+                        className="absolute top-0 left-0 w-full h-full object-cover"
+                      />
+                    </div>
+                  </Link>
+                  <div className="p-5">
+                    <Link href={`/events/${handleize(event.eventName || '')}`}>
+                      <h5 className="text-gray-900 font-light text-2xl tracking-tight mb-2">
+                        {event.eventName}
+                      </h5>
+                    </Link>
+                    <p className="font-normal text-gray-700 mb-3">
+                      {formatDateRange(startDate, endDate)}
+                    </p>
+                    <Link
+                      href={`/events/${handleize(event.eventName || '')}`}
+                      className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium text-sm px-3 py-2 text-center inline-flex items-center"
+                    >
+                      Read more
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </Layout>
-  );
+  );  
 }
