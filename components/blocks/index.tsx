@@ -1,31 +1,35 @@
 import { tinaField } from "tinacms/dist/react";
 import { Page, PageBlocks } from "../../tina/__generated__/types";
+import { EventSummary } from "@/types/EventSummary";
 import { Hero } from "./hero";
+import { EventCollageBlock } from "./event-collage";
 import { StaticImageBlock } from "./StaticImageBlock";
 import { ParallaxImageBlock } from "./ParallaxImageBlock";
 import { ImageTextSignupBlock } from "./image-text-signup-block";
 import { FooterHero } from "./footer-hero";
 import { Content } from "./content";
 
-export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
+export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values"> & { events: EventSummary[] }) => {
   if (!props.blocks) return null;
   return (
     <>
-      {props.blocks.map(function (block, i) {
-        return (
+      {props.blocks.map((block, i) => (
+        block ? (
           <div key={i} data-tina-field={tinaField(block)}>
-            <Block {...block} />
+            <Block block={block} events={props.events} />
           </div>
-        );
-      })}
+        ) : null
+      ))}
     </>
   );
 };
 
-const Block = (block: PageBlocks) => {
+const Block = ({ block, events }: { block: PageBlocks; events: EventSummary[] }) => {
   switch (block.__typename) {
     case "PageBlocksHero":
       return <Hero data={block} />;
+    case "PageBlocksEventCollage":
+      return <EventCollageBlock events={events || []} />;
     case "PageBlocksStaticImageBlock":
       const staticImageSrc = block.src ?? '';
       return <StaticImageBlock data={{ src: staticImageSrc }} />;

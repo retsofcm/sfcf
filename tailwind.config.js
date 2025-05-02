@@ -8,7 +8,11 @@ export default {
     './layouts/**/*.{js,ts,jsx,tsx}',  // If you have layouts directory
   ],
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        '30': '7.5rem', // 120px
+      },
+    },
   },
   plugins: [aspectRatio],
 }
