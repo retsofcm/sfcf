@@ -1,63 +1,32 @@
-import client from "@/tina/__generated__/client";
+"use client";
+
+import { useTina } from "tinacms/dist/react";
 import { Blocks } from "@/components/blocks";
 import ErrorBoundary from "@/components/error-boundary";
+import { EventSummary } from "@/types/EventSummary";
+import { PageQuery } from "@/tina/__generated__/types";
 
-export async function getStaticPaths() {
-  const pageList = await client.queries.pageConnection();
-  const edges = pageList.data?.pageConnection?.edges ?? [];
-
-  const paths = edges
-    .map((edge) => edge?.node?._sys?.filename)
-    .filter(Boolean)
-    .map((filename) => ({
-      params: { urlSegments: filename === "index" ? [] : [filename] },
-    }));
-
-  return {
-    paths,
-    fallback: "blocking", 
+export interface ClientPageProps {
+  data: {
+    page: PageQuery["page"];
   };
+  variables: {
+    relativePath: string;
+  };
+  query: string;
+  events: EventSummary[];
 }
 
-export async function getStaticProps({ params }: { params: { urlSegments?: string[] } }) {
-  const slug = params?.urlSegments?.join("/") || "index";
+export default function ClientPage(props: ClientPageProps) {
+  const { data } = useTina({ ...props });
 
-  try {
-    const pageQuery = await client.queries.page({ relativePath: `${slug}.mdx` });
-
-    if (!pageQuery?.data?.page) {
-      console.error("No page data found for", slug);
-      return {
-        notFound: true,
-      };
-    }
-
-    const blocks = pageQuery.data.page.blocks ?? [];
-
-    return {
-      props: {
-        data: {
-          page: pageQuery.data?.page ?? null,
-          blocks,
-        },
-      },
-    };
-  } catch (error) {
-    console.error("Error loading page:", error);
-    return {
-      notFound: true,
-    };
-  }
-}
-
-export default function ClientPage({ data }: { data: any }) {
-  if (!data || !data.page) {
-    return <div>No data to display</div>;
+  if (!data?.page) {
+    return <div>No page data</div>;
   }
 
   return (
     <ErrorBoundary>
-      <Blocks {...data.page} />
+      <Blocks {...data.page} events={props.events} />
     </ErrorBoundary>
   );
 }
