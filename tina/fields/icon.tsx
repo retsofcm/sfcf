@@ -118,8 +118,7 @@ export const IconPickerInput = wrapFieldsWithMeta(({ input }) => {
                                 <Icon
                                   data={{
                                     name: name,
-                                    size: "custom",
-                                    color: "blue",
+                                    size: "custom"
                                   }}
                                   className="w-7 h-auto"
                                 />

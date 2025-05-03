@@ -43,7 +43,7 @@ export default function ClientPage({ query, variables, data }: any) {
     <div className="mx-auto max-w-7xl px-20">
       <Link
         href="/events"
-        className="mb-6 flex items-center text-indigo-600 transition-colors hover:text-indigo-800"
+        className="mb-6 flex items-center text-green transition-colors hover:text-indigo-800"
       >
         <ArrowLeft className="mr-2 h-4 w-4" />
         Back to Events
@@ -52,7 +52,7 @@ export default function ClientPage({ query, variables, data }: any) {
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
         {/* Image Gallery */}
         <div className="space-y-4">
-          <div className="overflow-hidden rounded-xl">
+          <div className="overflow-hidden">
             <img
               src={heroImg}
               alt={eventName}
@@ -68,13 +68,13 @@ export default function ClientPage({ query, variables, data }: any) {
           <div className="mb-6 flex flex-col space-y-3 sm:flex-row sm:space-x-6 sm:space-y-0">
             {(startDate || endDate) && (
               <div className="flex items-center text-gray-600">
-                <Calendar className="mr-2 h-5 w-5 text-indigo-600" />
+                <Calendar className="mr-2 h-5 w-5 text-green" />
                 <span>{formatDateRange(startDate, endDate)}</span>
               </div>
             )}
             {location && (
               <div className="flex items-center text-gray-600">
-                <MapPin className="mr-2 h-5 w-5 text-indigo-600" />
+                <MapPin className="mr-2 h-5 w-5 text-green" />
                 <span>{location}</span>
               </div>
             )}
@@ -90,7 +90,7 @@ export default function ClientPage({ query, variables, data }: any) {
 
           <div className="mb-8">
             <h2 className="mb-4 text-xl font-semibold text-gray-900">Registration</h2>
-            <div className="rounded-lg border-2 border-indigo-100 bg-indigo-50 p-4">
+            <div className="border-2 border-gray-300 bg-gray-100 p-4">
               <div className="mb-2 text-lg font-semibold text-gray-900">
                 {price == null || price == "Free" || price == 0 ? 'Free Event' : `Cost: ${price}`}
               </div>
@@ -101,6 +101,13 @@ export default function ClientPage({ query, variables, data }: any) {
               </p>
             </div>
           </div>
+
+          {price == null 
+            ? '' 
+            : <button className="w-full sm:w-auto bg-green-100 px-4 py-2 text-white">
+                Register Now
+              </button>
+          }
         </div>
       </div>
     </div>

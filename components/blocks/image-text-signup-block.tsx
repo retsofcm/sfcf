@@ -64,7 +64,7 @@ export const ImageTextSignupBlock = ({ data }: Props) => {
               />
               <button
                 type="submit"
-                className="py-4 px-5 bg-[#028103] text-white"
+                className="py-4 px-5 bg-green text-white"
               >
                 {data.buttonText}
               </button>

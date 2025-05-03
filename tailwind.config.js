@@ -9,8 +9,16 @@ export default {
   ],
   theme: {
     extend: {
-      spacing: {
-        '30': '7.5rem', // 120px
+      colors: {
+        green: {
+          DEFAULT: '#028103', // default green color
+          10: '#0281031A',    // 10% opacity
+          25: '#02810340',    // 25% opacity
+          50: '#02810380', // 50% opacity
+          75: '#028103BF', // 75% opacity
+          90: '#028103E6', // 90% opacity
+          100: '#028103FF', // 100% opacity
+        },
       },
     },
   },
