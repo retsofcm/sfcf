@@ -6,7 +6,7 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
   const isIndex = pathname === '/';
 
   return (
-    <main className={`overflow-x-hidden ${isIndex ? '' : 'pt-30'}`}>
+    <main className={`overflow-x-hidden ${isIndex ? '' : 'pt-20'}`}>
       {children}
     </main>
   );
