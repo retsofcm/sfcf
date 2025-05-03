@@ -97,7 +97,7 @@ const ImageBlock = ({ image }: { image: PageBlocksHeroImageOrVideo }) => {
   if (imageSrc) {
     return (
       <Image
-        className="inset-0 h-full w-auto object-cover z-0"
+        className="inset-0 h-full w-full object-cover z-0"
         alt={alt}
         src={imageSrc}
         height={4000}

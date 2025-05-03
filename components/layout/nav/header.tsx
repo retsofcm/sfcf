@@ -47,7 +47,7 @@ export const Header = () => {
         <div className="mx-auto max-w-7xl transition-all duration-300">
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
             <div className="flex w-full items-center justify-between gap-12 px-4 md:px-0">
-              <Link href="/" aria-label="home" className="flex items-center space-x-2 w-[100px] md:w-full">
+              <Link href="/" aria-label="home" className="flex items-center space-x-2 w-[100px] md:w-auto">
                 <Logo className={showLightTheme ? "" : "fill-white"} />
               </Link>
 
