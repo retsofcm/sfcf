@@ -34,8 +34,8 @@ export const ImageTextSignupBlock = ({ data }: Props) => {
   const imageUrl = data.imageSrc ?? "";
 
   return (
-    <div className="w-full max-w-7xl py-20 mx-auto">
-      <div className="grid grid-cols-12 gap-4 items-center">
+    <div className="container py-10 md:py-20 mx-auto">
+      <div className="grid grid-cols-12 gap-8 md:gap-4 items-center">
         {/* Text Section (5 cols) */}
         <div className="col-span-12 lg:col-span-4 lg:col-start-8 order-2 lg:order-2">
           <h2 

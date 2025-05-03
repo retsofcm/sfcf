@@ -6,6 +6,7 @@ export default {
     './components/**/*.{js,ts,jsx,tsx}',  // This includes all files in the components directory
     './app/**/*.{js,ts,jsx,tsx}',  // If you're using the `app` directory (Next.js 13+)
     './layouts/**/*.{js,ts,jsx,tsx}',  // If you have layouts directory
+    './styles/**/*.{css,scss}', // 👈 Add this line
   ],
   theme: {
     extend: {

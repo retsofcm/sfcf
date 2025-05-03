@@ -46,15 +46,15 @@ export const Header = () => {
       >
         <div className="mx-auto max-w-7xl transition-all duration-300">
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
-            <div className="flex w-full items-center justify-between gap-12">
-              <Link href="/" aria-label="home" className="flex items-center space-x-2">
+            <div className="flex w-full items-center justify-between gap-12 px-4 md:px-0">
+              <Link href="/" aria-label="home" className="flex items-center space-x-2 w-[100px] md:w-full">
                 <Logo className={showLightTheme ? "" : "fill-white"} />
               </Link>
 
               <button
                 onClick={() => setMenuState(!menuState)}
                 aria-label={menuState ? "Close Menu" : "Open Menu"}
-                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden"
+                className={`relative z-20 block cursor-pointer p-2.5 lg:hidden ${showLightTheme ? "" : "text-white"}`}
               >
                 <Menu className="m-auto size-6 transition duration-200" />
               </button>

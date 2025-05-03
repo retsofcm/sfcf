@@ -34,11 +34,11 @@ export default async function EventsPage() {
 
   return (
     <Layout>
-      <div className="max-w-[1440px] px-20 mx-auto">
-        <h1 className="text-[48px] font-light mb-4">Upcoming Events</h1>
+      <div className="container px-4 md:px-20 mx-auto">
+        <h1 className="text-[32px] md:text-[48px] font-light mb-2 md:mb-4">Upcoming Events</h1>
 
         {/* Descriptive Text */}
-        <p className="mb-20">
+        <p className="mb-10 md:mb-20">
           Explore our exciting events happening soon. Stay tuned for updates and don't miss out on the fun!
         </p>
 

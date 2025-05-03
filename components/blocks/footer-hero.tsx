@@ -44,28 +44,28 @@ export const FooterHero = ({ data }: { data: PageBlocksFooter_Hero }) => {
   return (
     <section className="grid mx-auto relative with-overlay h-[236px] overflow-hidden">
       {data.imageOrVideo && (
-        <AnimatedGroup variants={transitionVariants} className="col-start-1 row-start-1">
+        <AnimatedGroup variants={transitionVariants} className="h-full w-full col-start-1 row-start-1">
           <ImageBlock image={data.imageOrVideo} />
         </AnimatedGroup>
       )}
 
-      <div className="max-w-7xl w-full z-10 col-start-1 row-start-1 flex justify-between items-center m-auto">
+      <div className="max-w-7xl w-full px-4 md:px-0 z-10 col-start-1 row-start-1 flex flex-col md:flex-row justify-between items-center m-auto">
         {data.headline && (
           <div
             data-tina-field={tinaField(data, 'headline')}
-            className="text-white text-[48px] leading-tight whitespace-pre-line"
+            className="text-white text-[32px] md:text-[48px] text-center md:text-left leading-tight whitespace-pre-line"
           >
             <TinaMarkdown content={data.headline} />
           </div>
         )}
 
-        <AnimatedGroup variants={transitionVariants}>
+        <AnimatedGroup variants={transitionVariants} containerClassName="block mt-6 md:mt-0">
           {data.actions?.map(action => (
             <Link
               key={action!.label}
               href={action!.link!}
               data-tina-field={tinaField(action)}
-              className="py-5 px-6 border text-white"
+              className="block py-5 px-6 border text-white"
             >
               {action!.label}
             </Link>
@@ -97,7 +97,7 @@ const ImageBlock = ({ image }: { image: PageBlocksFooter_HeroImageOrVideo }) => 
   if (imageSrc) {
     return (
       <Image
-        className="inset-0 w-full object-cover z-0"
+        className="inset-0 h-full w-auto object-cover z-0"
         alt={alt}
         src={imageSrc}
         height={4000}

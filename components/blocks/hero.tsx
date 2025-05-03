@@ -42,17 +42,17 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
   return (
     <section className="mx-auto relative with-overlay h-screen overflow-hidden">
       {data.imageOrVideo && (
-        <AnimatedGroup variants={transitionVariants}>
+        <AnimatedGroup variants={transitionVariants} className="h-full w-full">
           <ImageBlock image={data.imageOrVideo} />
         </AnimatedGroup>
       )}
 
-      <div className="absolute inset-0 w-full px-20 py-16 z-10">
+      <div className="absolute inset-0 w-full px-4 md:px-20 py-16 z-10">
         <div className="flex flex-col justify-end h-full max-w-7xl m-auto">
           {data.headline && (
             <div
               data-tina-field={tinaField(data, 'headline')}
-              className="text-white font-light text-[64px] leading-tight whitespace-pre-line"
+              className="text-white font-light text-[32px] md:text-[64px] leading-tight whitespace-pre-line"
             >
               <TinaMarkdown content={data.headline} />
             </div>
@@ -65,7 +65,7 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
                 speedSegment={0.3}
                 delay={0.5}
                 as="p"
-                className="mt-6 max-w-2xl text-white text-xl leading-[36px]">
+                className="mt-2 md:mt-6 max-w-2xl text-white md:text-xl md:leading-[36px]">
                 {data.tagline!}
               </TextEffect>
             </div>
@@ -97,7 +97,7 @@ const ImageBlock = ({ image }: { image: PageBlocksHeroImageOrVideo }) => {
   if (imageSrc) {
     return (
       <Image
-        className="inset-0 w-full object-cover z-0"
+        className="inset-0 h-full w-auto object-cover z-0"
         alt={alt}
         src={imageSrc}
         height={4000}

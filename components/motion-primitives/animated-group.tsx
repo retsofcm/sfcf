@@ -17,7 +17,9 @@ export type PresetType =
 
 export type AnimatedGroupProps = {
   children: ReactNode;
-  className?: string;
+  className?: string; // deprecated fallback
+  containerClassName?: string;
+  childClassName?: string;
   variants?: {
     container?: Variants;
     item?: Variants;
@@ -26,6 +28,7 @@ export type AnimatedGroupProps = {
   as?: React.ElementType;
   asChild?: React.ElementType;
 };
+  
 
 const defaultContainerVariants: Variants = {
   visible: {
@@ -103,6 +106,8 @@ const addDefaultVariants = (variants: Variants) => ({
 function AnimatedGroup({
   children,
   className,
+  containerClassName,
+  childClassName,
   variants,
   preset,
   as = 'div',
@@ -126,13 +131,17 @@ function AnimatedGroup({
 
   return (
     <MotionComponent
-      initial='hidden'
-      animate='visible'
+      initial="hidden"
+      animate="visible"
       variants={containerVariants}
-      className={className}
+      className={containerClassName ?? className} // fallback for old prop
     >
       {React.Children.map(children, (child, index) => (
-        <MotionChild key={index} variants={itemVariants}>
+        <MotionChild
+          key={index}
+          variants={itemVariants}
+          className={childClassName ?? className} // fallback
+        >
           {child}
         </MotionChild>
       ))}

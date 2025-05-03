@@ -40,7 +40,7 @@ export default function ClientPage({ query, variables, data }: any) {
   } = event;
 
   return (
-    <div className="mx-auto max-w-7xl px-20">
+    <div className="container px-4 md:px-20">
       <Link
         href="/events"
         className="mb-6 flex items-center text-green transition-colors hover:text-indigo-800"
