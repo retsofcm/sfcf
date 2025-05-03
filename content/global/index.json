@@ -59,12 +59,29 @@
             "url": "/our-beliefs"
           },
           {
+            "label": "Sermons",
+            "url": "/sermons"
+          },
+          {
+            "label": "Get in touch",
+            "url": "/get-in-touch"
+          }
+        ]
+      },
+      {
+        "title": "What's on",
+        "links": [
+          {
             "label": "Sundays",
             "url": "/sundays"
           },
           {
-            "label": "Listen",
-            "url": "/sermons"
+            "label": "Weekly Program",
+            "url": "/weekly-program"
+          },
+          {
+            "label": "Upcoming Events",
+            "url": "/events"
           }
         ]
       },
@@ -82,23 +99,6 @@
           {
             "label": "YP",
             "url": "/yp"
-          }
-        ]
-      },
-      {
-        "title": "What's on",
-        "links": [
-          {
-            "label": "Weekly Program",
-            "url": "/weekly-program"
-          },
-          {
-            "label": "Upcoming Events",
-            "url": "/events"
-          },
-          {
-            "label": "Get in touch",
-            "url": "/get-in-touch"
           }
         ]
       }
