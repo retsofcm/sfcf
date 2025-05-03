@@ -1,24 +1,108 @@
 'use client';
 
-import { TinaMarkdown } from 'tinacms/dist/rich-text';
-import { formatDateRange } from '@/utils/formatDate';
+import React from "react";
+import { useTina } from "tinacms/dist/react";
+import { Calendar, MapPin, ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
+import { formatDateRange } from '@/utils/formatDate'; // Adjust path as needed
 
-export default function ClientPage({ data }: { data: any }) {
-  const { eventName, heroImg, startDate, endDate, body } = data;
+function renderBodyContent(content: any) {
+  if (!content || !Array.isArray(content)) return null;
 
-  const formattedDate = formatDateRange(
-    startDate ? new Date(startDate) : undefined,
-    endDate ? new Date(endDate) : undefined
-  );
+  return content.map((block, index) => {
+    switch (block.type) {
+      case 'p':
+        return <p key={index}>{renderBodyContent(block.children)}</p>;
+      case 'text':
+        return <span key={index}>{block.text}</span>;
+      default:
+        return null;
+    }
+  });
+}
+
+export default function ClientPage({ query, variables, data }: any) {
+  const { data: tinaData } = useTina({ query, variables, data });
+
+  const event = tinaData?.event;
+  if (!event) {
+    return <div>Loading...</div>;
+  }
+
+  const {
+    eventName,
+    heroImg,
+    startDate,
+    endDate,
+    location,
+    price,
+    body
+  } = event;
 
   return (
-    <>
-      <h1>{eventName}</h1>
-      <img src={heroImg || '/default-image.jpg'} alt={eventName || 'Event'} />
-      <p>{formattedDate}</p>
-      <div>
-        <TinaMarkdown content={body} />
+    <div className="mx-auto max-w-7xl px-20">
+      <Link
+        href="/events"
+        className="mb-6 flex items-center text-indigo-600 transition-colors hover:text-indigo-800"
+      >
+        <ArrowLeft className="mr-2 h-4 w-4" />
+        Back to Events
+      </Link>
+
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        {/* Image Gallery */}
+        <div className="space-y-4">
+          <div className="overflow-hidden rounded-xl">
+            <img
+              src={heroImg}
+              alt={eventName}
+              className="h-96 w-full object-cover transition-all duration-300 hover:scale-105"
+            />
+          </div>
+        </div>
+
+        {/* Event Details */}
+        <div>
+          <h1 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">{eventName}</h1>
+
+          <div className="mb-6 flex flex-col space-y-3 sm:flex-row sm:space-x-6 sm:space-y-0">
+            {(startDate || endDate) && (
+              <div className="flex items-center text-gray-600">
+                <Calendar className="mr-2 h-5 w-5 text-indigo-600" />
+                <span>{formatDateRange(startDate, endDate)}</span>
+              </div>
+            )}
+            {location && (
+              <div className="flex items-center text-gray-600">
+                <MapPin className="mr-2 h-5 w-5 text-indigo-600" />
+                <span>{location}</span>
+              </div>
+            )}
+          </div>
+
+          <div className="mb-6">
+            <h2 className="mb-2 text-xl font-semibold text-gray-900">About this event</h2>
+            <div className="prose text-gray-600 leading-relaxed">
+              {/* Render content here */}
+              {renderBodyContent(body?.children)}
+            </div>
+          </div>
+
+          <div className="mb-8">
+            <h2 className="mb-4 text-xl font-semibold text-gray-900">Registration</h2>
+            <div className="rounded-lg border-2 border-indigo-100 bg-indigo-50 p-4">
+              <div className="mb-2 text-lg font-semibold text-gray-900">
+                {price == null || price == "Free" || price == 0 ? 'Free Event' : `Cost: ${price}`}
+              </div>
+              <p className="text-sm text-gray-600">
+                {price == null || price == "Free" || price == 0
+                  ? 'No payment required. All are welcome to attend.'
+                  : 'Please register to secure your spot at this event.'}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 }

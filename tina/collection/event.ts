@@ -47,6 +47,16 @@ const Event: Collection = {
       name: "body",
       isBody: true,
     },
+    {
+      type: "string",
+      label: "Location",
+      name: "location",
+    },
+    {
+      type: "string",
+      label: "Price",
+      name: "price",
+    },
   ],
 };
 

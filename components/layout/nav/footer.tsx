@@ -11,11 +11,13 @@ export const Footer = () => {
   const contact = footer?.contact;
 
   return (
-    <footer className="bg-white pt-20 dark:bg-transparent">
-      <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-5 gap-8">
+    <footer className="bg-white pt-20 mt-20 border-t">
+      <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-12 gap-8">
         {/* Logo */}
-        <div className="md:col-span-1 flex flex-col gap-4">
+        <div className="flex flex-col gap-4 col-span-3 justify-between">
+        <Link href="/" className="w-fit">
           <Logo />
+        </Link>
           <div className="flex gap-4">
             {footer?.social?.map((link, index) => (
               <Link
@@ -27,7 +29,7 @@ export const Footer = () => {
                 <Icon
                   data={{ 
                     ...link!.icon, 
-                    size: "small", 
+                    size: "xs", 
                     name: link!.icon?.name || "default-icon-name",
                     style: link!.icon?.style as "circle" | "regular" | null,
                   }}
@@ -41,11 +43,11 @@ export const Footer = () => {
         {/* Footer Columns */}
         {footer?.columns?.map((col, idx) => (
           col ? ( 
-            <div key={idx} className="flex flex-col gap-2 text-sm">
-              <span className="font-semibold mb-2">{col.title}</span>
+            <div key={idx} className="flex flex-col gap-4 text-sm col-span-2">
+              <span className="font-semibold">{col.title}</span>
               {col.links?.map((link, i) => (
                 link ? (
-                  <Link key={i} href={link.url || "#"} className="hover:underline text-muted-foreground">
+                  <Link key={i} href={link.url || "#"} className="self-start hover:underline text-muted-foreground">
                     {link.label}
                   </Link>
                 ) : null
@@ -55,17 +57,17 @@ export const Footer = () => {
         ))}
 
         {/* Contact Info */}
-        <div className="text-sm text-muted-foreground flex flex-col gap-1">
+        <div className="text-sm text-right flex flex-col gap-1 col-span-3">
           <span>{contact?.line1}</span>
           <span>{contact?.line2}</span>
           <span>{contact?.postcode}</span>
-          <a href={`mailto:${contact?.email}`} className="hover:underline">
+          <a href={`mailto:${contact?.email}`} className="self-end mt-4 underline">
             {contact?.email}
           </a>
         </div>
       </div>
 
-      <div className="mt-12 border-t pt-6 text-center text-sm text-muted-foreground">
+      <div className="mt-12 border-t py-6 text-center text-sm text-muted-foreground">
         © {new Date().getFullYear()} {header?.name}, All rights reserved
       </div>
     </footer>

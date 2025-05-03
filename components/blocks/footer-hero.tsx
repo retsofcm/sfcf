@@ -42,42 +42,33 @@ export const FooterHero = ({ data }: { data: PageBlocksFooter_Hero }) => {
   const headline = data.headline || ''; // Default to an empty string if headline is undefined
 
   return (
-    <section className="mx-auto relative with-overlay h-[236px] overflow-hidden">
+    <section className="grid mx-auto relative with-overlay h-[236px] overflow-hidden">
       {data.imageOrVideo && (
-        <AnimatedGroup variants={transitionVariants}>
+        <AnimatedGroup variants={transitionVariants} className="col-start-1 row-start-1">
           <ImageBlock image={data.imageOrVideo} />
         </AnimatedGroup>
       )}
 
-      <div className="absolute bottom-16 left-20 max-w-7xl w-full z-10">
+      <div className="max-w-7xl w-full z-10 col-start-1 row-start-1 flex justify-between items-center m-auto">
         {data.headline && (
           <div
             data-tina-field={tinaField(data, 'headline')}
-            className="text-white text-[64px] leading-tight whitespace-pre-line"
+            className="text-white text-[48px] leading-tight whitespace-pre-line"
           >
             <TinaMarkdown content={data.headline} />
           </div>
         )}
 
-        <AnimatedGroup
-          variants={transitionVariants}
-          className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row">
-
-          {data.actions && data.actions.map(action => (
-            <div
+        <AnimatedGroup variants={transitionVariants}>
+          {data.actions?.map(action => (
+            <Link
               key={action!.label}
+              href={action!.link!}
               data-tina-field={tinaField(action)}
-              className="bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5">
-              <Button
-                asChild
-                size="lg"
-                variant={action!.type === 'link' ? 'ghost' : 'default'}
-                className="rounded-xl px-5 text-base">
-                <Link href={action!.link!}>
-                  <span className="text-nowrap">{action!.label}</span>
-                </Link>
-              </Button>
-            </div>
+              className="py-5 px-6 border text-white"
+            >
+              {action!.label}
+            </Link>
           ))}
         </AnimatedGroup>
       </div>

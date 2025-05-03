@@ -13,7 +13,7 @@ export const StaticImageBlock = ({ data }: Props) => {
   const imageUrl = data.src ?? '';
 
   return (
-    <div className="relative w-full h-[560px]">
+    <div className="relative w-full h-[400px]">
       <div
         className="w-full h-full bg-cover bg-center bg-no-repeat"
         style={{
