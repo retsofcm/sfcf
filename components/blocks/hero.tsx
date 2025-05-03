@@ -37,8 +37,6 @@ const transitionVariants = {
 };
 
 export const Hero = ({ data }: { data: PageBlocksHero }) => {
-  console.log(data); // Log the data object
-
   return (
     <section className="mx-auto relative with-overlay h-screen overflow-hidden">
       {data.imageOrVideo && (
