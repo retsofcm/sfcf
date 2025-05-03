@@ -5,7 +5,6 @@ import Link from 'next/link';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
 import { PageBlocksFooter_Hero, PageBlocksFooter_HeroImageOrVideo } from '../../tina/__generated__/types';
-import { Button } from '../ui/button';
 import { AnimatedGroup } from '../motion-primitives/animated-group';
 import { TextEffect } from '../motion-primitives/text-effect';
 import { TinaMarkdown } from 'tinacms/dist/rich-text';

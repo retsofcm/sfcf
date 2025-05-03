@@ -22,8 +22,10 @@ export default async function Layout({ children, rawPageData }: LayoutProps) {
     }
   });
 
+  const pageData = rawPageData ?? {};
+
   return (
-    <LayoutProvider globalSettings={globalData.global} pageData={rawPageData}>
+    <LayoutProvider globalSettings={globalData.global} pageData={pageData}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="..." />
