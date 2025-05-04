@@ -6,6 +6,7 @@ import { EventCollageBlock } from "./event-collage";
 import { StaticImageBlock } from "./StaticImageBlock";
 import { ParallaxImageBlock } from "./ParallaxImageBlock";
 import { ImageTextSignupBlock } from "./image-text-signup-block";
+import { PageTitleBlock } from "./pageTitle"
 import { FooterHero } from "./footer-hero";
 import { Content } from "./content";
 
@@ -48,6 +49,8 @@ const Block = ({ block, events }: { block: PageBlocks; events: EventSummary[] })
           }}
         />
       );
+    case "PageBlocksPageTitle":
+      return <PageTitleBlock data={block} />;
     case "PageBlocksFooter_hero":
       return <FooterHero data={block} />;
     case "PageBlocksContent":

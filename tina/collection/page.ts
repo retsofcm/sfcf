@@ -1,5 +1,6 @@
 import { Collection } from 'tinacms';
 import { heroBlockSchema } from '@/components/blocks/hero';
+import { pageTitleSchema } from '@/components/blocks/pageTitle';
 import { contentBlockSchema } from '@/components/blocks/content';
 import { eventCollageBlockSchema } from "@/components/blocks/event-collage";
 import { staticImageBlockSchema } from "@/components/blocks/StaticImageBlock";
@@ -34,6 +35,7 @@ const Page: Collection = {
       },
       templates: [
         heroBlockSchema,
+        pageTitleSchema,
         eventCollageBlockSchema,
         staticImageBlockSchema,
         parallaxImageBlockSchema,
