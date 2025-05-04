@@ -3,6 +3,7 @@ import { defineConfig } from "tinacms";
 import Global from "./collection/global";
 import Page from "./collection/page";
 import Event from "./collection/event";
+import Sermon from "./collection/sermon";
 
 const config = defineConfig({
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID!,
@@ -33,6 +34,7 @@ const config = defineConfig({
       Page, 
       Global,
       Event,
+      Sermon,
     ],
   },
 });

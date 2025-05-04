@@ -20,3 +20,20 @@ query eventQuery($relativePath: String!) {
     ...EventParts
   }
 }
+
+
+query sermonConnectionQuery {
+  sermonConnection {
+    edges {
+      node {
+        ...SermonParts
+      }
+    }
+  }
+}
+
+query sermonQuery($relativePath: String!) {
+  sermon(relativePath: $relativePath) {
+    ...SermonParts
+  }
+}
