@@ -1,16 +1,15 @@
+import * as React from "react";
 import Layout from "@/components/layout/layout";
 import ClientPageWrapper from "./ClientPageWrapper";
-import * as React from 'react';
 
-interface PageProps {
-  params: {
-    urlSegments: string[];
-  };
-}
+type RouteParams = { urlSegments: string[] };
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<RouteParams>;
+}) {
   const { urlSegments } = await params;
-
   const relativePath = urlSegments.join("/") + ".mdx";
 
   return (

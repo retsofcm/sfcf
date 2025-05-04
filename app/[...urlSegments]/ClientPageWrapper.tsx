@@ -10,9 +10,7 @@ interface WrapperProps {
 }
 
 export default function ClientPageWrapper({ relativePath }: WrapperProps) {
-  console.log(relativePath);
   const [data, setData] = useState<any>(null);
-  console.log(data)
 
   useEffect(() => {
     async function fetchData() {
