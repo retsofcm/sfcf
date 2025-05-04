@@ -1,11 +1,16 @@
-'use client';
-
 import Layout from "@/components/layout/layout";
-import ClientPageWrapper from "./client-page-wrapper";
-import { useParams } from "next/navigation";
+import ClientPageWrapper from "./ClientPageWrapper";
+import * as React from 'react';
 
-export default function Page() {
-  const { urlSegments } = useParams() as { urlSegments: string[] };
+interface PageProps {
+  params: {
+    urlSegments: string[];
+  };
+}
+
+export default async function Page({ params }: PageProps) {
+  const { urlSegments } = await params;
+
   const relativePath = urlSegments.join("/") + ".mdx";
 
   return (

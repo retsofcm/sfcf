@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "@/components/layout/layout";
-import ClientPageWrapper from "./[...urlSegments]/client-page-wrapper";
+import ClientPageWrapper from "./[...urlSegments]/ClientPageWrapper";
 
 export const revalidate = 300;
 
