@@ -32,7 +32,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={cn(merriweather.variable, lato.variable)}>
-      <body className="min-h-screen bg-background font-lato antialiased">
+      <body className="min-h-screen bg-background font-lato antialiased flex flex-col">
         <VideoDialogProvider>
           {children}
           <VideoDialog />

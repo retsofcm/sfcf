@@ -26,7 +26,7 @@ export default function ClientPage({ query, variables, data }: any) {
 
   const sermon = tinaData?.sermon;
   if (!sermon) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   const {

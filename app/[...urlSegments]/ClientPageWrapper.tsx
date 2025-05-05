@@ -40,7 +40,7 @@ export default function ClientPageWrapper({ relativePath }: WrapperProps) {
     fetchData();
   }, [relativePath]);
 
-  if (!data) return <div>Loading...</div>;
+  if (!data) return <div></div>;
 
   return <ClientPage {...data} />;
 }

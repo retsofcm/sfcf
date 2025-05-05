@@ -26,7 +26,7 @@ export default function ClientPage({ query, variables, data }: any) {
 
   const event = tinaData?.event;
   if (!event) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   const {

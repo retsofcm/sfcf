@@ -4,8 +4,8 @@ import { pageTitleSchema } from '@/components/blocks/pageTitle';
 import { contentBlockSchema } from '@/components/blocks/content';
 import { eventCollageBlockSchema } from "@/components/blocks/event-collage";
 import { staticImageBlockSchema } from "@/components/blocks/StaticImageBlock";
-import { parallaxImageBlockSchema } from "@/components/blocks/ParallaxImageBlock";
-import { ImageTextSignupBlockSchema } from "@/components/blocks/image-text-signup-block";
+import { ImageWithTextBlockSchema } from "@/components/blocks/ImageWithText";
+import { IconWithTextBlockSchema } from "@/components/blocks/IconWithText";
 import { footerHeroBlockSchema } from '@/components/blocks/footer-hero';
 
 const Page: Collection = {
@@ -38,8 +38,8 @@ const Page: Collection = {
         pageTitleSchema,
         eventCollageBlockSchema,
         staticImageBlockSchema,
-        parallaxImageBlockSchema,
-        ImageTextSignupBlockSchema,
+        ImageWithTextBlockSchema,
+        IconWithTextBlockSchema,
         contentBlockSchema,
         footerHeroBlockSchema,
       ],

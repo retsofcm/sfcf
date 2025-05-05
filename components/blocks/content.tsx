@@ -6,12 +6,11 @@ import type { Template } from "tinacms";
 import { PageBlocksContent } from "../../tina/__generated__/types";
 import { tinaField } from "tinacms/dist/react";
 import { Section } from "../layout/section";
-import { sectionBlockSchemaField } from '../layout/section';
 
 export const Content = ({ data }: { data: PageBlocksContent }) => {
   return (
-    <Section background={data.background!}
-      className="prose prose-lg"
+    <Section
+      className="prose prose-lg flex flex-col gap-8 max-w-[842px] px-4"
       data-tina-field={tinaField(data, "body")}
     >
       <TinaMarkdown
@@ -31,7 +30,6 @@ export const contentBlockSchema: Template = {
     },
   },
   fields: [
-    sectionBlockSchemaField as any,
     {
       type: "rich-text",
       label: "Body",

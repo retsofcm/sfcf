@@ -27,8 +27,8 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="bg-white pt-10 mt-10 md:pt-20 md:mt-20 border-t">
-      <div className="mx-auto max-w-7xl px-6 grid grid-cols-4 md:grid-cols-12 gap-8">
+    <footer className="w-full bg-white pt-10 mt-10 md:pt-20 md:mt-20 border-t self-end">
+      <div className="mx-auto max-w-7xl px-6 grid grid-cols-4 md:grid-cols-12 md:px-0 gap-8">
         {/* Logo */}
         <div className="flex flex-col gap-4 col-span-4 md:col-span-3 justify-between items-center md:items-start">
           <Link href="/" className="w-fit">

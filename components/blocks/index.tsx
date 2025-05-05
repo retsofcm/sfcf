@@ -4,8 +4,8 @@ import { EventSummary } from "@/types/EventSummary";
 import { Hero } from "./hero";
 import { EventCollageBlock } from "./event-collage";
 import { StaticImageBlock } from "./StaticImageBlock";
-import { ParallaxImageBlock } from "./ParallaxImageBlock";
-import { ImageTextSignupBlock } from "./image-text-signup-block";
+import { ImageWithTextBlock } from "./ImageWithText";
+import { IconWithTextBlock } from "./IconWithText";
 import { PageTitleBlock } from "./pageTitle"
 import { FooterHero } from "./footer-hero";
 import { Content } from "./content";
@@ -32,23 +32,11 @@ const Block = ({ block, events }: { block: PageBlocks; events: EventSummary[] })
     case "PageBlocksEventCollage":
       return <EventCollageBlock events={events || []} />;
     case "PageBlocksStaticImageBlock":
-      const staticImageSrc = block.src ?? '';
-      return <StaticImageBlock data={{ src: staticImageSrc }} />;
-    case "PageBlocksParallaxImage":
-      const parallaxImageSrc = block.src ?? '';
-      return <ParallaxImageBlock data={{ src: parallaxImageSrc }} />;
-    case "PageBlocksImageTextSignup":
-      return (
-        <ImageTextSignupBlock
-          data={{
-            imageSrc: block.imageSrc ?? '', // Use imageSrc from block
-            title: block.title ?? '', // Use title from block
-            content: block.content ?? '', // Use content from block
-            buttonText: block.buttonText ?? '', // Use buttonText from block
-            buttonUrl: block.buttonUrl ?? '', // Use buttonUrl from block
-          }}
-        />
-      );
+      return <StaticImageBlock data={block} />;
+    case "PageBlocksImageWithText":
+      return <ImageWithTextBlock data={block} />;
+    case "PageBlocksIconWithText":
+      return <IconWithTextBlock data={block} />;
     case "PageBlocksPageTitle":
       return <PageTitleBlock data={block} />;
     case "PageBlocksFooter_hero":

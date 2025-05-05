@@ -21,7 +21,7 @@ export default function ClientPage(props: ClientPageProps) {
   const { data } = useTina({ ...props });
 
   if (!data?.page) {
-    return <div>No page data</div>;
+    return <div></div>;
   }
 
   return (

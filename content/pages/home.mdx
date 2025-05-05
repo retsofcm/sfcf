@@ -13,6 +13,7 @@ blocks:
     _template: hero
   - _template: eventCollage
   - src: /uploads/IMG_0010.jpg
+    fullWidth: true
     _template: staticImageBlock
   - imageSrc: /uploads/OT-108-364x515.jpg
     title: Want to know more?
@@ -24,14 +25,16 @@ blocks:
 
 
       Get in touch to find out when our next session begins!
+    enableForm: true
     buttonText: Submit
-    _template: imageTextSignup
+    buttonUrl: louise.mcconnell@gmail.com
+    _template: ImageWithText
   - headline: |
       # Missed a Sunday? Catch up now.
     actions:
       - label: Start Listening
         type: button
-        link: /
+        link: /sermons
     imageOrVideo:
       imageSrc: /uploads/church-building.png
     _template: footer_hero

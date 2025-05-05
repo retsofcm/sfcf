@@ -24,12 +24,9 @@ export default async function EventsPage() {
 
   return (
     <Layout>
+      <ClientPageWrapper relativePath="events.mdx" />
+
       <div className="container px-4 md:px-20 mx-auto">
-
-        {/* Editable blocks via TinaCMS */}
-        <ClientPageWrapper relativePath="events.mdx" />
-
-        {/* Hardcoded event grid */}
         {sortedEdges?.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
             {sortedEdges.map((edge, index) => {
