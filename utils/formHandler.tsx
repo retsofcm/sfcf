@@ -6,7 +6,7 @@ export const useFormHandler = <T extends Record<string, string>>(
 ) => {
   const [formData, setFormData] = useState<T>(initialData);
   const [message, setMessage] = useState("");
-  const submitUrl = "/api/contact";
+  const submitUrl = "";
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
