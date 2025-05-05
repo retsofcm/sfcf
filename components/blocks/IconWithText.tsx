@@ -59,6 +59,9 @@ export const IconWithTextBlock = ({ data }: Props) => {
 export const IconWithTextBlockSchema: Template = {
   name: "iconWithText",
   label: "Icon with Text Block",
+  ui: {
+    previewSrc: '/blocks/icon-with-text.png',
+  },
   fields: [
     {
       type: "string",

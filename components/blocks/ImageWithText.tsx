@@ -112,18 +112,6 @@ export const ImageWithTextBlockSchema: Template = {
   label: "Image with Text",
   ui: {
     previewSrc: "/blocks/image-with-text.png",
-    defaultItem: {
-      imageSrc: "/path/to/default-image.jpg",
-      title: "Your Title Here",
-      content: "Enter your content here.",
-      buttonText: "Sign Up",
-      buttonUrl: "/submit",
-      formData: {
-        name: "",
-        email: "",
-        phone: "",
-      },
-    },
   },
   fields: [
     {

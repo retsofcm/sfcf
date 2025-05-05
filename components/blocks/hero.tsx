@@ -144,13 +144,6 @@ export const heroBlockSchema: Template = {
   label: 'Hero',
   ui: {
     previewSrc: '/blocks/hero.png',
-    defaultItem: {
-      tagline: "Stenson Fields Christian Fellowship",
-      headline: 'Rooted in Truth. Reaching in Love.',
-      day: 'Sunday',
-      time: '10:45am & 6pm',
-      location: 'Pilgrims Way, Stenson Fields, DE24 3JG',
-    },
   },
   fields: [
     {

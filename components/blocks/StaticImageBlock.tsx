@@ -48,9 +48,9 @@ export const StaticImageBlock = ({ data }: Props) => {
 
 export const staticImageBlockSchema: Template = {
   name: 'staticImageBlock',
-  label: 'Static Image Block',
+  label: 'Image Block',
   ui: {
-    previewSrc: '/blocks/static-image.png',
+    previewSrc: '/blocks/image-block.png',
   },
   fields: [
     {

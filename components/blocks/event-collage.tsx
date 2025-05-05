@@ -85,7 +85,10 @@ export function EventCollageBlock({ events }: EventCollageBlockProps) {
 
 export const eventCollageBlockSchema: Template = {
   name: "eventCollage",
-  label: "Event Collage",
+  label: "Featured Events",
+  ui: {
+    previewSrc: '/blocks/featured-events.png',
+  },
   fields: [
     {
       type: "string",

@@ -112,12 +112,7 @@ export const footerHeroBlockSchema: Template = {
   name: 'footer_hero',
   label: 'Footer Hero',
   ui: {
-    previewSrc: '/blocks/hero.png',
-    defaultItem: {
-      tagline: "Here's some text above the other text",
-      headline: 'This Big Text is Totally Awesome',
-      text: 'Phasellus scelerisque, libero eu finibus rutrum, risus risus accumsan libero, nec molestie urna dui a leo.',
-    },
+    previewSrc: '/blocks/footer-hero.png',
   },
   fields: [
     {

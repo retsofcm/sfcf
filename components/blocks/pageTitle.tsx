@@ -29,6 +29,9 @@ export const PageTitleBlock = ({ data }: Props) => {
 export const pageTitleSchema: Template = {
   name: "pageTitle",
   label: "Page Title & Description",
+  ui: {
+    previewSrc: '/blocks/page-title.png',
+  },
   fields: [
     {
       type: "string",
