@@ -16,7 +16,7 @@ export const PageTitleBlock = ({ data }: Props) => {
       <h1 className="text-[32px] md:text-[48px] font-light mb-2 md:mb-4">
         {data.pageTitle} {/* This is the field mapped from the schema */}
       </h1>
-      <div className="mb-10 md:mb-20">
+      <div className="prose prose-lg mb-10 md:mb-20">
         {/* Render the rich text content (pageDescription) here */}
         <TinaMarkdown content={data.pageDescription} />
       </div>

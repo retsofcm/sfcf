@@ -16,23 +16,29 @@ interface EventCollageBlockProps {
 }
 
 export function EventCollageBlock({ events }: EventCollageBlockProps) {
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()); // Midnight today
+  
   const sortedEvents = events
     .map((event) => {
-      // Check if startDate and endDate are valid and convert them to Date objects
       const startDate = event.startDate && isValidDate(new Date(event.startDate))
         ? new Date(event.startDate)
         : undefined;
       const endDate = event.endDate && isValidDate(new Date(event.endDate))
         ? new Date(event.endDate)
         : undefined;
-
+  
       return {
         ...event,
         startDate,
         endDate,
       };
     })
-    .sort((a, b) => (a.startDate ? a.startDate.getTime() : 0) - (b.startDate ? b.startDate.getTime() : 0));
+    .filter((event) => {
+      const end = event.endDate ?? event.startDate;
+      return end && end >= today;
+    })
+    .sort((a, b) => (a.startDate?.getTime() ?? 0) - (b.startDate?.getTime() ?? 0));  
 
   const [mainEvent, ...restEvents] = sortedEvents;
 

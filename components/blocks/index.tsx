@@ -9,6 +9,8 @@ import { IconWithTextBlock } from "./IconWithText";
 import { PageTitleBlock } from "./pageTitle"
 import { FooterHero } from "./footer-hero";
 import { Content } from "./content";
+import { GoogleMapBlock } from "./GoogleMapBlock";
+
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values"> & { events: EventSummary[] }) => {
   if (!props.blocks) return null;
@@ -43,6 +45,8 @@ const Block = ({ block, events }: { block: PageBlocks; events: EventSummary[] })
       return <FooterHero data={block} />;
     case "PageBlocksContent":
       return <Content data={block} />;
+    case "PageBlocksGoogleMap":
+      return <GoogleMapBlock data={block} />;
     default:
       return null;
   }

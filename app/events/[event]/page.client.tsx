@@ -4,22 +4,8 @@ import React from "react";
 import { useTina } from "tinacms/dist/react";
 import { Calendar, MapPin, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
-import { formatDateRange } from '@/utils/formatDate'; // Adjust path as needed
-
-function renderBodyContent(content: any) {
-  if (!content || !Array.isArray(content)) return null;
-
-  return content.map((block, index) => {
-    switch (block.type) {
-      case 'p':
-        return <p key={index}>{renderBodyContent(block.children)}</p>;
-      case 'text':
-        return <span key={index}>{block.text}</span>;
-      default:
-        return null;
-    }
-  });
-}
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { formatDateRange } from '@/utils/formatDate';
 
 export default function ClientPage({ query, variables, data }: any) {
   const { data: tinaData } = useTina({ query, variables, data });
@@ -82,9 +68,10 @@ export default function ClientPage({ query, variables, data }: any) {
 
           <div className="mb-6">
             <h2 className="mb-2 text-xl font-semibold text-gray-900">About this event</h2>
-            <div className="prose text-gray-600 leading-relaxed">
-              {/* Render content here */}
-              {renderBodyContent(body?.children)}
+            <div className="prose prose-lg text-gray-600 leading-relaxed">
+              <TinaMarkdown
+                content={body}
+              />
             </div>
           </div>
 

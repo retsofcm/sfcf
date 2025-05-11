@@ -7,6 +7,7 @@ import { staticImageBlockSchema } from "@/components/blocks/StaticImageBlock";
 import { ImageWithTextBlockSchema } from "@/components/blocks/ImageWithText";
 import { IconWithTextBlockSchema } from "@/components/blocks/IconWithText";
 import { footerHeroBlockSchema } from '@/components/blocks/footer-hero';
+import { GoogleMapBlockSchema } from "@/components/blocks/GoogleMapBlock";
 
 const Page: Collection = {
   label: 'Pages',
@@ -42,6 +43,7 @@ const Page: Collection = {
         IconWithTextBlockSchema,
         contentBlockSchema,
         footerHeroBlockSchema,
+        GoogleMapBlockSchema
       ],
     },
   ],
