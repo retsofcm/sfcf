@@ -37,7 +37,7 @@ export function EventCollageBlock({ events }: EventCollageBlockProps) {
   const [mainEvent, ...restEvents] = sortedEvents;
 
   return (
-    <div className="container py-10 md:py-20">
+    <div className="container">
       <h2 
         className="text-[24px] md:text-[36px] font-light mb-8 md:mb-12 underline decoration-green-500 underline-offset-3"
         style={{

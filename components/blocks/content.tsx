@@ -5,18 +5,29 @@ import { TinaMarkdown } from "tinacms/dist/rich-text";
 import type { Template } from "tinacms";
 import { PageBlocksContent } from "../../tina/__generated__/types";
 import { tinaField } from "tinacms/dist/react";
-import { Section } from "../layout/section";
 
 export const Content = ({ data }: { data: PageBlocksContent }) => {
   return (
-    <Section
-      className="prose prose-lg flex flex-col gap-8 max-w-[842px] px-4"
-      data-tina-field={tinaField(data, "body")}
-    >
-      <TinaMarkdown
-        content={data.body}
-      />
-    </Section>
+    <section className="flex flex-col mx-auto px-4 md:px-0 prose prose-lg">
+      <h2 
+        className="text-[32px] font-light leading-[1.5] mb-6 underline decoration-green-500 underline-offset-3"
+        data-tina-field={tinaField(data, "heading")}
+        style={{
+          textDecorationColor: '#028103',
+          textDecorationThickness: '3px',
+          textUnderlineOffset: '16px',
+        }}
+      >
+        {data.heading}
+      </h2>
+      <div
+        data-tina-field={tinaField(data, "body")}
+      >
+        <TinaMarkdown
+          content={data.body}
+        />
+      </div>
+    </section>
   );
 };
 
@@ -27,6 +38,11 @@ export const contentBlockSchema: Template = {
     previewSrc: "/blocks/rich-text.png",
   },
   fields: [
+    {
+      type: "string",
+      label: "Heading",
+      name: "heading",
+    },
     {
       type: "rich-text",
       label: "Body",

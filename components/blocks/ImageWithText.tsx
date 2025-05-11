@@ -39,7 +39,7 @@ export const ImageWithTextBlock = ({ data }: Props) => {
   );
   
   return (
-    <div className="container py-10 md:py-20 mx-auto">
+    <div className="container mx-auto">
       <div className="grid grid-cols-12 gap-8 md:gap-4 items-center">
         {/* Text Section (5 cols) */}
         <div className={`col-span-12 lg:col-span-4  order-2 ${imagePosition === "left" ? "lg:col-start-8 lg:order-2" : "lg:col-start-2 lg:order-1"}`}>

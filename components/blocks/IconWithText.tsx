@@ -20,7 +20,7 @@ type Props = {
 
 export const IconWithTextBlock = ({ data }: Props) => {
   return (
-    <section className="container py-10 md:py-20">
+    <section className="container">
       <h2 
         className="text-[24px] md:text-[36px] font-light mb-12 md:mb-12 underline decoration-green-500 underline-offset-3"
         style={{
