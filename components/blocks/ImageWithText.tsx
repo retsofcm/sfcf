@@ -8,7 +8,7 @@ import { useFormHandler } from "../../utils/formHandler";
 type Props = {
   data: {
     imageSrc: string | null | undefined;
-    imagePosition?: "left" | "right" | null;
+    imagePosition?: string | null;
     title?: string | null;
     content: TinaMarkdownContent | TinaMarkdownContent[];
     buttonText?: string | null;
@@ -23,7 +23,12 @@ type Props = {
 };
 
 export const ImageWithTextBlock = ({ data }: Props) => {
-  const { imageSrc, imagePosition, title, content, buttonText, buttonUrl, enableForm } = data;
+  const { imageSrc, title, content, buttonText, buttonUrl, enableForm } = data;
+
+  const imagePosition =
+    data.imagePosition === "left" || data.imagePosition === "right"
+      ? data.imagePosition
+      : "right";
 
   const { formData, message, handleInputChange, handleSubmit } = useFormHandler(
     {
