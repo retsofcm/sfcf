@@ -8,9 +8,10 @@ import { useFormHandler } from "../../utils/formHandler";
 type Props = {
   data: {
     imageSrc: string | null | undefined;
+    imagePosition?: "left" | "right" | null;
     title?: string | null;
     content: TinaMarkdownContent | TinaMarkdownContent[];
-    buttonText: string | null;
+    buttonText?: string | null;
     buttonUrl?: string | null;
     enableForm?: boolean | null;
     formData?: {
@@ -22,7 +23,7 @@ type Props = {
 };
 
 export const ImageWithTextBlock = ({ data }: Props) => {
-  const { imageSrc, title, content, buttonText, buttonUrl, enableForm } = data;
+  const { imageSrc, imagePosition, title, content, buttonText, buttonUrl, enableForm } = data;
 
   const { formData, message, handleInputChange, handleSubmit } = useFormHandler(
     {
@@ -36,7 +37,7 @@ export const ImageWithTextBlock = ({ data }: Props) => {
     <div className="container py-10 md:py-20 mx-auto">
       <div className="grid grid-cols-12 gap-8 md:gap-4 items-center">
         {/* Text Section (5 cols) */}
-        <div className="col-span-12 lg:col-span-4 lg:col-start-8 order-2 lg:order-2">
+        <div className={`col-span-12 lg:col-span-4  order-2 ${imagePosition === "left" ? "lg:col-start-8 lg:order-2" : "lg:col-start-2 lg:order-1"}`}>
           <h2 
             className="text-[32px] font-light leading-[1.5] mb-6 underline decoration-green-500 underline-offset-3"
             style={{
@@ -92,7 +93,7 @@ export const ImageWithTextBlock = ({ data }: Props) => {
           )}
         </div>
 
-        <div className="col-span-12 lg:col-span-6 order-1 lg:order-1">
+        <div className={`col-span-12 lg:col-span-6 order-1 ${imagePosition === "left" ? "lg:order-1" : "lg:col-start-7 lg:order-2"}`}>
           <div className="relative w-full aspect-1">
             <Image
               src={imageSrc || ""}
@@ -122,6 +123,20 @@ export const ImageWithTextBlockSchema: Template = {
     },
     {
       type: "string",
+      name: "imagePosition",
+      label: "Image Position",
+      options: [
+        { label: "Left", value: "left" },
+        { label: "Right", value: "right" },
+      ],
+      ui: {
+        component: "radio-group",
+        defaultValue: "left",
+      },
+      required: true,
+    },    
+    {
+      type: "string",
       label: "Title",
       name: "title",
     },
@@ -147,7 +162,7 @@ export const ImageWithTextBlockSchema: Template = {
       ui: {
         component: "text",
       },
-      required: true,
+      required: false,
     },
     {
       type: "string",

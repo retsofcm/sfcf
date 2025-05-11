@@ -11,8 +11,6 @@ interface Props {
 }
 
 export const PageTitleBlock = ({ data }: Props) => {
-  console.log("PageTitleBlock data:", data); // 👈 Add this
-
   return (
     <div className="container px-4 md:px-20 mx-auto">
       <h1 className="text-[32px] md:text-[48px] font-light mb-2 md:mb-4">

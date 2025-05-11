@@ -43,7 +43,7 @@ export const FooterHero = ({ data }: { data: PageBlocksFooter_Hero }) => {
   return (
     <section className="grid mx-auto relative with-overlay h-[236px] overflow-hidden">
       {data.imageOrVideo && (
-        <AnimatedGroup variants={transitionVariants} className="h-full w-full col-start-1 row-start-1">
+        <AnimatedGroup variants={transitionVariants} containerClassName="h-[inherit] w-full col-start-1 row-start-1">
           <ImageBlock image={data.imageOrVideo} />
         </AnimatedGroup>
       )}
@@ -99,8 +99,8 @@ const ImageBlock = ({ image }: { image: PageBlocksFooter_HeroImageOrVideo }) => 
         className="inset-0 h-full w-full object-cover z-0"
         alt={alt}
         src={imageSrc}
-        height={4000}
-        width={3000}
+        height={236}
+        width={1440}
       />
     );
   }
