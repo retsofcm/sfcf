@@ -53,7 +53,7 @@ export const ImageWithTextBlock = ({ data }: Props) => {
           >
             {title}
           </h2>
-          <div className="space-y-6 text-[16px] mb-6">
+          <div className="prose prose-lg mb-6">
             <TinaMarkdown content={content} />
           </div>
           {enableForm && (
