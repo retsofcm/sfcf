@@ -13,13 +13,13 @@ export default {
     extend: {
       colors: {
         green: {
-          DEFAULT: '#028103', // default green color
-          10: '#0281031A',    // 10% opacity
-          25: '#02810340',    // 25% opacity
-          50: '#02810380', // 50% opacity
-          75: '#028103BF', // 75% opacity
-          90: '#028103E6', // 90% opacity
-          100: '#028103FF', // 100% opacity
+          DEFAULT: '#008000', // default green color
+          10: '#0080001A',    // 10% opacity
+          25: '#00800040',    // 25% opacity
+          50: '#00800080', // 50% opacity
+          75: '#008000BF', // 75% opacity
+          90: '#008000E6', // 90% opacity
+          100: '#008000FF', // 100% opacity
         },
       },
     },

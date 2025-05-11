@@ -13,7 +13,7 @@ export const Content = ({ data }: { data: PageBlocksContent }) => {
         className="text-[32px] font-light leading-[1.5] mb-6 underline decoration-green-500 underline-offset-3"
         data-tina-field={tinaField(data, "heading")}
         style={{
-          textDecorationColor: '#028103',
+          textDecorationColor: '#008000',
           textDecorationThickness: '3px',
           textUnderlineOffset: '16px',
         }}

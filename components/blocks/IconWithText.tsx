@@ -24,7 +24,7 @@ export const IconWithTextBlock = ({ data }: Props) => {
       <h2 
         className="text-[24px] md:text-[36px] font-light mb-12 md:mb-12 underline decoration-green-500 underline-offset-3"
         style={{
-          textDecorationColor: '#028103',
+          textDecorationColor: '#008000',
           textDecorationThickness: '3px',
           textUnderlineOffset: '16px',
         }}
