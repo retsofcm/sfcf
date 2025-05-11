@@ -1,13 +1,15 @@
 import React from "react";
 import { type Template } from "tinacms";
+import { PageBlocksGoogleMap } from "../../tina/__generated__/types";
 
-export function GoogleMapBlock({ data }: { data: { embedUrl: string; location?: string } }) {
+
+export function GoogleMapBlock({ data }: { data: PageBlocksGoogleMap }) {
   return (
     <div className="my-8">
       {data.location && <h2 className="text-lg font-semibold mb-2">{data.location}</h2>}
       <div className="h-[400px] w-full">
         <iframe
-          src={data.embedUrl}
+          src={data.embedUrl ?? undefined}
           width="100%"
           height="100%"
           style={{ border: 0 }}
