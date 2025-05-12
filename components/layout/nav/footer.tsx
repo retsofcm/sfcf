@@ -112,8 +112,6 @@ export const Footer = () => {
         <div>© {new Date().getFullYear()} {header?.name}, All rights reserved</div>
         <div className="space-x-4">
           <a href="/privacy-policy" className="text-gray-600">Privacy Policy</a>
-          <a href="/terms" className="text-gray-600">Terms & Conditions</a>
-          <a href="/safeguarding" className="text-gray-600">Safeguarding</a>
         </div>
       </div>
     </footer>
