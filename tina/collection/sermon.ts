@@ -15,6 +15,18 @@ const Sermon: Collection = {
       type: "string",
       label: "Speaker",
       name: "speaker",
+      required: true,
+    },
+    {
+      type: "string",
+      label: "Title",
+      name: "title",
+      required: true,
+    },
+    {
+      type: "string",
+      label: "Series",
+      name: "series",
       required: false,
     },
     {
@@ -27,7 +39,7 @@ const Sermon: Collection = {
       type: "string",
       label: "Passage",
       name: "passage",
-      required: false,
+      required: true,
     },
     {
       type: "string",
@@ -48,10 +60,10 @@ const Sermon: Collection = {
       required: false,
     },
     {
-      type: "image",
+      type: "string",
       label: "Audio File (MP3)",
       name: "audioFile",
-      required: false,
+      required: true,
     },
     {
       type: "string",

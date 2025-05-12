@@ -29,7 +29,7 @@ export default function ClientPage({ query, variables, data }: any) {
     <div className="container px-4 md:px-20">
       <Link
         href="/events"
-        className="mb-6 flex items-center text-green transition-colors hover:text-indigo-800"
+        className="mb-6 flex items-center text-green transition-colors"
       >
         <ArrowLeft className="mr-2 h-4 w-4" />
         Back to Events

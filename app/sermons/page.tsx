@@ -3,7 +3,7 @@ import ClientPageWrapper from "./../[...urlSegments]/ClientPageWrapper";
 import client from '@/tina/__generated__/client';
 import Link from 'next/link';
 import Image from 'next/image';
-import { formatDateRange } from '@/utils/formatDate';
+import { format } from 'date-fns';
 
 export default async function SermonsPage() {
   const SermonsData = await client.queries.sermonConnectionQuery();
@@ -40,6 +40,9 @@ export default async function SermonsPage() {
             const heroImg = sermon.sermonImage || '/default-image.jpg';
             const startDate = sermon.date ? new Date(sermon.date) : undefined;
 
+            // Format date for display (without time)
+            const formattedDate = startDate ? format(startDate, 'MMMM dd, yyyy') : '';
+
             return (
               <Link
                 key={index}
@@ -58,8 +61,14 @@ export default async function SermonsPage() {
 
                 {/* Text Content */}
                 <div className="absolute inset-0 flex flex-col justify-end text-white p-6 z-10">
-                  <p className="text-sm mb-1 opacity-80">{formatDateRange(startDate)}</p>
-                  <h3 className="text-2xl font-semibold">{sermon.passage}</h3>
+                  <p className="text-sm mb-1 opacity-80">{formattedDate}</p>
+                  
+                  {/* Title of the sermon */}
+                  {sermon.title && (
+                    <h2 className="text-2xl font-semibold mb-1">{sermon.title}</h2>
+                  )}
+                  
+                  <h3 className="text-lg font-light">{sermon.passage}</h3>
                 </div>
               </Link>
             );

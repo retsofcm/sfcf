@@ -7,6 +7,8 @@ const QUERY = `
   query Sermon($relativePath: String!) {
     sermon(relativePath: $relativePath) {
       speaker
+      title
+      series
       link
       date
       passage

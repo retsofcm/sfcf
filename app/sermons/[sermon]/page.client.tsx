@@ -15,6 +15,8 @@ export default function ClientPage({ query, variables, data }: any) {
 
   const {
     speaker,
+    title,
+    series,
     date,
     passage,
     passageLink,
@@ -37,7 +39,7 @@ export default function ClientPage({ query, variables, data }: any) {
     <div className="container px-4 md:px-20">
       <Link
         href="/sermons"
-        className="mb-6 flex items-center text-green transition-colors hover:text-indigo-800"
+        className="mb-6 flex items-center text-green transition-colors"
       >
         <ArrowLeft className="mr-2 h-4 w-4" />
         Back to Sermons
@@ -49,30 +51,32 @@ export default function ClientPage({ query, variables, data }: any) {
             <img
               src={sermonImage}
               alt={passage || 'Sermon image'}
-              className="h-96 w-full object-cover rounded-lg"
+              className="h-96 w-full object-cover"
             />
           </div>
         )}
 
         <div>
-          <h1 className="mb-2 text-3xl font-bold text-gray-900">{passage}</h1>
+          <h1 className="mb-2 text-3xl font-bold text-gray-900">{title}</h1>
 
           <div className="mb-4 text-gray-600 space-y-1">
-            {speaker && <div><strong>Speaker:</strong> {speaker}</div>}
+            {/* {speaker && <div><strong>Speaker:</strong> {speaker}</div>} */}
+            {series && <div><strong>Series:</strong> {series}</div>}
             {date && (
               <div><strong>Date:</strong> {format(new Date(date), 'MMMM d, yyyy')}</div>
             )}
+            {/* {passage && <div><strong>Passage:</strong> {passage}</div>} */}
           </div>
 
           {audioFile && (
             <div className="my-6">
               <h2 className="mb-2 text-xl font-semibold text-gray-900">Listen</h2>
               <audio controls className="w-full">
-                <source src={audioFile} type="audio/mpeg" />
+              <source src={`https://res.cloudinary.com/dmzgq497q/video/upload/v1747092681/${audioFile}.mp3`} type="audio/mpeg" />
                 Your browser does not support the audio element.
               </audio>
               <a
-                href={audioFile}
+                href={`https://res.cloudinary.com/dmzgq497q/video/upload/v1747092681/${audioFile}.mp3`}
                 download
                 className="mt-2 inline-block text-sm text-green hover:underline"
               >
