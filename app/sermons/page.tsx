@@ -4,7 +4,6 @@ import client from '@/tina/__generated__/client';
 import Link from 'next/link';
 import Image from 'next/image';
 import { formatDateRange } from '@/utils/formatDate';
-import { handleize } from '@/utils/handleize';
 
 export default async function SermonsPage() {
   const SermonsData = await client.queries.sermonConnectionQuery();

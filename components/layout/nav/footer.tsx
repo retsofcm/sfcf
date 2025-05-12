@@ -57,42 +57,44 @@ export const Footer = () => {
         </div>
 
         {/* Accordion: Footer Columns */}
-        {footer?.columns?.map((col, idx) => (
-          col ? (
-            <div key={idx} className="flex flex-col gap-4 text-sm col-span-4 md:col-span-2">
-              {/* Title and toggle only on mobile */}
-              <div
-                className="flex justify-between items-center cursor-pointer md:cursor-default md:block"
-                onClick={() => toggleAccordion("footerColumns", idx)}
-              >
-                <span className="font-semibold">{col.title}</span>
-                <span className="md:hidden">
-                  {isAccordionOpen.footerColumns[idx] ? "▲" : "▼"}
-                </span>
-              </div>
+        <div className="col-span-4 md:col-span-6 flex flex-col md:flex-row gap-4 justify-between">
+          {footer?.columns?.map((col, idx) => (
+            col ? (
+              <div key={idx} className="flex flex-col gap-4 text-sm">
+                {/* Title and toggle only on mobile */}
+                <div
+                  className="flex justify-between items-center cursor-pointer md:cursor-default md:block"
+                  onClick={() => toggleAccordion("footerColumns", idx)}
+                >
+                  <span className="font-semibold">{col.title}</span>
+                  <span className="md:hidden">
+                    {isAccordionOpen.footerColumns[idx] ? "▲" : "▼"}
+                  </span>
+                </div>
 
-              {/* Links: accordion on mobile, always shown on md+ */}
-              <div
-                className={`flex-col gap-1 ${
-                  isAccordionOpen.footerColumns[idx] ? "flex" : "hidden"
-                } md:flex`}
-              >
-                {col.links?.map((link, i) =>
-                  link ? (
-                    <Link
-                      key={i}
-                      href={link.url || "#"}
-                      className="self-start hover:underline text-muted-foreground"
-                    >
-                      {link.label}
-                    </Link>
-                  ) : null
-                )}
-              </div>
+                {/* Links: accordion on mobile, always shown on md+ */}
+                <div
+                  className={`flex-col gap-1 ${
+                    isAccordionOpen.footerColumns[idx] ? "flex" : "hidden"
+                  } md:flex`}
+                >
+                  {col.links?.map((link, i) =>
+                    link ? (
+                      <Link
+                        key={i}
+                        href={link.url || "#"}
+                        className="self-start hover:underline text-muted-foreground"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : null
+                  )}
+                </div>
 
-            </div>
-          ) : null
-        ))}
+              </div>
+            ) : null
+          ))}
+        </div>
 
         {/* Contact Info (always visible) */}
         <div className="text-sm flex flex-col gap-1 col-span-4 md:col-span-3 text-left md:text-right">
@@ -106,8 +108,13 @@ export const Footer = () => {
 
       </div>
 
-      <div className="mt-12 border-t px-4 py-6 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} {header?.name}, All rights reserved
+      <div className="mt-12 border-t px-4 py-6 text-sm text-muted-foreground justify-between items-center text-center flex flex-row">
+        <div>© {new Date().getFullYear()} {header?.name}, All rights reserved</div>
+        <div className="space-x-4">
+          <a href="/privacy-policy" className="text-gray-600">Privacy Policy</a>
+          <a href="/terms" className="text-gray-600">Terms & Conditions</a>
+          <a href="/safeguarding" className="text-gray-600">Safeguarding</a>
+        </div>
       </div>
     </footer>
   );

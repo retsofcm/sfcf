@@ -52,19 +52,19 @@
     ],
     "columns": [
       {
-        "title": "About",
+        "title": "About us",
         "links": [
           {
-            "label": "Our beliefs",
-            "url": "/our-beliefs"
+            "label": "Who we are",
+            "url": "/who-we-are"
           },
           {
-            "label": "Sermons",
-            "url": "/sermons"
+            "label": "Church history",
+            "url": "/history"
           },
           {
-            "label": "Get in touch",
-            "url": "/get-in-touch"
+            "label": "Meet the team",
+            "url": "/meet-the-team"
           }
         ]
       },
@@ -76,29 +76,50 @@
             "url": "/sundays"
           },
           {
-            "label": "Weekly Program",
-            "url": "/weekly-program"
+            "label": "Children & Youth",
+            "url": "/children-and-youth"
           },
           {
-            "label": "Upcoming Events",
+            "label": "Weekly programme",
+            "url": "/weekly-programme"
+          },
+          {
+            "label": "Upcoming events",
             "url": "/events"
           }
         ]
       },
       {
-        "title": "Children & Youth",
+        "title": "Listen & learn",
         "links": [
           {
-            "label": "Smiley Tots",
-            "url": "/smiley-tots"
+            "label": "Sermons",
+            "url": "/sermons"
           },
           {
-            "label": "Explorers",
-            "url": "/explorers"
+            "label": "Reading plan",
+            "url": "/reading-plan"
           },
           {
-            "label": "YP",
-            "url": "/yp"
+            "label": "Resources",
+            "url": "/resources"
+          }
+        ]
+      },
+      {
+        "title": "Plan your visit",
+        "links": [
+          {
+            "label": "What to expect",
+            "url": "/what-to-expect"
+          },
+          {
+            "label": "FAQs",
+            "url": "/faq"
+          },
+          {
+            "label": "Get in touch",
+            "url": "/get-in-touch"
           }
         ]
       }

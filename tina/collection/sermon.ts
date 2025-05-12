@@ -15,43 +15,49 @@ const Sermon: Collection = {
       type: "string",
       label: "Speaker",
       name: "speaker",
-      required: false, // Made optional
+      required: false,
     },
     {
       type: "datetime",
       label: "Date",
       name: "date",
-      required: false, // Made optional
+      required: false,
     },
     {
       type: "string",
       label: "Passage",
       name: "passage",
-      required: false, // Made optional
+      required: false,
     },
     {
       type: "string",
       label: "Description",
       name: "description",
-      required: false, // Made optional
+      required: false,
+    },
+    {
+      type: "string",
+      name: "passageLink",
+      label: "Link to Bible Passage",
+      required: false,
     },
     {
       type: "image",
       label: "Sermon Image",
       name: "sermonImage",
-      required: false, // Made optional
+      required: false,
     },
     {
       type: "image",
       label: "Audio File (MP3)",
       name: "audioFile",
-      required: false, // Made optional
+      required: false,
     },
     {
       type: "string",
       label: "Page URL (must match the file name)",
       name: "link",
-      required: true, // Made optional
+      required: true,
     },
   ],
 };

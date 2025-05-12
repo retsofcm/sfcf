@@ -11,6 +11,7 @@ const QUERY = `
       date
       passage
       description
+      passageLink
       sermonImage
       audioFile
     }
