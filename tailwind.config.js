@@ -9,6 +9,7 @@ export default {
     './layouts/**/*.{js,ts,jsx,tsx}',  // If you have layouts directory
     './styles/**/*.{css,scss}', // 👈 Add this line
   ],
+  safelist: ['pb-4'],
   theme: {
     extend: {
       colors: {
