@@ -11,6 +11,7 @@ import { FooterHero } from "./footer-hero";
 import { Content } from "./content";
 import { GoogleMapBlock } from "./GoogleMapBlock";
 import { AccordionBlock, AccordionItem } from "./Accordion";
+import CalendarBlock from "./Calendar";
 
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values"> & { events: EventSummary[] }) => {
@@ -51,6 +52,8 @@ const Block = ({ block, events }: { block: PageBlocks; events: EventSummary[] })
     case "PageBlocksAccordionBlock":
       const validItems = block.items?.filter((item) => item !== null) as AccordionItem[];
       return <AccordionBlock data={{ items: validItems }} />;
+    case "PageBlocksCalendarBlock":
+      return <CalendarBlock data={block} />;
     default:
       return null;
   }

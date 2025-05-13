@@ -9,6 +9,7 @@ import { IconWithTextBlockSchema } from "@/components/blocks/IconWithText";
 import { footerHeroBlockSchema } from '@/components/blocks/footer-hero';
 import { GoogleMapBlockSchema } from "@/components/blocks/GoogleMapBlock";
 import { AccordionBlockSchema } from "@/components/blocks/Accordion";
+import { CalendarBlockSchema } from "@/components/blocks/Calendar";
 
 const Page: Collection = {
   label: 'Pages',
@@ -45,7 +46,8 @@ const Page: Collection = {
         contentBlockSchema,
         footerHeroBlockSchema,
         GoogleMapBlockSchema,
-        AccordionBlockSchema
+        AccordionBlockSchema,
+        CalendarBlockSchema,
       ],
     },
   ],
