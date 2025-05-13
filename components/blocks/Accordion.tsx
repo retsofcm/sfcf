@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { Template } from 'tinacms';
 
-type AccordionItem = {
+export type AccordionItem = {
   title?: string | null;
   content?: any;
 };

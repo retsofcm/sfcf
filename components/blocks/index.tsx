@@ -10,7 +10,7 @@ import { PageTitleBlock } from "./pageTitle"
 import { FooterHero } from "./footer-hero";
 import { Content } from "./content";
 import { GoogleMapBlock } from "./GoogleMapBlock";
-import { AccordionBlock } from "./Accordion";
+import { AccordionBlock, AccordionItem } from "./Accordion";
 
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values"> & { events: EventSummary[] }) => {
@@ -49,7 +49,8 @@ const Block = ({ block, events }: { block: PageBlocks; events: EventSummary[] })
     case "PageBlocksGoogleMap":
       return <GoogleMapBlock data={block} />;
     case "PageBlocksAccordionBlock":
-      return <AccordionBlock data={block} />;
+      const validItems = block.items?.filter((item) => item !== null) as AccordionItem[];
+      return <AccordionBlock data={{ items: validItems }} />;
     default:
       return null;
   }
