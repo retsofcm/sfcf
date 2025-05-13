@@ -53,7 +53,7 @@ const Block = ({ block, events }: { block: PageBlocks; events: EventSummary[] })
       const validItems = block.items?.filter((item) => item !== null) as AccordionItem[];
       return <AccordionBlock data={{ items: validItems }} />;
     case "PageBlocksCalendarBlock":
-      return <CalendarBlock data={block} />;
+      return <CalendarBlock data={{ calendarIds: block.calendarIds ?? undefined }} />;
     default:
       return null;
   }

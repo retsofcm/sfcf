@@ -11,7 +11,7 @@ import { startOfMonth, endOfMonth, startOfWeek, endOfWeek, addMonths, subMonths,
 export default function CalendarBlock({
   data,
 }: {
-  data: { calendarIds: { calendarId: string }[] };
+  data: { calendarIds?: ({ calendarId?: string | null } | null)[] | null; };
 }) {
   const [view, setView] = useState<"month" | "week">("month");
   const [events, setEvents] = useState<any[]>([]);
@@ -22,7 +22,15 @@ export default function CalendarBlock({
 
     const fetchEvents = async () => {
       let allEvents: any[] = [];
-      for (let { calendarId } of data.calendarIds) {
+
+      // Filter out null or undefined items
+      const validCalendarIds = data.calendarIds!.filter(
+        (item): item is { calendarId?: string | null } => item !== null && item !== undefined
+      );
+
+      for (let { calendarId } of validCalendarIds) {
+        if (!calendarId) continue;
+
         const url = `/api/proxy-calendar?calendarId=${encodeURIComponent(calendarId)}`;
 
         try {
