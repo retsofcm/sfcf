@@ -1,35 +1,86 @@
-import { startOfMonth, endOfMonth, eachDayOfInterval, format, getDay } from "date-fns";
+import {
+  startOfMonth,
+  endOfMonth,
+  eachDayOfInterval,
+  format,
+  getDay,
+  isToday,
+} from "date-fns";
 
-export default function MonthView({ events, currentDate }: { events: any[]; currentDate: Date }) {
+interface MonthViewProps {
+  events: any[];
+  currentDate: Date;
+  onEventClick: (event: any) => void;
+}
+
+export default function MonthView({
+  events,
+  currentDate,
+  onEventClick,
+}: MonthViewProps) {
   const start = startOfMonth(currentDate);
   const end = endOfMonth(currentDate);
   const days = eachDayOfInterval({ start, end });
   const gridStart = getDay(start); // 0 = Sunday
 
   return (
-    <div className="grid grid-cols-7 border rounded text-sm">
-      <div className="col-span-7 grid grid-cols-7 text-center font-bold bg-gray-100">
+    <div className="border rounded-lg overflow-hidden">
+      {/* Day headings */}
+      <div className="grid grid-cols-7 bg-gray-50 border-b text-sm font-semibold text-center">
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
-          <div key={d} className="p-2 border-b">{d}</div>
+          <div key={d} className="py-2 text-gray-600 border-r last:border-none">
+            {d}
+          </div>
         ))}
       </div>
 
-      {Array(gridStart).fill(null).map((_, i) => (
-        <div key={`empty-${i}`} className="h-24 border" />
-      ))}
+      {/* Calendar grid */}
+      <div className="grid grid-cols-7 text-sm">
+        {/* Empty grid cells before the first day */}
+        {Array(gridStart)
+          .fill(null)
+          .map((_, i) => (
+            <div key={`empty-${i}`} className="h-28 border-r border-b bg-gray-50" />
+          ))}
 
-      {days.map((day) => {
-        const dayEvents = events.filter((event) => format(new Date(event.start), "yyyy-MM-dd") === format(day, "yyyy-MM-dd"));
+        {/* Actual days */}
+        {days.map((day) => {
+          const dayEvents = events.filter(
+            (event) =>
+              format(new Date(event.start), "yyyy-MM-dd") ===
+              format(day, "yyyy-MM-dd")
+          );
 
-        return (
-          <div key={day.toISOString()} className="h-24 border p-1">
-            <div className="text-xs text-gray-500">{format(day, "d")}</div>
-            {dayEvents.map((event, i) => (
-              <div key={i} className="text-xs bg-green-90 mt-1 rounded px-1 truncate">{event.summary}</div>
-            ))}
-          </div>
-        );
-      })}
+          return (
+            <div
+              key={day.toISOString()}
+              className="h-28 border-r border-b p-1.5 flex flex-col bg-white"
+            >
+              <div
+                className={`text-xs mb-1 font-medium ${
+                  isToday(day)
+                    ? "text-green-900"
+                    : "text-gray-500"
+                }`}
+              >
+                {format(day, "d")}
+              </div>
+
+              <div className="space-y-1 overflow-hidden">
+                {dayEvents.map((event, i) => (
+                  <button
+                    key={i}
+                    className="block w-full px-1 py-0.5 bg-gray-200 text-xs text-left hover:text-white hover:bg-green"
+                    onClick={() => onEventClick(event)}
+                  >
+                    {event.summary}
+                  </button>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
