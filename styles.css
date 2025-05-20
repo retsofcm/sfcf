@@ -151,13 +151,26 @@ h1, h2, h3, h4, h5, h6,
   z-index: 0;
 }
 
-.group.not-scrolled:not(:hover) .fill-logo-green,
-.group.not-scrolled:not(:hover) .fill-logo-green-dark,
-.group.not-scrolled:not(:hover) .fill-logo-green-bright {
+.group.not-scrolled .fill-logo-green,
+.group.not-scrolled .fill-logo-green-dark,
+.group.not-scrolled .fill-logo-green-bright {
   fill: white;
 }
 
-.group.not-scrolled:not(:hover) text.fill-logo-green,
-.group.not-scrolled:not(:hover) text.fill-logo-grey-light {
+.group.not-scrolled text.fill-logo-green,
+.group.not-scrolled text.fill-logo-grey-light {
   fill: white;
+}
+
+@media screen and (min-width: 769px) {
+  .group.not-scrolled:not(:hover) .fill-logo-green,
+  .group.not-scrolled:not(:hover) .fill-logo-green-dark,
+  .group.not-scrolled:not(:hover) .fill-logo-green-bright {
+    fill: white;
+  }
+
+  .group.not-scrolled:not(:hover) text.fill-logo-green,
+  .group.not-scrolled:not(:hover) text.fill-logo-grey-light {
+    fill: white;
+  }
 }

@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Icon } from "../../icon";
 import { useLayout } from "../layout-context";
 import { Logo } from "./logo";
+import { Plus, Minus } from 'lucide-react';
+
 
 export const Footer = () => {
   const { globalSettings } = useLayout();
@@ -68,7 +70,7 @@ export const Footer = () => {
                 >
                   <span className="font-semibold">{col.title}</span>
                   <span className="md:hidden">
-                    {isAccordionOpen.footerColumns[idx] ? "▲" : "▼"}
+                    {isAccordionOpen.footerColumns[idx] ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </span>
                 </div>
 

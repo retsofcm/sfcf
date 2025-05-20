@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useLayout } from "../layout-context";
 import { Menu } from "lucide-react";
 import { Logo } from "./logo";
+import MobileMenuDrawer from './MobileMenuDrawer';
 
 export const Header = () => {
   const { globalSettings } = useLayout();
@@ -49,7 +50,7 @@ export const Header = () => {
       <nav
         data-state={menuState && "active"}
         className={`
-          bg-white fixed top-0 left-0 z-20 w-full transition-colors duration-300 hover:!bg-white
+          bg-white fixed top-0 left-0 z-20 w-full transition-colors duration-300 md:hover:!bg-white
           ${
             isIndex
               ? scrollY < 108
@@ -167,6 +168,7 @@ export const Header = () => {
           </div>
         </div>
       </nav>
-    </header>
+      <MobileMenuDrawer isOpen={menuState} onClose={() => setMenuState(false)} />
+      </header>
   );
 };
