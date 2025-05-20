@@ -8,24 +8,54 @@
     "color": "default",
     "nav": [
       {
-        "href": "/about",
-        "label": "About us"
+        "title": "About us",
+        "links": [
+          {
+            "label": "Who we are",
+            "url": "/who-we-are"
+          },
+          {
+            "label": "Church history",
+            "url": "/history"
+          },
+          {
+            "label": "Meet the team",
+            "url": "/meet-the-team"
+          }
+        ]
       },
       {
-        "href": "/sundays",
-        "label": "Sundays"
+        "url": "/sundays",
+        "title": "Sundays"
       },
       {
-        "href": "/children-and-youth",
-        "label": "Children & Youth"
+        "url": "/children-and-youth",
+        "title": "Children & Youth"
       },
       {
-        "href": "/whats-on",
-        "label": "What's on"
+        "title": "What's on",
+        "links": [
+          {
+            "label": "Sundays",
+            "url": "/sundays"
+          },
+          {
+            "label": "Children & Youth",
+            "url": "/children-and-youth"
+          },
+          {
+            "label": "Weekly programme",
+            "url": "/weekly-programme"
+          },
+          {
+            "label": "Upcoming events",
+            "url": "/events"
+          }
+        ]
       },
       {
-        "href": "/get-in-touch",
-        "label": "Get in touch"
+        "url": "/get-in-touch",
+        "title": "Get in touch"
       }
     ]
   },
