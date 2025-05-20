@@ -117,12 +117,12 @@ export const Header = () => {
                           item!.url ? (
                             <Link
                               href={item!.url}
-                              className="block py-2 border-b-2 border-transparent group-hover/link:border-black"
+                              className="block py-2 border-b border-transparent group-hover/link:border-black"
                             >
                               <span>{item!.title}</span>
                             </Link>
                           ) : (
-                            <div className="block py-2 border-b-2 border-transparent group-hover/link:border-black cursor-default">
+                            <div className="block py-2 border-b border-transparent group-hover/link:border-black cursor-default">
                               <span>{item!.title}</span>
                             </div>
                           )
