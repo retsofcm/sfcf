@@ -11,6 +11,7 @@ import { FooterHero } from "./footer-hero";
 import { Content } from "./content";
 import { GoogleMapBlock } from "./GoogleMapBlock";
 import { AccordionBlock, AccordionItem } from "./Accordion";
+import { TeamMembersBlock } from "./TeamMembers";
 import CalendarBlock from "./Calendar";
 
 
@@ -49,6 +50,8 @@ const Block = ({ block, events }: { block: PageBlocks; events: EventSummary[] })
       return <Content data={block} />;
     case "PageBlocksGoogleMap":
       return <GoogleMapBlock data={block} />;
+    case "PageBlocksTeamMembers":
+      return <TeamMembersBlock data={block} />;
     case "PageBlocksAccordionBlock":
       const validItems = block.items?.filter((item) => item !== null) as AccordionItem[];
       return <AccordionBlock data={{ items: validItems }} />;
