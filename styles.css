@@ -151,15 +151,18 @@ h1, h2, h3, h4, h5, h6,
   z-index: 0;
 }
 
-.group.not-scrolled .fill-logo-green,
-.group.not-scrolled .fill-logo-green-dark,
-.group.not-scrolled .fill-logo-green-bright {
-  fill: white;
-}
 
-.group.not-scrolled text.fill-logo-green,
-.group.not-scrolled text.fill-logo-grey-light {
-  fill: white;
+@media screen and (max-width: 768px) {
+  .group.not-scrolled .fill-logo-green,
+  .group.not-scrolled .fill-logo-green-dark,
+  .group.not-scrolled .fill-logo-green-bright {
+    fill: white;
+  }
+
+  .group.not-scrolled text.fill-logo-green,
+  .group.not-scrolled text.fill-logo-grey-light {
+    fill: white;
+  }
 }
 
 @media screen and (min-width: 769px) {

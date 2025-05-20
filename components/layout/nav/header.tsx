@@ -109,7 +109,7 @@ export const Header = () => {
                     return (
                       <li
                         key={index}
-                        className="group relative"
+                        className="group/link relative"
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
                       >
@@ -117,12 +117,12 @@ export const Header = () => {
                           item!.url ? (
                             <Link
                               href={item!.url}
-                              className="block py-2 hover:opacity-70"
+                              className="block py-2 border-b-2 border-transparent group-hover/link:border-black"
                             >
                               <span>{item!.title}</span>
                             </Link>
                           ) : (
-                            <div className="block py-2 hover:opacity-70 cursor-default">
+                            <div className="block py-2 border-b-2 border-transparent group-hover/link:border-black cursor-default">
                               <span>{item!.title}</span>
                             </div>
                           )
@@ -135,7 +135,7 @@ export const Header = () => {
                               ${showDropdown ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-2 invisible"}
                             `}
                           >
-                            <div className="absolute left-0 top-full z-30 pt-8">
+                            <div className="absolute left-0 top-full z-30 pt-4">
                               <div
                                 className={`
                                   pointer-events-none opacity-0 scale-95 translate-y-2 
@@ -149,7 +149,7 @@ export const Header = () => {
                                     <Link
                                       key={linkIndex}
                                       href={link!.url || ""}
-                                      className="block whitespace-nowrap text-md text-gray-700"
+                                      className="block whitespace-nowrap text-base text-gray-700"
                                     >
                                       {link!.label}
                                     </Link>
