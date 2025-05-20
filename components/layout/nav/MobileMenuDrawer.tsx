@@ -58,7 +58,7 @@ export default function MobileMenuDrawer({ isOpen, onClose }: { isOpen: boolean;
                           key={linkIdx}
                           href={link!.url || ""}
                           onClick={onClose}
-                          className="block py-1 text-base text-gray-700 hover:text-logo-green"
+                          className="block py-1 text-base text-black"
                         >
                           {link!.label}
                         </Link>

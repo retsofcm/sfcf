@@ -149,7 +149,7 @@ export const Header = () => {
                                     <Link
                                       key={linkIndex}
                                       href={link!.url || ""}
-                                      className="block whitespace-nowrap text-base text-gray-700"
+                                      className="block whitespace-nowrap text-base text-black"
                                     >
                                       {link!.label}
                                     </Link>
