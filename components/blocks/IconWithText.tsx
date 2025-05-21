@@ -102,7 +102,6 @@ export const IconWithTextBlockSchema: Template = {
           type: "string",
           name: "alignment",
           label: "Alignment",
-          required: true,
           options: [
             { label: "Left", value: "left" },
             { label: "Center", value: "center" },
