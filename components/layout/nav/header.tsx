@@ -138,10 +138,7 @@ export const Header = () => {
                             <div className="absolute left-0 top-full z-30 pt-4">
                               <div
                                 className={`
-                                  pointer-events-none opacity-0 scale-95 translate-y-2 
-                                  group-hover:pointer-events-auto group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0
-                                  transition-all duration-300 group-hover:delay-[0ms]
-                                  bg-white p-6
+                                  transition-all duration-300 bg-white p-6
                                 `}
                               >
                                 <div className="grid gap-4">
