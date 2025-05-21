@@ -9,7 +9,13 @@ export default {
     './layouts/**/*.{js,ts,jsx,tsx}',
     './styles/**/*.{css,scss}',
   ],
-  safelist: ['pb-4'],
+  safelist: [
+    'pb-4',
+    'grid-cols-1',
+    'grid-cols-2',
+    'grid-cols-3',
+    'grid-cols-4',
+  ],
   theme: {
     extend: {
       colors: {

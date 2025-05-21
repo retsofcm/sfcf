@@ -2,6 +2,8 @@
 
 import React from "react";
 import { Template } from "tinacms";
+import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
+
 
 type Props = {
   data: {
@@ -10,7 +12,8 @@ type Props = {
       | {
         icon?: string | null;
         title?: string | null;
-        description?: string | null;
+        description?: TinaMarkdownContent | TinaMarkdownContent[];
+        alignment?: 'left' | 'center';
       }
       | null
     )[] | null;
@@ -19,6 +22,10 @@ type Props = {
   
 
 export const IconWithTextBlock = ({ data }: Props) => {
+  const itemCount = data.items?.filter(Boolean).length ?? 0;
+  const columns = Math.min(Math.max(itemCount, 1), 4);
+  const gridClass = `grid grid-cols-${columns} gap-8 mt-10`;
+
   return (
     <section className="container">
       <h2 
@@ -31,25 +38,29 @@ export const IconWithTextBlock = ({ data }: Props) => {
       >
         {data.heading}
         </h2>
-      <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
-        {data.items?.map((item, idx) => (
-          (item ?
-            <div key={idx} className="flex flex-col gap-3">
-                <h3 className="text-lg font-semibold flex items-center gap-3">
-                    {item.icon && (
-                    <img
-                        src={item.icon}
-                        alt=""
-                        className="w-6 h-6"
-                        loading="lazy"
-                    />
-                    )}
-                    <span>{item.title}</span>
-                </h3>
-                <p className="text-gray-700">{item.description}</p>
+      <div className={gridClass}>
+        {data.items?.map((item, idx) => {
+          if (!item) return null;
+          const alignmentClass = item.alignment === 'center' ? 'items-center text-center' : 'items-start text-left';
+          return (            
+            <div key={idx} className={`flex flex-col gap-3 ${alignmentClass}`}>
+              <h3 className="text-lg font-semibold flex items-center gap-3">
+                  {item.icon && (
+                  <img
+                      src={item.icon}
+                      alt=""
+                      className="w-6 h-6"
+                      loading="lazy"
+                  />
+                  )}
+                  <span>{item.title}</span>
+              </h3>
+              <div className="text-gray-700">
+                <TinaMarkdown content={item.description ?? []} />
+              </div>
             </div>
-          : null)
-        ))}
+          )
+        })}
       </div>
     </section>
   );
@@ -85,12 +96,18 @@ export const IconWithTextBlockSchema: Template = {
           label: "Title",
         },
         {
-          type: "string",
+          type: "rich-text",
           name: "description",
           label: "Description",
-          ui: {
-            component: "textarea",
-          },
+        },
+        {
+          type: "string",
+          name: "alignment",
+          label: "Alignment",
+          options: [
+            { label: "Left", value: "left" },
+            { label: "Center", value: "center" },
+          ],
         },
       ],
     },
