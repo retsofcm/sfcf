@@ -12,7 +12,7 @@ type Props = {
         icon?: string | null;
         title?: string | null;
         description?: TinaMarkdownContent | TinaMarkdownContent[];
-        alignment: string | null;
+        alignment?: string | null;
       }
       | null
     )[] | null;
