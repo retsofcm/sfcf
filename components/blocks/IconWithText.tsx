@@ -4,7 +4,6 @@ import React from "react";
 import { Template } from "tinacms";
 import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
 
-
 type Props = {
   data: {
     heading?: string | null;
@@ -13,13 +12,12 @@ type Props = {
         icon?: string | null;
         title?: string | null;
         description?: TinaMarkdownContent | TinaMarkdownContent[];
-        alignment?: 'left' | 'center' | null;
+        alignment: string | null;
       }
       | null
     )[] | null;
   };
 };
-  
 
 export const IconWithTextBlock = ({ data }: Props) => {
   const itemCount = data.items?.filter(Boolean).length ?? 0;
@@ -104,6 +102,7 @@ export const IconWithTextBlockSchema: Template = {
           type: "string",
           name: "alignment",
           label: "Alignment",
+          required: true,
           options: [
             { label: "Left", value: "left" },
             { label: "Center", value: "center" },

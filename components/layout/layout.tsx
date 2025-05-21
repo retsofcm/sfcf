@@ -4,7 +4,6 @@ import { LayoutProvider } from "./layout-context";
 import client from "../../tina/__generated__/client";
 import { Header } from "./nav/header";
 import { Footer } from "./nav/footer";
-import Head from "next/head";
 import { PageWrapper } from "./PageWrapper";
 
 type LayoutProps = PropsWithChildren & {
@@ -26,11 +25,6 @@ export default async function Layout({ children, rawPageData }: LayoutProps) {
 
   return (
     <LayoutProvider globalSettings={globalData.global} pageData={pageData}>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content="..." />
-      </Head>
-
       <Header />
       <PageWrapper>{children}</PageWrapper>
       <Footer />

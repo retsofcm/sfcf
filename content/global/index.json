@@ -25,12 +25,12 @@
         ]
       },
       {
-        "url": "/sundays",
-        "title": "Sundays"
+        "title": "Sundays",
+        "url": "/sundays"
       },
       {
-        "url": "/children-and-youth",
-        "title": "Children & Youth"
+        "title": "Children & Youth",
+        "url": "/children-and-youth"
       },
       {
         "title": "What's on",
@@ -54,8 +54,8 @@
         ]
       },
       {
-        "url": "/get-in-touch",
-        "title": "Get in touch"
+        "title": "Get in touch",
+        "url": "/get-in-touch"
       }
     ]
   },
@@ -129,20 +129,12 @@
           {
             "label": "Reading plan",
             "url": "/reading-plan"
-          },
-          {
-            "label": "Resources",
-            "url": "/resources"
           }
         ]
       },
       {
         "title": "Plan your visit",
         "links": [
-          {
-            "label": "What to expect",
-            "url": "/what-to-expect"
-          },
           {
             "label": "FAQs",
             "url": "/faqs"
