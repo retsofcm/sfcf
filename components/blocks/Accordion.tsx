@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { Template } from 'tinacms';
+import { Plus, Minus } from 'lucide-react';
 
 export type AccordionItem = {
   title?: string | null;
@@ -32,13 +33,15 @@ export const AccordionBlock = ({ data }: Props) => {
           <div key={idx} className="accordion-item border-b prose prose-lg prose-p:my-0 mx-auto">
             <h2 className="accordion-header mb-0" id={`heading${idx}`}>
               <button
-                className="accordion-button text-xl font-light p-4 w-full text-left focus:outline-none"
+                className="accordion-button text-xl font-light p-4 w-full text-left focus:outline-none flex items-center justify-between"
                 type="button"
                 onClick={() => toggleAccordion(idx)}
                 aria-expanded={openIndex === idx ? 'true' : 'false'}
                 aria-controls={`collapse${idx}`}
               >
                 {item.title}
+                
+                {openIndex === idx ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
               </button>
             </h2>
             <div

@@ -57,7 +57,7 @@ export const Header = () => {
                 ? "!bg-transparent"
                 : "bg-white/80"
               : scrollY < 108
-              ? "bg-white"
+              ? "bg-white/80"
               : "bg-white/80"
           }
         `}
