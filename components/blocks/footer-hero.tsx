@@ -78,9 +78,10 @@ export const FooterHero = ({ data }: { data: PageBlocksFooter_Hero }) => {
 const ImageBlock = ({ image }: { image: PageBlocksFooter_HeroImageOrVideo }) => {
   const videoSrc = image?.videoSrc ?? undefined;
   const imageSrc = image?.imageSrc ?? undefined;
+  const mobileImageSrc = image?.mobileImageSrc ?? undefined;
   const alt = image?.alt ?? 'Hero Image';
 
-  const isVideo = !!videoSrc && !imageSrc;
+  const isVideo = !!videoSrc && !imageSrc && !mobileImageSrc;
 
   if (isVideo) {
     return (
@@ -93,19 +94,28 @@ const ImageBlock = ({ image }: { image: PageBlocksFooter_HeroImageOrVideo }) => 
     );
   }
 
-  if (imageSrc) {
-    return (
-      <Image
-        className="inset-0 h-full w-full object-cover z-0"
-        alt={alt}
-        src={imageSrc}
-        height={236}
-        width={1440}
-      />
-    );
-  }
-
-  return null;
+  return (
+    <>
+      {mobileImageSrc && (
+        <Image
+          className="inset-0 h-full w-full object-cover z-0 block md:hidden"
+          alt={alt}
+          src={mobileImageSrc}
+          height={236}
+          width={768}
+        />
+      )}
+      {imageSrc && (
+        <Image
+          className={`inset-0 h-full w-full object-cover z-0 ${mobileImageSrc ? 'hidden md:block' : 'block'}`}
+          alt={alt}
+          src={imageSrc}
+          height={236}
+          width={1440}
+        />
+      )}
+    </>
+  );
 };
 
 export const footerHeroBlockSchema: Template = {
@@ -164,12 +174,17 @@ export const footerHeroBlockSchema: Template = {
         {
           name: 'imageSrc',
           label: 'Image Source',
-          type: 'image',  // This is for image files
+          type: 'image',
+        },
+        {
+          name: 'mobileImageSrc',
+          label: 'Mobile Image Source',
+          type: 'image',
         },
         {
           name: 'videoSrc',
           label: 'Video Source',
-          type: 'string',  // This is for video file URLs or paths
+          type: 'string',
         },
         {
           name: 'alt',

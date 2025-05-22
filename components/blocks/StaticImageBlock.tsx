@@ -5,41 +5,48 @@ import { Template } from 'tinacms';
 type Props = {
   data: {
     src: string | null | undefined;
+    mobileSrc?: string | null;
     alt?: string | null;
     fullWidth?: boolean | null;
     secondSrc?: string | null;
+    mobileSecondSrc?: string | null;
     secondAlt?: string | null;
   };
 };
 
 export const StaticImageBlock = ({ data }: Props) => {
-  const { src, alt, fullWidth, secondSrc, secondAlt } = data;
+  const { src, mobileSrc, alt, fullWidth, secondSrc, mobileSecondSrc, secondAlt } = data;
 
-  // Class for full width or default container class
   const containerClass = fullWidth !== undefined ? (fullWidth ? 'w-full' : 'container') : 'container';
-  
-  // Check if the second image is provided
   const isDualImage = secondSrc !== undefined && secondSrc !== null;
 
   return (
     <div className={`${containerClass} flex flex-col md:flex-row ${isDualImage ? 'gap-4 md:gap-8' : ''}`}>
-      {/* First Image */}
-      <div className={`${isDualImage ? 'md:w-1/2' : ''} w-full h-[400px]`}>
-        <img
-          src={src || ''}
-          alt={alt || 'Static Image'}
-          className="object-cover w-full h-full"
-        />
-      </div>
+      {/* First Image: Mobile */}
+      {mobileSrc && (
+        <div className={`${isDualImage ? 'md:w-1/2' : ''} w-full h-[400px] block md:hidden`}>
+          <img src={mobileSrc} alt={alt || 'Static Image'} className="object-cover w-full h-full" />
+        </div>
+      )}
 
-      {/* Second Image */}
-      {isDualImage && (
-        <div className="w-full md:w-1/2 h-[400px]">
-          <img
-            src={secondSrc || ''}
-            alt={secondAlt || 'Second Static Image'}
-            className="object-cover w-full h-full"
-          />
+      {/* First Image: Desktop */}
+      {src && (
+        <div className={`${isDualImage ? 'md:w-1/2' : ''} w-full h-[400px] ${mobileSrc ? 'hidden md:block' : ''}`}>
+          <img src={src} alt={alt || 'Static Image'} className="object-cover w-full h-full" />
+        </div>
+      )}
+
+      {/* Second Image: Mobile */}
+      {isDualImage && mobileSecondSrc && (
+        <div className="w-full md:w-1/2 h-[400px] block md:hidden">
+          <img src={mobileSecondSrc} alt={secondAlt || 'Second Static Image'} className="object-cover w-full h-full" />
+        </div>
+      )}
+
+      {/* Second Image: Desktop */}
+      {isDualImage && secondSrc && (
+        <div className={`w-full md:w-1/2 h-[400px] ${mobileSecondSrc ? 'hidden md:block' : ''}`}>
+          <img src={secondSrc} alt={secondAlt || 'Second Static Image'} className="object-cover w-full h-full" />
         </div>
       )}
     </div>
@@ -60,6 +67,12 @@ export const staticImageBlockSchema: Template = {
       required: true,
     },
     {
+      type: 'image',
+      label: 'Mobile Image Source',
+      name: 'mobileSrc',
+      required: false,
+    },
+    {
       type: 'string',
       label: 'Alt Text',
       name: 'alt',
@@ -75,6 +88,12 @@ export const staticImageBlockSchema: Template = {
       type: 'image',
       label: 'Second Image Source',
       name: 'secondSrc',
+      required: false,
+    },
+    {
+      type: 'image',
+      label: 'Mobile Second Image Source',
+      name: 'mobileSecondSrc',
       required: false,
     },
     {
