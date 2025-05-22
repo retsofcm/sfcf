@@ -39,7 +39,10 @@ const transitionVariants = {
 export const Hero = ({ data }: { data: PageBlocksHero }) => {
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const totalSlides = data.slides?.length || 0;
-  const slides = data.slides ?? [];
+const slides = (data.slides ?? []).filter(
+  (s): s is NonNullable<typeof s> => s != null
+);
+  
 
   React.useEffect(() => {
     if (!totalSlides) return;
@@ -129,7 +132,7 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
   );
 };
 
-const SlideBlock = ({ slide }: { slide: PageBlocksHero['slides'][0] }) => {
+const SlideBlock = ({ slide }: { slide: NonNullable<NonNullable<PageBlocksHero['slides']>[number]> }) => {
   const videoSrc = slide?.videoSrc;
   const imageSrc = slide?.imageSrc;
   const mobileImageSrc = slide?.mobileImageSrc;
