@@ -129,7 +129,7 @@ export default function CalendarBlock({
 
   useEffect(() => {
     fetchEvents();
-  }, [currentDate, data.calendarIds]);
+  }, [currentDate, data.calendarIds, view]);
 
   const handleMonthChange = (direction: "next" | "previous") => {
     setCurrentDate((prev) => (direction === "next" ? addMonths(prev, 1) : subMonths(prev, 1)));
@@ -168,9 +168,15 @@ export default function CalendarBlock({
 
       <div className="relative flex items-center justify-center mb-4 h-10">
         <div className="flex items-center gap-2">
-            <button onClick={() => (view === "month" ? handleMonthChange("previous") : handleWeekChange("previous"))}>
-              <ArrowLeft className="mr-16 h-4 w-4" />
-            </button>
+          <button
+            onClick={() => {
+              setCurrentDate(prev => {
+                return view === "month" ? subMonths(prev, 1) : subWeeks(prev, 1);
+              });
+            }}
+          >
+            <ArrowLeft className="mr-16 h-4 w-4" />
+          </button>
         </div>
         <div className="font-semibold text-lg">
           {view === "month"
@@ -179,7 +185,13 @@ export default function CalendarBlock({
           }
         </div>
         <div className="flex items-center gap-2">
-            <button onClick={() => (view === "month" ? handleMonthChange("next") : handleWeekChange("next"))}>
+            <button
+              onClick={() => {
+                setCurrentDate(prev => {
+                  return view === "month" ? addMonths(prev, 1) : addWeeks(prev, 1);
+                });
+              }}
+            >
               <ArrowRight className="ml-16 h-4 w-4" />
             </button>
         </div>
