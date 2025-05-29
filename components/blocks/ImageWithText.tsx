@@ -42,13 +42,15 @@ export const ImageWithTextBlock = ({ data }: Props) => {
             <TinaMarkdown content={content} />
           </div>
 
-          <a
-            href={buttonUrl || ""}
-            target={buttonUrl?.includes('mailto') ? "_blank" : undefined}
-            className="block text-center w-full py-4 px-5 bg-green text-white"
-          >
-            {buttonText}
-          </a>
+          {buttonText && buttonUrl && (
+            <a
+              href={buttonUrl || ""}
+              target={buttonUrl?.includes('mailto') ? "_blank" : undefined}
+              className="block text-center w-full py-4 px-5 bg-green text-white"
+            >
+              {buttonText}
+            </a>
+          )}
         </div>
 
         <div className={`col-span-12 lg:col-span-6 order-1 ${imagePosition === "left" ? "lg:order-1" : "lg:col-start-7 lg:order-2"}`}>
@@ -103,16 +105,7 @@ export const ImageWithTextBlockSchema: Template = {
       label: "Content",
       name: "content",
       required: true,
-    },
-    {
-      type: "boolean",
-      name: "enableForm",
-      label: "Enable Form",
-      required: false,
-      ui: {
-        defaultValue: true,
-      },
-    },    
+    }, 
     {
       type: "string",
       label: "Button Text",

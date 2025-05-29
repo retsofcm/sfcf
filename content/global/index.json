@@ -36,14 +36,6 @@
         "title": "What's on",
         "links": [
           {
-            "label": "Sundays",
-            "url": "/sundays"
-          },
-          {
-            "label": "Children & Youth",
-            "url": "/children-and-youth"
-          },
-          {
             "label": "Weekly programme",
             "url": "/weekly-programme"
           },

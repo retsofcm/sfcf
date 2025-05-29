@@ -22,7 +22,7 @@ type Props = {
 export const IconWithTextBlock = ({ data }: Props) => {
   const itemCount = data.items?.filter(Boolean).length ?? 0;
   const columns = Math.min(Math.max(itemCount, 1), 4);
-  const gridClass = `grid grid-cols-${columns} gap-8 mt-10`;
+  const gridClass = `grid grid-cols-1 md:grid-cols-${columns} gap-8 mt-10`;
 
   return (
     <section className="container">
