@@ -42,7 +42,7 @@ export default function ClientPage({ query, variables, data }: any) {
             <img
               src={heroImg}
               alt={eventName}
-              className="h-96 w-full object-cover transition-all duration-300 hover:scale-105"
+              className="aspect-[1] w-full object-cover transition-all duration-300 hover:scale-105"
             />
           </div>
         </div>
@@ -89,7 +89,7 @@ export default function ClientPage({ query, variables, data }: any) {
             </div>
           </div>
 
-          {price == null 
+          {price == null || price == "Free" || price == 0
             ? '' 
             : <button className="w-full sm:w-auto bg-green-100 px-4 py-2 text-white">
                 Register Now
