@@ -8,13 +8,27 @@ export default function NotFound() {
     <Layout>
       <section className="relative h-screen overflow-hidden">
         <div className="absolute inset-0 w-full h-full z-0">
-          <Image
-            src="/uploads/6Y9A7292.jpeg" 
-            alt="Church member in stocks"
-            layout="fill"
-            objectFit="cover"
-            quality={100}
-          />
+          <div className="hidden md:block w-full h-full">
+            <Image
+              src="/uploads/404.png"
+              alt="Church member in stocks"
+              layout="fill"
+              objectFit="cover"
+              quality={100}
+              priority
+            />
+          </div>
+
+          <div className="block md:hidden w-full h-full">
+            <Image
+              src="/uploads/404-mobile.png"
+              alt="Church member in stocks (mobile)"
+              layout="fill"
+              objectFit="cover"
+              quality={100}
+              priority
+            />
+          </div>
         </div>
 
         <div className="absolute inset-0 w-full h-full bg-black bg-opacity-40 flex flex-col items-start justify-end px-4 md:px-20 py-16 text-left z-10">
