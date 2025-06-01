@@ -64,6 +64,7 @@ export const FooterHero = ({ data }: { data: PageBlocksFooter_Hero }) => {
               key={action!.label}
               href={action!.link!}
               data-tina-field={tinaField(action)}
+              target={action!.link!.includes('mailto') ? "_blank" : undefined}
               className="block py-5 px-6 border text-white"
             >
               {action!.label}
