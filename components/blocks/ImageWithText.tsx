@@ -29,7 +29,7 @@ export const ImageWithTextBlock = ({ data }: Props) => {
         {/* Text Section (5 cols) */}
         <div className={`col-span-12 lg:col-span-4  order-2 ${imagePosition === "left" ? "lg:col-start-8 lg:order-2" : "lg:col-start-2 lg:order-1"}`}>
           <h2 
-            className="text-[32px] font-light leading-[1.5] mb-6 underline decoration-green-500 underline-offset-3"
+            className="text-[32px] font-light leading-[2] mb-6 underline decoration-green-500 underline-offset-3"
             style={{
               textDecorationColor: '#008000',
               textDecorationThickness: '3px',

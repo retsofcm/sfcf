@@ -35,8 +35,13 @@ export function EventCollageBlock({ events }: EventCollageBlockProps) {
       };
     })
     .filter((event) => {
-      const end = event.endDate ?? event.startDate;
-      return end && end >= today;
+      const { startDate, endDate } = event;
+      if (endDate) {
+        return endDate > now;
+      } else if (startDate) {
+        return startDate > now;
+      }
+      return false;
     })
     .sort((a, b) => (a.startDate?.getTime() ?? 0) - (b.startDate?.getTime() ?? 0));  
 

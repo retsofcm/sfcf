@@ -111,7 +111,7 @@ export const Footer = () => {
       </div>
 
       <div className="mt-12 border-t py-6 text-sm text-muted-foreground ">
-        <div className="mx-auto max-w-7xl justify-between items-center text-center flex flex-row">
+        <div className="mx-auto max-w-7xl justify-between items-center text-center flex flex-col gap-2 md:flex-row">
           <div>© {new Date().getFullYear()} {header?.name}, All rights reserved</div>
           <div className="space-x-4">
             <a href="/privacy-policy" className="text-black">Privacy Policy</a>
