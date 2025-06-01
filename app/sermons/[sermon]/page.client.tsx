@@ -51,7 +51,7 @@ export default function ClientPage({ query, variables, data }: any) {
             <img
               src={sermonImage}
               alt={passage || 'Sermon image'}
-              className="h-96 w-full object-cover"
+              className="aspect-[1] w-full object-cover"
             />
           </div>
         )}
