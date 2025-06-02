@@ -5,9 +5,10 @@ blocks:
       Stenson Fields Christian Fellowship is associated with the Fellowship of
       Independent Evangelical Churches
     _template: pageTitle
-  - src: /uploads/service.png
-    mobileSrc: /uploads/service-mobile.png
-    fullWidth: true
+  - fullWidth: true
+    images:
+      - src: /uploads/service.png
+        mobileSrc: /uploads/service-mobile.png
     _template: staticImageBlock
   - body: >
       We are a group of Christians who are passionate about living out our
@@ -31,10 +32,12 @@ blocks:
       Join us as we grow together in faith, serve with compassion, and seek to
       make a difference in the world around us.
     _template: content
-  - src: /uploads/about-1.png
-    mobileSrc: /uploads/about-1-mobile.png
-    secondSrc: /uploads/about-2.png
-    mobileSecondSrc: /uploads/about-2-mobile.png
+  - fullWidth: false
+    images:
+      - src: /uploads/about-1.png
+        mobileSrc: /uploads/about-1-mobile.png
+      - src: /uploads/about-2.png
+        mobileSrc: /uploads/about-2-mobile.png
     _template: staticImageBlock
   - heading: Our Mission
     items:

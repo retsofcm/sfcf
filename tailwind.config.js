@@ -35,7 +35,7 @@ export default {
         "logo-green": "#008000",
         "logo-green-dark": "#165016",
         "logo-green-bright": "#4a0",
-        "logo-grey-light": "#b3b3b3",
+        "logo-grey-light": "#1b1b1b",
       }
     }
   },
