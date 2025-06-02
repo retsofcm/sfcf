@@ -19,8 +19,8 @@ export const StaticImageBlock = ({ data }: Props) => {
   const { fullWidth, images = [] } = data;
 
   const containerClass = fullWidth ? 'w-full' : 'container';
-  const validImages = images.filter(img => img?.src || img?.mobileSrc);
-  const isSingleImage = validImages.length === 1;
+  const validImages = images?.filter(img => img?.src || img?.mobileSrc);
+  const isSingleImage = validImages?.length === 1;
 
   return (
     <div className={`${containerClass}`}>
@@ -29,18 +29,18 @@ export const StaticImageBlock = ({ data }: Props) => {
           isSingleImage ? '' : 'md:grid-cols-2'
         } gap-4 md:gap-8`}
       >
-        {validImages.map((img, idx) => (
+        {validImages?.map((img, idx) => (
           <div key={idx} className="h-[400px] w-full">
             <picture>
-              {img.mobileSrc && (
+              {img?.mobileSrc && (
                 <source
-                  srcSet={img.mobileSrc}
+                  srcSet={img?.mobileSrc}
                   media="(max-width: 767px)"
                 />
               )}
               <img
-                src={img.src || img.mobileSrc || ''}
-                alt={img.alt || `Static Image ${idx + 1}`}
+                src={img?.src || img?.mobileSrc || ''}
+                alt={img?.alt || `Static Image ${idx + 1}`}
                 className="object-cover w-full h-full"
               />
             </picture>
