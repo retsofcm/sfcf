@@ -11,7 +11,7 @@ type ImageData = {
 type Props = {
   data: {
     fullWidth?: boolean | null;
-    images?: ImageData[];
+    images?: (ImageData | null)[] | null;
   };
 };
 
