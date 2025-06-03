@@ -31,7 +31,7 @@ export default async function SermonsPage() {
     <Layout>
       <ClientPageWrapper relativePath="sermons.mdx" />
 
-      <div className="container px-4 md:px-20 mx-auto">
+      <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {sortedEdges.map((edge, index) => {
             const sermon = edge?.node;

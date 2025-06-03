@@ -21,7 +21,7 @@ export const TeamMembersBlock = ({ data }: Props) => {
 
   return (
     <section className="container mx-auto">
-      <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
         {members!.map((member, index) => (
         <div key={index}>
             <div className="relative w-full h-auto aspect-[1] mx-auto mb-4">

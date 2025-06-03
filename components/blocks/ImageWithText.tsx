@@ -27,7 +27,7 @@ export const ImageWithTextBlock = ({ data }: Props) => {
     <div className="container mx-auto">
       <div className="grid grid-cols-12 gap-8 md:gap-4 items-center">
         {/* Text Section (5 cols) */}
-        <div className={`col-span-12 lg:col-span-4  order-2 ${imagePosition === "left" ? "lg:col-start-8 lg:order-2" : "lg:col-start-2 lg:order-1"}`}>
+        <div className={`col-span-12 lg:col-span-5 xl:col-span-4 order-2 ${imagePosition === "left" ? "lg:col-start-8 xl:col-start-8 lg:order-2" : "lg:col-start-1 xl:col-start-2 lg:order-1"}`}>
           <h2 
             className="text-[32px] font-light leading-[2] mb-6 underline decoration-green-500 underline-offset-3"
             style={{

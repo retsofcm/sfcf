@@ -50,7 +50,7 @@ export function EventCollageBlock({ events }: EventCollageBlockProps) {
   return (
     <div className="container">
       <h2 
-        className="text-[24px] md:text-[36px] font-light mb-8 md:mb-12 underline decoration-green-500 underline-offset-3"
+        className="text-[24px] lg:text-[36px] font-light mb-8 lg:mb-12 underline decoration-green-500 underline-offset-3"
         style={{
           textDecorationColor: '#008000',
           textDecorationThickness: '3px',
@@ -63,12 +63,12 @@ export function EventCollageBlock({ events }: EventCollageBlockProps) {
       {sortedEvents.length === 0 ? (
         <p className="mb-20">No upcoming events found.</p>
       ) : (
-        <div className="flex gap-6 overflow-x-auto md:grid md:grid-cols-3 md:overflow-visible scroll-snap-x snap-x snap-mandatory">
+        <div className="flex gap-6 overflow-x-auto lg:grid lg:grid-cols-3 lg:overflow-visible scroll-snap-x snap-x snap-mandatory">
           {sortedEvents.slice(0, 3).map((event, index) => (
             <Link
               key={index}
               href={`/events/${handleize(event.eventName || "")}`}
-              className="relative aspect-[1] overflow-hidden block group min-w-[80%] snap-start md:min-w-0"
+              className="relative aspect-[1] overflow-hidden block group min-w-[80%] snap-start lg:min-w-0"
             >
               {event.heroImg && (
                 <Image

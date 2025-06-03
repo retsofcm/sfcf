@@ -61,15 +61,15 @@ const slides = (data.slides ?? []).filter(
         </AnimatedGroup>
       )}
 
-      <div className="absolute inset-0 w-full px-4 md:px-20 py-16 z-10">
-        <div className="relative h-full max-w-7xl m-auto flex flex-col md:flex-row md:justify-between md:items-end">
-          <div className="flex-1 flex items-center justify-center md:block px-4 md:px-0 text-center md:text-left">
+      <div className="absolute inset-0 w-full px-4 lg:px-20 py-16 z-10">
+        <div className="relative h-full max-w-7xl m-auto flex flex-col lg:flex-row lg:justify-between lg:items-end">
+          <div className="flex-1 flex items-center justify-center lg:block px-4 lg:px-0 text-center lg:text-left">
             {(data.headline || data.tagline) && (
               <div>
                 {data.headline && (
                   <div
                     data-tina-field={tinaField(data, 'headline')}
-                    className="text-white font-light text-[32px] md:text-[64px] leading-tight whitespace-pre-line"
+                    className="text-white font-light text-[32px] lg:text-[64px] leading-tight whitespace-pre-line"
                   >
                     <TinaMarkdown content={data.headline} />
                   </div>
@@ -82,7 +82,7 @@ const slides = (data.slides ?? []).filter(
                       speedSegment={0.3}
                       delay={0.5}
                       as="p"
-                      className="mt-2 md:mt-6 max-w-2xl text-white md:text-xl md:leading-[36px]">
+                      className="mt-2 lg:mt-6 max-w-2xl text-white lg:text-xl lg:leading-[36px]">
                       {data.tagline}
                     </TextEffect>
                   </div>
@@ -92,7 +92,7 @@ const slides = (data.slides ?? []).filter(
           </div>
 
           {(data.day || data.time || data.location) && (
-            <div className="absolute bottom-4 left-4 right-4 text-center md:static md:self-end md:mb-4 md:mr-0 md:text-right">
+            <div className="absolute bottom-4 left-4 right-4 text-center lg:static lg:self-end lg:mb-4 lg:mr-0 lg:text-right">
               <div className="text-white">
                 {data.day && (
                   <div data-tina-field={tinaField(data, 'day')}>
@@ -155,7 +155,7 @@ const SlideBlock = ({ slide }: { slide: NonNullable<NonNullable<PageBlocksHero['
     <>
       {mobileImageSrc && (
         <Image
-          className="absolute inset-0 h-full w-full object-cover z-0 block md:hidden"
+          className="absolute inset-0 h-full w-full object-cover z-0 block lg:hidden"
           alt={alt}
           src={mobileImageSrc}
           height={4000}
@@ -164,7 +164,7 @@ const SlideBlock = ({ slide }: { slide: NonNullable<NonNullable<PageBlocksHero['
       )}
       {imageSrc && (
         <Image
-          className={`absolute inset-0 h-full w-full object-cover z-0 ${mobileImageSrc ? 'hidden md:block' : 'block'}`}
+          className={`absolute inset-0 h-full w-full object-cover z-0 ${mobileImageSrc ? 'hidden lg:block' : 'block'}`}
           alt={alt}
           src={imageSrc}
           height={4000}

@@ -41,24 +41,24 @@ export const FooterHero = ({ data }: { data: PageBlocksFooter_Hero }) => {
   const headline = data.headline || ''; // Default to an empty string if headline is undefined
 
   return (
-    <section className="grid mx-auto relative with-overlay h-[236px] overflow-hidden">
+    <section className="grid mx-auto relative with-overlay overflow-hidden">
       {data.imageOrVideo && (
         <AnimatedGroup variants={transitionVariants} containerClassName="h-[inherit] w-full col-start-1 row-start-1">
           <ImageBlock image={data.imageOrVideo} />
         </AnimatedGroup>
       )}
 
-      <div className="max-w-7xl w-full px-4 md:px-0 z-10 col-start-1 row-start-1 flex flex-col md:flex-row justify-between items-center m-auto">
+      <div className="container w-full z-10 col-start-1 row-start-1 flex flex-col lg:flex-row justify-between items-center m-auto">
         {data.headline && (
           <div
             data-tina-field={tinaField(data, 'headline')}
-            className="text-white text-[32px] md:text-[48px] text-center md:text-left leading-tight whitespace-pre-line"
+            className="text-white text-[32px] lg:text-[48px] text-center lg:text-left leading-tight whitespace-pre-line"
           >
             <TinaMarkdown content={data.headline} />
           </div>
         )}
 
-        <AnimatedGroup variants={transitionVariants} containerClassName="block mt-6 md:mt-0">
+        <AnimatedGroup variants={transitionVariants} containerClassName="block mt-6 lg:mt-0">
           {data.actions?.map(action => (
             <Link
               key={action!.label}
@@ -99,7 +99,7 @@ const ImageBlock = ({ image }: { image: PageBlocksFooter_HeroImageOrVideo }) => 
     <>
       {mobileImageSrc && (
         <Image
-          className="inset-0 h-full w-full object-cover z-0 block md:hidden"
+          className="inset-0 h-[236px] w-full object-cover z-0 block lg:hidden object-center"
           alt={alt}
           src={mobileImageSrc}
           height={236}
@@ -108,7 +108,7 @@ const ImageBlock = ({ image }: { image: PageBlocksFooter_HeroImageOrVideo }) => 
       )}
       {imageSrc && (
         <Image
-          className={`inset-0 h-full w-full object-cover z-0 ${mobileImageSrc ? 'hidden md:block' : 'block'}`}
+          className={`inset-0 h-[236px] w-full object-cover z-0 ${mobileImageSrc ? 'hidden lg:block' : 'block'}`}
           alt={alt}
           src={imageSrc}
           height={236}

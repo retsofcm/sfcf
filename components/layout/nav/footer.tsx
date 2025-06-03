@@ -29,10 +29,10 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="w-full bg-white pt-10 mt-10 md:pt-20 md:mt-20 border-t self-end">
-      <div className="mx-auto max-w-7xl px-6 grid grid-cols-4 md:grid-cols-12 md:px-0 gap-8">
+    <footer className="w-full bg-white pt-10 mt-10 lg:pt-20 lg:mt-20 border-t self-end">
+      <div className="container grid grid-cols-4 lg:grid-cols-12 gap-8">
         {/* Logo */}
-        <div className="flex flex-col gap-4 col-span-4 md:col-span-3 justify-between items-center md:items-start">
+        <div className="flex flex-col gap-4 col-span-4 lg:col-span-3 justify-between items-center lg:items-start">
           <Link href="/" className="w-fit">
             <Logo />
           </Link>
@@ -59,17 +59,17 @@ export const Footer = () => {
         </div>
 
         {/* Accordion: Footer Columns */}
-        <div className="col-span-4 md:col-span-6 flex flex-col md:flex-row gap-4 justify-between">
+        <div className="col-span-4 lg:col-span-6 flex flex-col lg:flex-row gap-4 justify-between">
           {footer?.columns?.map((col, idx) => (
             col ? (
               <div key={idx} className="flex flex-col gap-4 text-sm">
                 {/* Title and toggle only on mobile */}
                 <div
-                  className="flex justify-between items-center cursor-pointer md:cursor-default md:block"
+                  className="flex justify-between items-center cursor-pointer lg:cursor-default lg:block"
                   onClick={() => toggleAccordion("footerColumns", idx)}
                 >
                   <span className="font-semibold">{col.title}</span>
-                  <span className="md:hidden">
+                  <span className="lg:hidden">
                     {isAccordionOpen.footerColumns[idx] ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </span>
                 </div>
@@ -78,7 +78,7 @@ export const Footer = () => {
                 <div
                   className={`flex-col gap-1 ${
                     isAccordionOpen.footerColumns[idx] ? "flex" : "hidden"
-                  } md:flex`}
+                  } lg:flex`}
                 >
                   {col.links?.map((link, i) =>
                     link ? (
@@ -99,11 +99,11 @@ export const Footer = () => {
         </div>
 
         {/* Contact Info (always visible) */}
-        <div className="text-sm flex flex-col gap-1 col-span-4 md:col-span-3 text-left md:text-right">
+        <div className="text-sm flex flex-col gap-1 col-span-4 lg:col-span-3 text-left lg:text-right">
           <span>{contact?.line1}</span>
           <span>{contact?.line2}</span>
           <span>{contact?.postcode}</span>
-          <a href={`mailto:${contact?.email}`} className="self-start md:self-end mt-4 underline">
+          <a href={`mailto:${contact?.email}`} className="self-start lg:self-end mt-4 underline">
             {contact?.email}
           </a>
         </div>
@@ -111,7 +111,7 @@ export const Footer = () => {
       </div>
 
       <div className="mt-12 border-t py-6 text-sm text-muted-foreground ">
-        <div className="mx-auto max-w-7xl justify-between items-center text-center flex flex-col gap-2 md:flex-row">
+        <div className="container justify-between items-center text-center flex flex-col gap-2 lg:flex-row">
           <div>© {new Date().getFullYear()} {header?.name}, All rights reserved</div>
           <div className="space-x-4">
             <a href="/privacy-policy" className="text-black">Privacy Policy</a>
