@@ -20,9 +20,9 @@ const QUERY = `
   }
 `;
 
-export default function SermonPage({ params }: { params: Promise<{ sermon: string }> }) {
+export default function SermonPage({ params }: { params: Promise<{ sermon: string[] }> }) {
   const { sermon } = use(params);
-  const relativePath = `${sermon}.mdx`;
+  const relativePath = `${sermon.join("/")}.mdx`;
   const options = {};
 
   const { data } = use(
