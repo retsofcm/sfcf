@@ -39,6 +39,7 @@
     "@tinacms/mdx": "^1.6.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "date-fns-tz": "^3.2.0",
     "gray-matter": "^4.0.3",
     "ical.js": "^2.1.0",
     "lucide-react": "^0.484.0",
