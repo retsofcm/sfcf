@@ -12,11 +12,12 @@ type Props = {
     content: TinaMarkdownContent | TinaMarkdownContent[];
     buttonText?: string | null;
     buttonUrl?: string | null;
+    audioFile?: string | null;
   };
 };
 
 export const ImageWithTextBlock = ({ data }: Props) => {
-  const { imageSrc, title, content, buttonText, buttonUrl } = data;
+  const { imageSrc, title, content, buttonText, buttonUrl, audioFile } = data;
 
   const imagePosition =
     data.imagePosition === "left" || data.imagePosition === "right"
@@ -50,6 +51,23 @@ export const ImageWithTextBlock = ({ data }: Props) => {
             >
               {buttonText}
             </a>
+          )}
+
+          {audioFile && (
+            <div className="my-6">
+              <h2 className="mb-2 text-xl font-semibold text-gray-900">Listen</h2>
+              <audio controls className="w-full">
+              <source src={`https://res.cloudinary.com/dmzgq497q/video/upload/v1747092681/${audioFile}.mp3`} type="audio/mpeg" />
+                Your browser does not support the audio element.
+              </audio>
+              <a
+                href={`https://res.cloudinary.com/dmzgq497q/video/upload/v1747092681/${audioFile}.mp3`}
+                download
+                className="mt-2 inline-block text-sm text-green hover:underline"
+              >
+                Download Audio
+              </a>
+            </div>
           )}
         </div>
 
@@ -106,6 +124,13 @@ export const ImageWithTextBlockSchema: Template = {
       name: "content",
       required: true,
     }, 
+    {
+      type: "string",
+      label: "Audio File Name",
+      name: "audioFile",
+      required: false,
+      description: "Only enter the filename (no extension). Example: sermon-2025-06-16"
+    },
     {
       type: "string",
       label: "Button Text",
