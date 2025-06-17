@@ -60,12 +60,10 @@ export default function ClientPage({ query, variables, data }: any) {
           <h1 className="mb-2 text-3xl font-bold text-gray-900">{title}</h1>
 
           <div className="mb-4 text-gray-600 space-y-1">
-            {/* {speaker && <div><strong>Speaker:</strong> {speaker}</div>} */}
             {series && <div><strong>Series:</strong> {series}</div>}
             {date && (
               <div><strong>Date:</strong> {format(new Date(date), 'MMMM d, yyyy')}</div>
             )}
-            {/* {passage && <div><strong>Passage:</strong> {passage}</div>} */}
           </div>
 
           {audioFile && (
@@ -76,8 +74,13 @@ export default function ClientPage({ query, variables, data }: any) {
                 className="w-full"
                 onPlay={() =>
                   window.gtag?.("event", "sermon_play", {
-                    event_category: "Audio",
+                    event_category: "Sermon",
                     event_label: audioFile,
+                    sermon_title: title || "Untitled Sermon",
+                    passage: passage || "No Passage",
+                    speaker: speaker || "Unknown Speaker",
+                    event_date: date || "Unknown Date",
+                    series: series || "No Series",
                     value: 1,
                   })
                 }
@@ -91,8 +94,13 @@ export default function ClientPage({ query, variables, data }: any) {
                 className="mt-2 inline-block text-sm text-green hover:underline"
                 onClick={() =>
                   window.gtag?.("event", "sermon_download", {
-                    event_category: "Audio",
+                    event_category: "Sermon",
                     event_label: audioFile,
+                    sermon_title: title || "Untitled Sermon",
+                    passage: passage || "No Passage",
+                    speaker: speaker || "Unknown Speaker",
+                    event_date: date || "Unknown Date",
+                    series: series || "No Series",
                     value: 1,
                   })
                 }

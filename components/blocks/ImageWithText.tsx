@@ -63,6 +63,7 @@ export const ImageWithTextBlock = ({ data }: Props) => {
                   window.gtag?.("event", "audio_play", {
                     event_category: "Audio",
                     event_label: audioFile,
+                    audio_title: title || "Untitled Audio",
                     value: 1,
                   })
                 }
@@ -78,6 +79,7 @@ export const ImageWithTextBlock = ({ data }: Props) => {
                   window.gtag?.("event", "audio_download", {
                     event_category: "Audio",
                     event_label: audioFile,
+                    audio_title: title || "Untitled Audio",
                     value: 1,
                   })
                 }
