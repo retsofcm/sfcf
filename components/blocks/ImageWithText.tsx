@@ -56,14 +56,31 @@ export const ImageWithTextBlock = ({ data }: Props) => {
           {audioFile && (
             <div className="my-6">
               <h2 className="mb-2 text-xl font-semibold text-gray-900">Listen</h2>
-              <audio controls className="w-full">
-              <source src={`https://res.cloudinary.com/dmzgq497q/video/upload/v1747092681/${audioFile}.mp3`} type="audio/mpeg" />
+              <audio 
+                controls 
+                className="w-full"
+                onPlay={() =>
+                  window.gtag?.("event", "audio_play", {
+                    event_category: "Audio",
+                    event_label: audioFile,
+                    value: 1,
+                  })
+                }
+              >
+                <source src={`https://res.cloudinary.com/dmzgq497q/video/upload/v1747092681/${audioFile}.mp3`} type="audio/mpeg" />
                 Your browser does not support the audio element.
               </audio>
               <a
                 href={`https://res.cloudinary.com/dmzgq497q/video/upload/v1747092681/${audioFile}.mp3`}
                 download
                 className="mt-2 inline-block text-sm text-green hover:underline"
+                onClick={() =>
+                  window.gtag?.("event", "audio_download", {
+                    event_category: "Audio",
+                    event_label: audioFile,
+                    value: 1,
+                  })
+                }
               >
                 Download Audio
               </a>
