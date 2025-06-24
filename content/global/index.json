@@ -25,16 +25,16 @@
         ]
       },
       {
-        "title": "Sundays",
-        "url": "/sundays"
-      },
-      {
-        "title": "Children & Youth",
-        "url": "/children-and-youth"
-      },
-      {
         "title": "What's on",
         "links": [
+          {
+            "label": "Sundays",
+            "url": "/sundays"
+          },
+          {
+            "label": "Children & Youth",
+            "url": "/children-and-youth"
+          },
           {
             "label": "Weekly programme",
             "url": "/weekly-programme"
@@ -46,8 +46,32 @@
         ]
       },
       {
-        "title": "Get in touch",
-        "url": "/get-in-touch"
+        "title": "Listen & learn",
+        "url": "",
+        "links": [
+          {
+            "label": "Sermons",
+            "url": "/sermons"
+          },
+          {
+            "label": "Reading plan",
+            "url": "/reading-plan"
+          }
+        ]
+      },
+      {
+        "title": "Plan your visit",
+        "url": "",
+        "links": [
+          {
+            "label": "FAQs",
+            "url": "/faqs"
+          },
+          {
+            "label": "Get in touch",
+            "url": "/get-in-touch"
+          }
+        ]
       }
     ]
   },
