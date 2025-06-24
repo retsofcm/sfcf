@@ -147,6 +147,10 @@
             "url": "/sermons"
           },
           {
+            "label": "Real Lives",
+            "url": "/real-lives"
+          },
+          {
             "label": "Reading plan",
             "url": "/reading-plan"
           }
