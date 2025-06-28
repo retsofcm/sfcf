@@ -46,8 +46,20 @@ export const ImageWithTextBlock = ({ data }: Props) => {
           {buttonText && buttonUrl && (
             <a
               href={buttonUrl || ""}
-              target={buttonUrl?.includes('mailto') ? "_blank" : undefined}
+              target={buttonUrl?.includes('mailto') || buttonUrl?.includes('http') ? "_blank" : undefined}
+              rel="noopener noreferrer"
               className="block text-center w-full py-4 px-5 bg-green text-white"
+              onClick={() => {
+                if (buttonUrl?.includes("youtube.com") || buttonUrl?.includes("youtu.be")) {
+                  window.gtag?.("event", "youtube_click", {
+                    event_category: "Engagement",
+                    event_label: buttonUrl,
+                    value: 1,
+                    link_text: buttonText || "YouTube Link",
+                    component_title: title || "Untitled Section"
+                  });
+                }
+              }}
             >
               {buttonText}
             </a>
