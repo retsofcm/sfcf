@@ -30,6 +30,19 @@ const Page: Collection = {
   },
   fields: [
     {
+      type: "string",
+      name: "metaTitle",
+      label: "Meta Title",
+    },
+    {
+      type: "string",
+      name: "metaDescription",
+      label: "Meta Description",
+      ui: {
+        component: "textarea",
+      },
+    },
+    {
       type: 'object',
       list: true,
       name: 'blocks',

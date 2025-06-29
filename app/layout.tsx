@@ -1,6 +1,5 @@
 import React from "react";
 import Script from "next/script";
-import { Metadata } from "next";
 import { Lato, Merriweather } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { VideoDialogProvider } from "@/components/ui/VideoDialogContext";
@@ -20,11 +19,6 @@ const merriweather = Merriweather({
   variable: "--font-merriweather",
   weight: ["300", "700"],
 });
-
-export const metadata: Metadata = {
-  title: "Stenson Fields Christian Fellowship",
-  description: "We're a group of Christians who take the Bible seriously and seek to share God's love for every individual in our community and further afield.",
-};
 
 export default function RootLayout({
   children,

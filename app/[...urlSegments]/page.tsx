@@ -1,13 +1,42 @@
-// app/[...urlSegments]/page.tsx (or your dynamic route)
+// app/[...urlSegments]/page.tsx
 
 import * as React from "react";
 import Layout from "@/components/layout/layout";
+import { Metadata } from "next";
+import { getPageData } from "@/lib/getPageData";
 import ClientPageWrapper from "./ClientPageWrapper";
-import { notFound } from "next/navigation"; // Import notFound from next/navigation
+import { notFound } from "next/navigation";
 import fs from 'fs';
 import path from 'path';
 
 type RouteParams = { urlSegments: string[] };
+
+
+// export async function generateMetadata({ params }): Promise<Metadata> {
+//   const awaitedParams = await params;
+
+//   try {
+//     const page = await getPageData(awaitedParams.urlSegments);
+//     if (!page) throw new Error("Page not found");
+
+//     console.log("Meta title in generateMetadata:", page.metaTitle);
+//     console.log("Meta description in generateMetadata:", page.metaDescription);
+
+//     return {
+//       title: page.metaTitle || "Default Site Title",
+//       description: page.metaDescription || "Default site description",
+//     };
+//   } catch {
+//     notFound();
+//   }
+// }
+
+export async function generateMetadata() {
+  return {
+    title: "Hello from generateMetadata!",
+    description: "Testing dynamic title",
+  };
+}
 
 export default async function Page({
   params,
@@ -17,30 +46,9 @@ export default async function Page({
   const { urlSegments } = await params;
   const relativePath = urlSegments.join("/") + ".mdx";
 
-  // Check if the page exists
-  const pageExists = await checkIfPageExists(relativePath);
-
-  // If the page doesn't exist, trigger a 404
-  if (!pageExists) {
-    notFound();
-  }
-
   return (
     <Layout>
       <ClientPageWrapper relativePath={relativePath} />
     </Layout>
   );
-}
-
-// Function to check if the .mdx file exists
-async function checkIfPageExists(relativePath: string): Promise<boolean> {
-  const filePath = path.join(process.cwd(), 'content', 'pages', relativePath);
-  
-  try {
-    // Try accessing the file. If it doesn't exist, it will throw an error
-    await fs.promises.access(filePath);
-    return true;
-  } catch (err) {
-    return false;
-  }
 }
