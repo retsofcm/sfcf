@@ -108,6 +108,7 @@ export const ImageWithTextBlock = ({ data }: Props) => {
               src={imageSrc || ""}
               alt={title ?? ""}
               fill
+              unoptimized
               className="object-cover object-top"
             />
           </div>

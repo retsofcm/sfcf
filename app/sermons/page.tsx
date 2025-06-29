@@ -53,6 +53,7 @@ export default async function SermonsPage() {
                   src={heroImg}
                   alt={`${sermon.speaker}`}
                   fill
+                  unoptimized
                   className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                 />
 
