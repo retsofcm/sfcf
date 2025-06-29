@@ -17,6 +17,35 @@ const QUERY = `
   }
 `;
 
+export async function generateMetadata(props: {
+  params: Promise<{ event: string[] }>;
+}) {
+  const { event } = await props.params;
+  const relativePath = `${event}.mdx`;
+  
+  try {
+    const { data } = await client.request({
+      query: QUERY,
+      variables: { relativePath },
+    }, {});
+    
+    const event = data?.event;
+    const description =
+      event?.body || 
+      "Discover upcoming events at Stenson Fields Christian Fellowship.";
+    
+      return {
+      title: event?.eventName ? `${event.eventName} | Stenson Fields Christian Fellowship` : "Event | Stenson Fields Christian Fellowship",
+      description,
+    };
+  } catch {
+    return {
+      title: "Event Not Found | Stenson Fields Christian Fellowship",
+      description: "This event could not be found.",
+    };
+  }
+}
+
 export default function EventPage({ params }: { params: Promise<{ event: string }> }) {
   const { event } = use(params);
   const relativePath = `${event}.mdx`;

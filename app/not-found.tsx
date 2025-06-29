@@ -3,6 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import Layout from "@/components/layout/layout";
 
+export const metadata = {
+  title: "Page not found | Stenson Fields Christian Fellowship",
+  description: "Uh oh, this page is missing! Try returning to the homepage or check out our latest events.",
+};
+
 export default function NotFound() {
   return (
     <Layout>

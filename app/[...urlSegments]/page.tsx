@@ -6,36 +6,26 @@ import { Metadata } from "next";
 import { getPageData } from "@/lib/getPageData";
 import ClientPageWrapper from "./ClientPageWrapper";
 import { notFound } from "next/navigation";
-import fs from 'fs';
-import path from 'path';
 
 type RouteParams = { urlSegments: string[] };
 
 
-// export async function generateMetadata({ params }): Promise<Metadata> {
-//   const awaitedParams = await params;
+export async function generateMetadata({ params }): Promise<Metadata> {
+  const awaitedParams = await params;
 
-//   try {
-//     const page = await getPageData(awaitedParams.urlSegments);
-//     if (!page) throw new Error("Page not found");
+  try {
+    const page = await getPageData(awaitedParams.urlSegments);
+    if (!page) {
+      notFound();
+    }
 
-//     console.log("Meta title in generateMetadata:", page.metaTitle);
-//     console.log("Meta description in generateMetadata:", page.metaDescription);
-
-//     return {
-//       title: page.metaTitle || "Default Site Title",
-//       description: page.metaDescription || "Default site description",
-//     };
-//   } catch {
-//     notFound();
-//   }
-// }
-
-export async function generateMetadata() {
-  return {
-    title: "Hello from generateMetadata!",
-    description: "Testing dynamic title",
-  };
+    return {
+      title: page.metaTitle || "Stenson Fields Christian Fellowship",
+      description: page.metaDescription || "We're a group of Christians who take the Bible seriously and seek to share God's love for every individual in our community and further afield.",
+    };
+  } catch {
+    notFound();
+  }
 }
 
 export default async function Page({

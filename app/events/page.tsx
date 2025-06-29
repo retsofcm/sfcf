@@ -6,6 +6,11 @@ import Image from 'next/image';
 import { formatDateRange } from '@/utils/formatDate';
 import { handleize } from '@/utils/handleize';
 
+export const metadata = {
+  title: "Upcoming events | Stenson Fields Christian Fellowship",
+  description: "Discover upcoming events at Stenson Fields Christian Fellowship: meaningful worship, family activities, and opportunities to grow in faith and fellowship.",
+};
+
 export default async function EventsPage() {
   const eventsData = await client.queries.eventConnectionQuery();
   const edges = eventsData?.data?.eventConnection?.edges;

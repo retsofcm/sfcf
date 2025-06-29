@@ -5,6 +5,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { format } from 'date-fns';
 
+export const metadata = {
+  title: "Sermons | Stenson Fields Christian Fellowship",
+  description: "Explore our collection of sermons to grow in your spiritual journey with messages grounded in the Bible and relevant to everyday life.",
+};
+
 export default async function SermonsPage() {
   const SermonsData = await client.queries.sermonConnectionQuery();
   const edges = SermonsData?.data?.sermonConnection?.edges;
