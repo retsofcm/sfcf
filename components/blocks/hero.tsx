@@ -136,7 +136,7 @@ const SlideBlock = ({ slide }: { slide: NonNullable<NonNullable<PageBlocksHero['
   const videoSrc = slide?.videoSrc;
   const imageSrc = slide?.imageSrc;
   const mobileImageSrc = slide?.mobileImageSrc;
-  const alt = slide?.alt ?? 'Hero Slide';
+  const alt = slide?.alt ?? 'Stenson Fields Christian Fellowship';
 
   const isVideo = !!videoSrc && !imageSrc && !mobileImageSrc;
 
