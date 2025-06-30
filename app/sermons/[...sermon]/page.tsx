@@ -45,7 +45,7 @@ export async function generateMetadata(props: {
     };
   } catch {
     return {
-      title: "Sermon Not Found | Stenson Fields Christian Fellowship",
+      title: "Sermon not found | Stenson Fields Christian Fellowship",
       description: "This sermon could not be found.",
     };
   }
