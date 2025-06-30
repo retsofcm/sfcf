@@ -35,7 +35,7 @@ export async function generateMetadata(props: {
       "Discover upcoming events at Stenson Fields Christian Fellowship.";
     
       return {
-      title: event?.eventName ? `${event.eventName} | Stenson Fields Christian Fellowship` : "Event | Stenson Fields Christian Fellowship",
+      title: event?.eventName ? `${event.eventName} | Stenson Fields Christian Fellowship` : "Upcoming event | Stenson Fields Christian Fellowship",
       description,
     };
   } catch {

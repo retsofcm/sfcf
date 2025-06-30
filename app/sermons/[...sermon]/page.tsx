@@ -40,7 +40,7 @@ export async function generateMetadata(props: {
       "Discover past sermons at Stenson Fields Christian Fellowship.";
     
       return {
-      title: sermon?.title ? `${sermon.title} | Stenson Fields Christian Fellowship` : "Sermon | Stenson Fields Christian Fellowship",
+      title: sermon?.title ? `${sermon.title} | Stenson Fields Christian Fellowship` : "Past sermon | Stenson Fields Christian Fellowship",
       description,
     };
   } catch {
