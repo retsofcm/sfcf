@@ -67,12 +67,12 @@ const slides = (data.slides ?? []).filter(
             {(data.headline || data.tagline) && (
               <div>
                 {data.headline && (
-                  <div
+                  <h1
                     data-tina-field={tinaField(data, 'headline')}
                     className="text-white font-light text-[32px] lg:text-[64px] leading-tight whitespace-pre-line"
                   >
                     <TinaMarkdown content={data.headline} />
-                  </div>
+                  </h1>
                 )}
                 {data.tagline && (
                   <div data-tina-field={tinaField(data, 'tagline')}>
