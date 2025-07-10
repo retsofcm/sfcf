@@ -61,8 +61,8 @@ const Sermon: Collection = {
     },
     {
       type: "string",
-      label: "Audio File (MP3)",
-      name: "audioFile",
+      label: "Youtube URL",
+      name: "youtubeUrl",
       required: true,
     },
     {

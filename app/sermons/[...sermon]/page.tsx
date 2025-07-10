@@ -15,7 +15,7 @@ const QUERY = `
       description
       passageLink
       sermonImage
-      audioFile
+      youtubeUrl
     }
   }
 `;

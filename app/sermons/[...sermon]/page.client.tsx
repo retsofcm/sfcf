@@ -21,11 +21,16 @@ export default function ClientPage({ query, variables, data }: any) {
     passage,
     passageLink,
     description,
-    sermonImage,
-    audioFile
+    youtubeUrl,
   } = sermon;
 
-  // Fallback description if none is provided
+  const getYoutubeEmbedUrl = (url: string) => {
+    const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+    return match ? `https://www.youtube.com/embed/${match[1]}` : null;
+  };
+
+  const youtubeEmbedUrl = youtubeUrl ? getYoutubeEmbedUrl(youtubeUrl) : null;
+
   const defaultDescription = (
     <p>
       In this sermon, we reflect on {passage || 'a selected scripture'} with {speaker || 'the speaker'}.
@@ -33,7 +38,7 @@ export default function ClientPage({ query, variables, data }: any) {
         <> If you'd like to follow along, the passage is available <a href={passageLink} className="text-green underline" target="_blank" rel="noopener noreferrer">here</a>.</>
       )}
     </p>
-  );  
+  );
 
   return (
     <div className="container px-4 md:px-20">
@@ -46,16 +51,24 @@ export default function ClientPage({ query, variables, data }: any) {
       </Link>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-        {sermonImage && (
-          <div>
-            <img
-              src={sermonImage}
-              alt={passage || 'Sermon image'}
-              className="aspect-[1] w-full object-cover"
-            />
-          </div>
-        )}
+        {/* Left column: YouTube embed */}
+        <div>
+          {youtubeEmbedUrl && (
+            <div className="aspect-video w-full">
+              <iframe
+                width="100%"
+                height="100%"
+                src={youtubeEmbedUrl}
+                title={title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full aspect-[16/9]"
+              ></iframe>
+            </div>
+          )}
+        </div>
 
+        {/* Right column: Info and description */}
         <div>
           <h1 className="mb-2 text-3xl font-bold text-gray-900">{title}</h1>
 
@@ -65,50 +78,6 @@ export default function ClientPage({ query, variables, data }: any) {
               <div><strong>Date:</strong> {format(new Date(date), 'MMMM d, yyyy')}</div>
             )}
           </div>
-
-          {audioFile && (
-            <div className="my-6">
-              <h2 className="mb-2 text-xl font-semibold text-gray-900">Listen</h2>
-              <audio 
-                controls 
-                className="w-full"
-                onPlay={() =>
-                  window.gtag?.("event", "sermon_play", {
-                    event_category: "Sermon",
-                    event_label: audioFile,
-                    sermon_title: title || "Untitled Sermon",
-                    passage: passage || "No Passage",
-                    speaker: speaker || "Unknown Speaker",
-                    event_date: date || "Unknown Date",
-                    series: series || "No Series",
-                    value: 1,
-                  })
-                }
-              >
-              <source src={`https://res.cloudinary.com/dmzgq497q/video/upload/v1747092681/${audioFile}.mp3`} type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
-              <a
-                href={`https://res.cloudinary.com/dmzgq497q/video/upload/v1747092681/${audioFile}.mp3`}
-                download
-                className="mt-2 inline-block text-sm text-green hover:underline"
-                onClick={() =>
-                  window.gtag?.("event", "sermon_download", {
-                    event_category: "Sermon",
-                    event_label: audioFile,
-                    sermon_title: title || "Untitled Sermon",
-                    passage: passage || "No Passage",
-                    speaker: speaker || "Unknown Speaker",
-                    event_date: date || "Unknown Date",
-                    series: series || "No Series",
-                    value: 1,
-                  })
-                }
-              >
-                Download Audio
-              </a>
-            </div>
-          )}
 
           <div className="prose prose-lg text-gray-700 mt-8">
             {description ? (
