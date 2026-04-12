@@ -79,13 +79,6 @@
     "social": [
       {
         "icon": {
-          "name": "BiEnvelope",
-          "style": ""
-        },
-        "url": "mailto:stensonfieldschurch@gmail.com"
-      },
-      {
-        "icon": {
           "name": "BiLogoInstagram"
         },
         "url": "https://www.instagram.com/stensonfieldschurch?igsh=MTVpdjJ0Zms1cDBneQ%3D%3D&utm_source=qr"
@@ -101,6 +94,13 @@
           "name": "FaYoutube"
         },
         "url": "https://www.youtube.com/channel/UCu7_YktOgK7R7-VAhIV8Z5w"
+      },
+      {
+        "icon": {
+          "name": "BiEnvelope",
+          "style": ""
+        },
+        "url": "mailto:stensonfieldschurch@gmail.com"
       }
     ],
     "columns": [
