@@ -86,6 +86,12 @@
       },
       {
         "icon": {
+          "name": "BiLogoInstagram"
+        },
+        "url": "https://www.instagram.com/stensonfieldschurch?igsh=MTVpdjJ0Zms1cDBneQ%3D%3D&utm_source=qr"
+      },
+      {
+        "icon": {
           "name": "BiLogoFacebookCircle"
         },
         "url": "https://www.facebook.com/profile.php?id=100064812573698"
@@ -95,12 +101,6 @@
           "name": "FaYoutube"
         },
         "url": "https://www.youtube.com/channel/UCu7_YktOgK7R7-VAhIV8Z5w"
-      },
-      {
-        "icon": {
-          "name": "BiLogoInstagram"
-        },
-        "url": "https://www.instagram.com/stensonfieldschurch?igsh=MTVpdjJ0Zms1cDBneQ%3D%3D&utm_source=qr"
       }
     ],
     "columns": [
