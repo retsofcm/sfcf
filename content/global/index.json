@@ -50,10 +50,6 @@
         "url": "",
         "links": [
           {
-            "label": "Sermons",
-            "url": "/sermons"
-          },
-          {
             "label": "Real Lives",
             "url": "/real-lives"
           },
