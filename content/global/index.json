@@ -79,6 +79,13 @@
     "social": [
       {
         "icon": {
+          "name": "BiEnvelope",
+          "style": ""
+        },
+        "url": "mailto:stensonfieldschurch@gmail.com"
+      },
+      {
+        "icon": {
           "name": "BiLogoFacebookCircle"
         },
         "url": "https://www.facebook.com/profile.php?id=100064812573698"
