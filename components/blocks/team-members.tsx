@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+
 import { Template } from "tinacms";
 
 type TeamMember = {
@@ -25,11 +25,10 @@ export const TeamMembersBlock = ({ data }: Props) => {
         {members!.map((member, index) => (
         <div key={index}>
             <div className="relative w-full h-auto aspect-[1] mx-auto mb-4">
-            <Image
+            <img
                 src={member!.image}
                 alt={member!.name}
-                fill
-                className="object-cover"
+                className="w-full h-full object-cover"
             />
             </div>
             <h4 className="mb-1 text-xl font-bold tracking-tight text-black">

@@ -1,16 +1,16 @@
 import { Collection } from 'tinacms';
 import { heroBlockSchema } from '@/components/blocks/hero';
-import { pageTitleSchema } from '@/components/blocks/pageTitle';
+import { pageTitleSchema } from '@/components/blocks/page-title';
 import { contentBlockSchema } from '@/components/blocks/content';
 import { eventCollageBlockSchema } from "@/components/blocks/event-collage";
-import { staticImageBlockSchema } from "@/components/blocks/StaticImageBlock";
-import { ImageWithTextBlockSchema } from "@/components/blocks/ImageWithText";
-import { IconWithTextBlockSchema } from "@/components/blocks/IconWithText";
+import { staticImageBlockSchema } from "@/components/blocks/static-image-block";
+import { ImageWithTextBlockSchema } from "@/components/blocks/image-with-text";
+import { IconWithTextBlockSchema } from "@/components/blocks/icon-with-text";
 import { footerHeroBlockSchema } from '@/components/blocks/footer-hero';
-import { GoogleMapBlockSchema } from "@/components/blocks/GoogleMapBlock";
-import { AccordionBlockSchema } from "@/components/blocks/Accordion";
-import { CalendarBlockSchema } from "@/components/blocks/Calendar";
-import { TeamMembersBlockSchema } from '@/components/blocks/TeamMembers';
+import { GoogleMapBlockSchema } from "@/components/blocks/google-map-block";
+import { AccordionBlockSchema } from "@/components/blocks/accordion";
+import { CalendarBlockSchema } from "@/components/blocks/calendar";
+import { TeamMembersBlockSchema } from '@/components/blocks/team-members';
 
 const Page: Collection = {
   label: 'Pages',

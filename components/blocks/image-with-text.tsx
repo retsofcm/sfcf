@@ -1,8 +1,9 @@
 "use client";
 
-import Image from "next/image";
+
 import { Template } from "tinacms";
 import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
+
 
 type Props = {
   data: {
@@ -12,12 +13,12 @@ type Props = {
     content: TinaMarkdownContent | TinaMarkdownContent[];
     buttonText?: string | null;
     buttonUrl?: string | null;
-    audioFile?: string | null;
+
   };
 };
 
 export const ImageWithTextBlock = ({ data }: Props) => {
-  const { imageSrc, title, content, buttonText, buttonUrl, audioFile } = data;
+  const { imageSrc, title, content, buttonText, buttonUrl } = data;
 
   const imagePosition =
     data.imagePosition === "left" || data.imagePosition === "right"
@@ -65,51 +66,15 @@ export const ImageWithTextBlock = ({ data }: Props) => {
             </a>
           )}
 
-          {audioFile && (
-            <div className="my-6">
-              <h2 className="mb-2 text-xl font-semibold text-gray-900">Listen</h2>
-              <audio 
-                controls 
-                className="w-full"
-                onPlay={() =>
-                  window.gtag?.("event", "audio_play", {
-                    event_category: "Audio",
-                    event_label: audioFile,
-                    audio_title: title || "Untitled Audio",
-                    value: 1,
-                  })
-                }
-              >
-                <source src={`https://res.cloudinary.com/dmzgq497q/video/upload/v1747092681/${audioFile}.mp3`} type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
-              <a
-                href={`https://res.cloudinary.com/dmzgq497q/video/upload/v1747092681/${audioFile}.mp3`}
-                download
-                className="mt-2 inline-block text-sm text-green hover:underline"
-                onClick={() =>
-                  window.gtag?.("event", "audio_download", {
-                    event_category: "Audio",
-                    event_label: audioFile,
-                    audio_title: title || "Untitled Audio",
-                    value: 1,
-                  })
-                }
-              >
-                Download Audio
-              </a>
-            </div>
-          )}
+
         </div>
 
         <div className={`col-span-12 lg:col-span-6 order-1 ${imagePosition === "left" ? "lg:order-1" : "lg:col-start-7 lg:order-2"}`}>
           <div className="relative w-full aspect-1">
-            <Image
+            <img
               src={imageSrc || ""}
               alt={title ?? ""}
-              fill
-              unoptimized
-              className="object-cover object-top"
+              className="w-full h-full object-cover object-top"
             />
           </div>
         </div>
@@ -156,13 +121,7 @@ export const ImageWithTextBlockSchema: Template = {
       name: "content",
       required: true,
     }, 
-    {
-      type: "string",
-      label: "Audio File Name",
-      name: "audioFile",
-      required: false,
-      description: "Only enter the filename (no extension). Example: sermon-2025-06-16"
-    },
+
     {
       type: "string",
       label: "Button Text",

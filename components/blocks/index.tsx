@@ -1,18 +1,18 @@
 import { tinaField } from "tinacms/dist/react";
-import { Page, PageBlocks } from "../../tina/__generated__/types";
-import { EventSummary } from "@/types/EventSummary";
+import type { Page, PageBlocks } from "../../tina/__generated__/types";
+import type { EventSummary } from "@/types/EventSummary";
 import { Hero } from "./hero";
 import { EventCollageBlock } from "./event-collage";
-import { StaticImageBlock } from "./StaticImageBlock";
-import { ImageWithTextBlock } from "./ImageWithText";
-import { IconWithTextBlock } from "./IconWithText";
-import { PageTitleBlock } from "./pageTitle"
+import { StaticImageBlock } from "./static-image-block";
+import { ImageWithTextBlock } from "./image-with-text";
+import { IconWithTextBlock } from "./icon-with-text";
+import { PageTitleBlock } from "./page-title";
 import { FooterHero } from "./footer-hero";
 import { Content } from "./content";
-import { GoogleMapBlock } from "./GoogleMapBlock";
-import { AccordionBlock, AccordionItem } from "./Accordion";
-import { TeamMembersBlock } from "./TeamMembers";
-import CalendarBlock from "./Calendar";
+import { GoogleMapBlock } from "./google-map-block";
+import { AccordionBlock, type AccordionItem } from "./accordion";
+import { TeamMembersBlock } from "./team-members";
+import CalendarBlock from "./calendar";
 
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values"> & { events: EventSummary[] }) => {
@@ -52,9 +52,10 @@ const Block = ({ block, events }: { block: PageBlocks; events: EventSummary[] })
       return <GoogleMapBlock data={block} />;
     case "PageBlocksTeamMembers":
       return <TeamMembersBlock data={block} />;
-    case "PageBlocksAccordionBlock":
+    case "PageBlocksAccordionBlock": {
       const validItems = block.items?.filter((item) => item !== null) as AccordionItem[];
       return <AccordionBlock data={{ items: validItems }} />;
+    }
     case "PageBlocksCalendarBlock":
       return <CalendarBlock data={{ calendarIds: block.calendarIds ?? undefined }} />;
     default:

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLayout } from "../layout-context";
@@ -8,9 +8,80 @@ import { Menu } from "lucide-react";
 import { Logo } from "./logo";
 import MobileMenuDrawer from './MobileMenuDrawer';
 
+interface NavItemProps {
+  item: {
+    title?: string | null;
+    url?: string | null;
+    links?: ({ label?: string | null; url?: string | null } | null)[] | null;
+  };
+}
+
+const NavItem = ({ item }: NavItemProps) => {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownTimeout = useRef<NodeJS.Timeout | null>(null);
+  const hasDropdown = item.links && item.links.length > 0;
+
+  const handleMouseEnter = () => {
+    if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current);
+    setShowDropdown(true);
+  };
+
+  const handleMouseLeave = () => {
+    dropdownTimeout.current = setTimeout(() => {
+      setShowDropdown(false);
+    }, 100);
+  };
+
+  return (
+    <li
+      className="group/link relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {item.url ? (
+        <Link
+          href={item.url}
+          className="block py-2 border-b border-transparent group-hover/link:border-black"
+        >
+          <span>{item.title}</span>
+        </Link>
+      ) : (
+        <div className="block py-2 border-b border-transparent group-hover/link:border-black cursor-default">
+          <span>{item.title}</span>
+        </div>
+      )}
+
+      {hasDropdown && (
+        <div
+          className={`
+            absolute -left-6 top-0 z-30 pt-8 transition-all duration-300
+            ${showDropdown ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-2 invisible"}
+          `}
+        >
+          <div className="absolute left-0 top-full z-30 pt-4">
+            <div className="transition-all duration-300 bg-white p-6">
+              <div className="grid gap-4">
+                {item.links?.map((link, linkIndex) => (
+                  <Link
+                    key={linkIndex}
+                    href={link?.url || ""}
+                    className="block whitespace-nowrap text-base text-black"
+                  >
+                    {link?.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </li>
+  );
+};
+
 export const Header = () => {
   const { globalSettings } = useLayout();
-  const header = globalSettings!.header!;
+  const header = globalSettings?.header;
   const pathname = usePathname();
   const isIndex = pathname === "/";
 
@@ -56,8 +127,6 @@ export const Header = () => {
               ? scrollY < 108
                 ? "!bg-transparent"
                 : "bg-white/80"
-              : scrollY < 108
-              ? "bg-white/80"
               : "bg-white/80"
           }
         `}
@@ -68,7 +137,7 @@ export const Header = () => {
               <Link
                 href="/"
                 aria-label="home"
-                className="flex items-center space-x-2 w-[100px] lg:w-auto"
+                className="flex items-center space-x-2 w-[100px] lg:w-auto outline-none focus:outline-none"
               >
                 <Logo />
               </Link>
@@ -90,75 +159,9 @@ export const Header = () => {
                     ${showLightTheme ? "text-black" : "text-white"}
                   `}
                 >
-                  {header.nav!.map((item, index) => {
-                    const hasDropdown = item!.links && item!.links.length > 0;
-                    const [showDropdown, setShowDropdown] = useState(false);
-                    const dropdownTimeout = React.useRef<NodeJS.Timeout | null>(null);
-
-                    const handleMouseEnter = () => {
-                      if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current);
-                      setShowDropdown(true);
-                    };
-
-                    const handleMouseLeave = () => {
-                      dropdownTimeout.current = setTimeout(() => {
-                        setShowDropdown(false);
-                      }, 100);
-                    };
-
-                    return (
-                      <li
-                        key={index}
-                        className="group/link relative"
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                      >
-                        {
-                          item!.url ? (
-                            <Link
-                              href={item!.url}
-                              className="block py-2 border-b border-transparent group-hover/link:border-black"
-                            >
-                              <span>{item!.title}</span>
-                            </Link>
-                          ) : (
-                            <div className="block py-2 border-b border-transparent group-hover/link:border-black cursor-default">
-                              <span>{item!.title}</span>
-                            </div>
-                          )
-                        }
-
-                        {hasDropdown && (
-                          <div
-                            className={`
-                              absolute -left-6 top-0 z-30 pt-8 transition-all duration-300
-                              ${showDropdown ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-2 invisible"}
-                            `}
-                          >
-                            <div className="absolute left-0 top-full z-30 pt-4">
-                              <div
-                                className={`
-                                  transition-all duration-300 bg-white p-6
-                                `}
-                              >
-                                <div className="grid gap-4">
-                                  {item!.links!.map((link, linkIndex) => (
-                                    <Link
-                                      key={linkIndex}
-                                      href={link!.url || ""}
-                                      className="block whitespace-nowrap text-base text-black"
-                                    >
-                                      {link!.label}
-                                    </Link>
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </li>
-                    );
-                  })}
+                  {header?.nav?.map((item, index) => (
+                    item ? <NavItem key={index} item={item} /> : null
+                  ))}
                 </ul>
               </div>
             </div>
@@ -166,6 +169,6 @@ export const Header = () => {
         </div>
       </nav>
       <MobileMenuDrawer isOpen={menuState} onClose={() => setMenuState(false)} />
-      </header>
+    </header>
   );
 };

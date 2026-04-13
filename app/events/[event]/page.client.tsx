@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { formatDateRange } from '@/utils/formatDate';
 
-export default function ClientPage({ query, variables, data }: any) {
+export default function ClientPage({ query, variables, data }: { query: string; variables: object; data: any }) {
   const { data: tinaData } = useTina({ query, variables, data });
 
   const event = tinaData?.event;
@@ -52,12 +52,10 @@ export default function ClientPage({ query, variables, data }: any) {
           <h1 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">{eventName}</h1>
 
           <div className="mb-6 flex flex-col space-y-3 sm:flex-row sm:space-x-6 sm:space-y-0">
-            {(startDate || endDate) && (
-              <div className="flex items-center text-gray-600">
-                <Calendar className="mr-2 h-5 w-5 text-green" />
-                <span>{formatDateRange(startDate, endDate)}</span>
-              </div>
-            )}
+            <div className="flex items-center text-gray-600">
+              <Calendar className="mr-2 h-5 w-5 text-green" />
+              <span>{formatDateRange(startDate, endDate)}</span>
+            </div>
             {location && (
               <div className="flex items-center text-gray-600">
                 <MapPin className="mr-2 h-5 w-5 text-green" />

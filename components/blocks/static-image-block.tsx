@@ -40,7 +40,7 @@ export const StaticImageBlock = ({ data }: Props) => {
               )}
               <img
                 src={img?.src || img?.mobileSrc || ''}
-                alt={img?.alt || `Static Image ${idx + 1}`}
+                alt={img?.alt || ''}
                 className="object-cover w-full h-full"
               />
             </picture>

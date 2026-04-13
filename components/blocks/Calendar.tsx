@@ -1,10 +1,17 @@
 import { useEffect, useState, useRef } from "react";
+
+export interface CalendarEvent {
+  start: Date;
+  end: Date;
+  summary: string;
+  description: string;
+}
 import ical from "ical.js";
 import { Template } from "tinacms";
 import { format, addMonths, subMonths, addWeeks, subWeeks, startOfMonth, endOfMonth, startOfWeek, endOfWeek } from "date-fns";
 import { ArrowRight, ArrowLeft } from 'lucide-react';
-import MonthView from "./MonthView";
-import WeekView from "./WeekView";
+import MonthView from "./month-view";
+import WeekView from "./week-view";
 
 export default function CalendarBlock({
   data,
@@ -12,10 +19,10 @@ export default function CalendarBlock({
   data: { calendarIds?: ({ calendarId?: string | null } | null)[] | null; };
 }) {
   const [view, setView] = useState<"week" | "month">("week");
-  const [events, setEvents] = useState<any[]>([]);
+  const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [cache, setCache] = useState<{ [key: string]: any[] }>({});
-  const [selectedEvent, setSelectedEvent] = useState<any | null>(null);
+  const [cache, setCache] = useState<{ [key: string]: CalendarEvent[] }>({});
+  const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
 
   const isFetching = useRef(false);
 
@@ -67,7 +74,7 @@ export default function CalendarBlock({
       return;
     }
   
-    let allEvents: any[] = [];
+    let allEvents: CalendarEvent[] = [];
     const validCalendarIds = data.calendarIds!
       .filter((i): i is { calendarId: string } => !!i && !!i.calendarId);
   
@@ -139,7 +146,7 @@ export default function CalendarBlock({
     setCurrentDate((prev) => (direction === "next" ? addWeeks(prev, 1) : subWeeks(prev, 1)));
   };
 
-  const handleEventClick = (event: any) => {
+  const handleEventClick = (event: CalendarEvent) => {
     setSelectedEvent(event);
   };
 

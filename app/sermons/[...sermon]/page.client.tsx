@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { format } from 'date-fns';
 
-export default function ClientPage({ query, variables, data }: any) {
+export default function ClientPage({ query, variables, data }: { query: string; variables: object; data: any }) {
   const { data: tinaData } = useTina({ query, variables, data });
   const sermon = tinaData?.sermon;
 

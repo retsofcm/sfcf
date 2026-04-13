@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+
 import Link from "next/link";
 import { Template } from "tinacms";
 import { EventSummary } from "@/types/EventSummary";
@@ -41,16 +41,23 @@ export function EventCollageBlock({ events }: EventCollageBlockProps) {
       } else if (startDate) {
         return startDate > now;
       }
-      return false;
+      return true; // Keep events with no dates as "Ongoing"
     })
-    .sort((a, b) => (a.startDate?.getTime() ?? 0) - (b.startDate?.getTime() ?? 0));  
+    .sort((a, b) => {
+      const timeA = a.startDate?.getTime();
+      const timeB = b.startDate?.getTime();
+      if (timeA === undefined && timeB === undefined) return 0;
+      if (timeA === undefined) return 1;
+      if (timeB === undefined) return -1;
+      return timeA - timeB;
+    });
 
   const [mainEvent, ...restEvents] = sortedEvents;
 
   return (
     <div className="container">
       <h2 
-        className="text-[24px] lg:text-[36px] font-light mb-8 lg:mb-12 underline decoration-green-500 underline-offset-3"
+        className="text-[32px] font-light leading-[2] mb-6 underline decoration-green-500 underline-offset-3"
         style={{
           textDecorationColor: '#008000',
           textDecorationThickness: '3px',
@@ -71,10 +78,9 @@ export function EventCollageBlock({ events }: EventCollageBlockProps) {
               className="relative aspect-[1] overflow-hidden block group min-w-[80%] snap-start lg:min-w-0"
             >
               {event.heroImg && (
-                <Image
+                <img
                   src={event.heroImg}
                   alt={event.eventName}
-                  fill
                   className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                 />
               )}

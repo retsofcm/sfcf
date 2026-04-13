@@ -11,15 +11,22 @@ type LayoutProps = PropsWithChildren & {
 };
 
 export default async function Layout({ children, rawPageData }: LayoutProps) {
-  const { data: globalData } = await client.queries.global({
-    relativePath: "index.json",
-  }, {
-    fetchOptions: {
-      next: {
-        revalidate: 60,
-      },
-    }
-  });
+  let globalData: any = { global: {} };
+  
+  try {
+    const response = await client.queries.global({
+      relativePath: "index.json",
+    }, {
+      fetchOptions: {
+        next: {
+          revalidate: 60,
+        },
+      }
+    });
+    globalData = response.data;
+  } catch (error) {
+    console.error("Warning: Failed to fetch global layout data. Using empty defaults.", error);
+  }
 
   const pageData = rawPageData ?? {};
 

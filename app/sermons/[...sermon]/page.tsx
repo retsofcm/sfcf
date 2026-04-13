@@ -34,13 +34,13 @@ export async function generateMetadata(props: {
       variables: { relativePath },
     }, {});
     
-    const sermon = data?.sermon;
+    const sermonData = data?.sermon;
     const description =
-      sermon?.description || 
+      sermonData?.description || 
       "Discover past sermons at Stenson Fields Christian Fellowship.";
     
       return {
-      title: sermon?.title ? `${sermon.title} | Stenson Fields Christian Fellowship` : "Past sermon | Stenson Fields Christian Fellowship",
+      title: sermonData?.title ? `${sermonData.title} | Stenson Fields Christian Fellowship` : "Past sermon | Stenson Fields Christian Fellowship",
       description,
     };
   } catch {

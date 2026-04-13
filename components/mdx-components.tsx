@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import React from 'react';
 import { Components, TinaMarkdown, TinaMarkdownContent } from 'tinacms/dist/rich-text';
-import Image from 'next/image';
+
 import { Prism } from 'tinacms/dist/rich-text/prism';
 
 export const components: Components<{
@@ -97,7 +97,7 @@ export const components: Components<{
     }
     return (
       <span className='flex items-center justify-center'>
-        <Image src={props.url} alt={props.alt || ''} width={500} height={500} />
+        <img src={props.url} alt={props.alt || ''} width={500} height={500} />
       </span>
     );
   }

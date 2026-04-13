@@ -27,7 +27,7 @@ export const IconWithTextBlock = ({ data }: Props) => {
   return (
     <section className="container">
       <h2 
-        className="text-[24px] md:text-[36px] font-light mb-12 md:mb-12 underline decoration-green-500 underline-offset-3"
+        className="text-[32px] font-light leading-[2] mb-6 underline decoration-green-500 underline-offset-3"
         style={{
           textDecorationColor: '#008000',
           textDecorationThickness: '3px',
@@ -35,7 +35,7 @@ export const IconWithTextBlock = ({ data }: Props) => {
         }}
       >
         {data.heading}
-        </h2>
+      </h2>
       <div className={gridClass}>
         {data.items?.map((item, idx) => {
           if (!item) return null;

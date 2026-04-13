@@ -33,7 +33,7 @@ export const Footer = () => {
       <div className="container grid grid-cols-4 lg:grid-cols-12 gap-8">
         {/* Logo */}
         <div className="flex flex-col gap-4 col-span-4 lg:col-span-3 justify-between items-center lg:items-start">
-          <Link href="/" className="w-fit">
+          <Link href="/" className="w-fit outline-none focus:outline-none">
             <Logo />
           </Link>
           <div className="flex gap-4">

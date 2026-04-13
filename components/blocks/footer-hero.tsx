@@ -1,50 +1,28 @@
 'use client';
 import * as React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
-import { PageBlocksFooter_Hero, PageBlocksFooter_HeroImageOrVideo } from '../../tina/__generated__/types';
+import { PageBlocksFooter_Hero } from '../../tina/__generated__/types';
 import { AnimatedGroup } from '../motion-primitives/animated-group';
-import { TextEffect } from '../motion-primitives/text-effect';
 import { TinaMarkdown } from 'tinacms/dist/rich-text';
-
-const transitionVariants = {
-  container: {
-    visible: {
-      transition: {
-        staggerChildren: 0.05,
-        delayChildren: 0.75,
-      },
-    },
-  },
-  item: {
-    hidden: {
-      opacity: 0,
-      filter: 'blur(12px)',
-      y: 12,
-    },
-    visible: {
-      opacity: 1,
-      filter: 'blur(0px)',
-      y: 0,
-      transition: {
-        type: 'spring',
-        bounce: 0.3,
-        duration: 1.5,
-      },
-    },
-  },
-};
+import { transitionVariants } from '@/lib/animation-variants';
+import { MediaBlock } from '@/components/ui/media-block';
 
 export const FooterHero = ({ data }: { data: PageBlocksFooter_Hero }) => {
-  const headline = data.headline || ''; // Default to an empty string if headline is undefined
-
   return (
     <section className="grid mx-auto relative with-overlay overflow-hidden">
       {data.imageOrVideo && (
         <AnimatedGroup variants={transitionVariants} containerClassName="h-[inherit] w-full col-start-1 row-start-1">
-          <ImageBlock image={data.imageOrVideo} />
+          <MediaBlock
+            imageSrc={data.imageOrVideo.imageSrc}
+            mobileImageSrc={data.imageOrVideo.mobileImageSrc}
+            videoSrc={data.imageOrVideo.videoSrc}
+            alt={data.imageOrVideo.alt ?? 'Hero Image'}
+            imageHeight={236}
+            imageWidth={1440}
+            className="h-[236px] object-center"
+          />
         </AnimatedGroup>
       )}
 
@@ -61,61 +39,18 @@ export const FooterHero = ({ data }: { data: PageBlocksFooter_Hero }) => {
         <AnimatedGroup variants={transitionVariants} containerClassName="block mt-6 lg:mt-0">
           {data.actions?.map(action => (
             <Link
-              key={action!.label}
-              href={action!.link!}
+              key={action?.label}
+              href={action?.link ?? '/'}
               data-tina-field={tinaField(action)}
-              target={action!.link!.includes('mailto') ? "_blank" : undefined}
+              target={action?.link?.includes('mailto') ? "_blank" : undefined}
               className="block py-5 px-6 border text-white"
             >
-              {action!.label}
+              {action?.label}
             </Link>
           ))}
         </AnimatedGroup>
       </div>
     </section>
-  );
-};
-
-const ImageBlock = ({ image }: { image: PageBlocksFooter_HeroImageOrVideo }) => {
-  const videoSrc = image?.videoSrc ?? undefined;
-  const imageSrc = image?.imageSrc ?? undefined;
-  const mobileImageSrc = image?.mobileImageSrc ?? undefined;
-  const alt = image?.alt ?? 'Hero Image';
-
-  const isVideo = !!videoSrc && !imageSrc && !mobileImageSrc;
-
-  if (isVideo) {
-    return (
-      <video className="inset-0 w-full object-cover z-0" autoPlay loop muted>
-        <source src={videoSrc} type="video/mp4" />
-        <source src={videoSrc} type="video/webm" />
-        <source src={videoSrc} type="video/ogg" />
-        Your browser does not support the video tag.
-      </video>
-    );
-  }
-
-  return (
-    <>
-      {mobileImageSrc && (
-        <Image
-          className="inset-0 h-[236px] w-full object-cover z-0 block lg:hidden object-center"
-          alt={alt}
-          src={mobileImageSrc}
-          height={236}
-          width={768}
-        />
-      )}
-      {imageSrc && (
-        <Image
-          className={`inset-0 h-[236px] w-full object-cover z-0 ${mobileImageSrc ? 'hidden lg:block' : 'block'}`}
-          alt={alt}
-          src={imageSrc}
-          height={236}
-          width={1440}
-        />
-      )}
-    </>
   );
 };
 
@@ -127,7 +62,7 @@ export const footerHeroBlockSchema: Template = {
   },
   fields: [
     {
-      type: 'rich-text', // Changed to 'rich-text' to allow rich text input
+      type: 'rich-text',
       label: 'Headline',
       name: 'headline',
     },

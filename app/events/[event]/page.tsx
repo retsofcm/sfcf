@@ -18,7 +18,7 @@ const QUERY = `
 `;
 
 export async function generateMetadata(props: {
-  params: Promise<{ event: string[] }>;
+  params: Promise<{ event: string }>;
 }) {
   const { event } = await props.params;
   const relativePath = `${event}.mdx`;
@@ -29,13 +29,13 @@ export async function generateMetadata(props: {
       variables: { relativePath },
     }, {});
     
-    const event = data?.event;
+    const eventData = data?.event;
     const description =
-      event?.body || 
+      eventData?.body || 
       "Discover upcoming events at Stenson Fields Christian Fellowship.";
     
       return {
-      title: event?.eventName ? `${event.eventName} | Stenson Fields Christian Fellowship` : "Upcoming event | Stenson Fields Christian Fellowship",
+      title: eventData?.eventName ? `${eventData.eventName} | Stenson Fields Christian Fellowship` : "Upcoming event | Stenson Fields Christian Fellowship",
       description,
     };
   } catch {

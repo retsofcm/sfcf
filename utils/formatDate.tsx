@@ -3,6 +3,7 @@ import { formatInTimeZone } from "date-fns-tz";
 const timeZone = "Europe/London";
 
 export function formatDateRange(startDate?: string | Date, endDate?: string | Date) {
+  if (!startDate && !endDate) return "Ongoing";
   if (!startDate) return "Date TBC";
 
   const start = startDate instanceof Date ? startDate : new Date(startDate);

@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+
 import Link from "next/link";
 import Layout from "@/components/layout/layout";
 
@@ -13,25 +13,19 @@ export default function NotFound() {
     <Layout>
       <section className="relative h-screen overflow-hidden">
         <div className="absolute inset-0 w-full h-full z-0">
-          <div className="hidden md:block w-full h-full">
-            <Image
+          <div className="hidden md:block w-full h-full relative">
+            <img
               src="/uploads/404.png"
               alt="Church member in stocks"
-              layout="fill"
-              objectFit="cover"
-              quality={100}
-              priority
+              className="w-full h-full object-cover"
             />
           </div>
 
-          <div className="block md:hidden w-full h-full">
-            <Image
+          <div className="block md:hidden w-full h-full relative">
+            <img
               src="/uploads/404-mobile.png"
               alt="Church member in stocks (mobile)"
-              layout="fill"
-              objectFit="cover"
-              quality={100}
-              priority
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
