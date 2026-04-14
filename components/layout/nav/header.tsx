@@ -83,7 +83,8 @@ export const Header = () => {
   const { globalSettings } = useLayout();
   const header = globalSettings?.header;
   const pathname = usePathname();
-  const isIndex = pathname === "/";
+  const normalizedPath = pathname.replace(/\/+$/, '') || '/';
+  const isIndex = normalizedPath === '/';
 
   const [menuState, setMenuState] = useState(false);
   const [scrollY, setScrollY] = useState(0);
