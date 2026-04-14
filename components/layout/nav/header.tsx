@@ -117,7 +117,7 @@ export const Header = () => {
   const showLightTheme = !isIndex || showWhiteBg;
 
   return (
-    <header className={`${isIndex ? "group" : ""} ${scrolled ? "scrolled" : "not-scrolled"}`}>
+    <header className={`fixed top-0 left-0 w-full z-40 ${isIndex ? "group" : ""} ${scrolled ? "scrolled" : "not-scrolled"}`}>
       <nav
         data-state={menuState && "active"}
         className={`
