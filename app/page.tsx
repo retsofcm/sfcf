@@ -3,6 +3,9 @@ import Layout from "@/components/layout/layout";
 import ClientPageWrapper from "./[...urlSegments]/ClientPageWrapper";
 import client from "@/tina/__generated__/client";
 import { EventSummary } from "@/types/EventSummary";
+import { HighlightSummary } from "@/types/HighlightSummary";
+
+
 
 export const revalidate = 300;
 
@@ -16,10 +19,13 @@ export default async function Home() {
   let initialData: any = null;
 
   try {
-    const [pageQuery, eventsQuery] = await Promise.all([
+    const [pageQuery, eventsQuery, highlightsQuery] = await Promise.all([
       client.queries.page({ relativePath }),
       client.queries.eventConnection(),
+      client.queries.highlightConnection(),
     ]);
+
+
 
     const events: EventSummary[] = (eventsQuery.data.eventConnection.edges ?? [])
       .map((edge) => edge?.node)
@@ -33,12 +39,38 @@ export default async function Home() {
         body: node.body ?? null,
       }));
 
+    const highlights = (highlightsQuery.data.highlightConnection.edges ?? [])
+      .map((edge) => edge?.node)
+      .filter((node): node is NonNullable<typeof node> => !!node)
+      .sort((a, b) => {
+        const dateA = a.date ? new Date(a.date).getTime() : 0;
+        const dateB = b.date ? new Date(b.date).getTime() : 0;
+        return dateB - dateA;
+      });
+      
+    const latestHighlight: HighlightSummary | null = highlights.length > 0 ? {
+      id: highlights[0].id,
+      title: highlights[0].title,
+      date: highlights[0].date ?? "",
+      image: highlights[0].image,
+      content: highlights[0].content,
+      buttonText: highlights[0].buttonText ?? null,
+      buttonUrl: highlights[0].buttonUrl ?? null,
+      filename: highlights[0]._sys.filename,
+    } : null;
+
+
+
+
     initialData = {
       data: pageQuery.data,
       query: pageQuery.query,
       variables: pageQuery.variables,
       events,
+      latestHighlight,
     };
+
+
   } catch (error) {
     console.error("Error fetching home page data:", error);
   }

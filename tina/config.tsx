@@ -4,6 +4,8 @@ import Global from "./collection/global";
 import Page from "./collection/page";
 import Event from "./collection/event";
 import Sermon from "./collection/sermon";
+import Highlight from "./collection/highlight";
+
 
 const config = defineConfig({
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID!,
@@ -35,7 +37,9 @@ const config = defineConfig({
       Global,
       Event,
       Sermon,
+      Highlight,
     ],
+
   },
 });
 

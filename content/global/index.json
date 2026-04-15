@@ -36,6 +36,10 @@
             "url": "/children-and-youth"
           },
           {
+            "label": "Highlights",
+            "url": "/highlights"
+          },
+          {
             "label": "Weekly programme",
             "url": "/weekly-programme"
           },
@@ -49,10 +53,6 @@
         "title": "Listen & learn",
         "url": "",
         "links": [
-          {
-            "label": "Sermons",
-            "url": "/sermons"
-          },
           {
             "label": "Real Lives",
             "url": "/real-lives"

@@ -108,9 +108,9 @@ export const ImageWithTextBlockSchema: Template = {
         component: "radio-group",
         defaultValue: "left",
       },
-      required: true,
     },    
     {
+
       type: "string",
       label: "Title",
       name: "title",

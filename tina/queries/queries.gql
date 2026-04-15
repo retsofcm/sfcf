@@ -37,3 +37,20 @@ query sermonQuery($relativePath: String!) {
     ...SermonParts
   }
 }
+
+query highlightConnectionQuery {
+  highlightConnection {
+    edges {
+      node {
+        ...HighlightParts
+      }
+    }
+  }
+}
+
+
+query highlightQuery($relativePath: String!) {
+  highlight(relativePath: $relativePath) {
+    ...HighlightParts
+  }
+}

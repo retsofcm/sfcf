@@ -5,6 +5,9 @@ import { Blocks } from "@/components/blocks";
 import ErrorBoundary from "@/components/error-boundary";
 import { EventSummary } from "@/types/EventSummary";
 import { PageQuery } from "@/tina/__generated__/types";
+import { HighlightSummary } from "@/types/HighlightSummary";
+
+
 
 export interface ClientPageProps {
   data: {
@@ -15,7 +18,10 @@ export interface ClientPageProps {
   };
   query: string;
   events: EventSummary[];
+  latestHighlight?: HighlightSummary | null;
 }
+
+
 
 export default function ClientPage(props: ClientPageProps) {
   const { data } = useTina({ ...props });
@@ -26,7 +32,9 @@ export default function ClientPage(props: ClientPageProps) {
 
   return (
     <ErrorBoundary>
-      <Blocks {...data.page} events={props.events} />
+      <Blocks {...data.page} events={props.events} latestHighlight={props.latestHighlight} />
     </ErrorBoundary>
+
+
   );
 }

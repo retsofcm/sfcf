@@ -11,6 +11,8 @@ import { GoogleMapBlockSchema } from "@/components/blocks/google-map-block";
 import { AccordionBlockSchema } from "@/components/blocks/accordion";
 import { CalendarBlockSchema } from "@/components/blocks/calendar";
 import { TeamMembersBlockSchema } from '@/components/blocks/team-members';
+import { LatestHighlightBlockSchema } from '@/components/blocks/latest-highlight';
+
 
 const Page: Collection = {
   label: 'Pages',
@@ -63,7 +65,10 @@ const Page: Collection = {
         AccordionBlockSchema,
         CalendarBlockSchema,
         TeamMembersBlockSchema,
+        LatestHighlightBlockSchema,
       ],
+
+
     },
   ],
 };

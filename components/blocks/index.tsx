@@ -13,25 +13,31 @@ import { GoogleMapBlock } from "./google-map-block";
 import { AccordionBlock, type AccordionItem } from "./accordion";
 import { TeamMembersBlock } from "./team-members";
 import CalendarBlock from "./calendar";
+import { LatestHighlightBlock } from "./latest-highlight";
+import type { HighlightSummary } from "@/types/HighlightSummary";
+
+export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values"> & { events: EventSummary[], latestHighlight?: HighlightSummary | null }) => {
 
 
-export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values"> & { events: EventSummary[] }) => {
   if (!props.blocks) return null;
   return (
     <>
       {props.blocks.map((block, i) => (
         block ? (
           <div key={i} data-tina-field={tinaField(block)}>
-            <Block block={block} events={props.events} />
+            <Block block={block} events={props.events} latestHighlight={props.latestHighlight} />
           </div>
         ) : null
+
       ))}
     </>
   );
 };
 
-const Block = ({ block, events }: { block: PageBlocks; events: EventSummary[] }) => {
+const Block = ({ block, events, latestHighlight }: { block: PageBlocks; events: EventSummary[]; latestHighlight?: HighlightSummary | null }) => {
+
   switch (block.__typename) {
+
     case "PageBlocksHero":
       return <Hero data={block} />;
     case "PageBlocksEventCollage":
@@ -58,7 +64,11 @@ const Block = ({ block, events }: { block: PageBlocks; events: EventSummary[] })
     }
     case "PageBlocksCalendarBlock":
       return <CalendarBlock data={{ calendarIds: block.calendarIds ?? undefined }} />;
+    case "PageBlocksLatestHighlight":
+      return <LatestHighlightBlock data={block} latestHighlight={latestHighlight} />;
     default:
+
+
       return null;
   }
 };
