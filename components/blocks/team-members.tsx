@@ -12,15 +12,28 @@ type TeamMember = {
 
 type Props = {
   data: {
+    title?: string | null;
     members?: (TeamMember | null)[] | null;
   };
 };
 
 export const TeamMembersBlock = ({ data }: Props) => {
-  const { members } = data;
+  const { title, members } = data;
 
   return (
     <section className="container mx-auto">
+      {title && (
+        <h2 
+          className="text-[32px] font-light leading-[2] mb-6 underline decoration-green-500 underline-offset-3"
+          style={{
+            textDecorationColor: '#008000',
+            textDecorationThickness: '3px',
+            textUnderlineOffset: '16px',
+          }}
+        >
+          {title}
+        </h2>
+      )}
       <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
         {members!.map((member, index) => (
         <div key={index}>
@@ -50,6 +63,11 @@ export const TeamMembersBlockSchema: Template = {
     previewSrc: "/blocks/team-members.png",
   },
   fields: [
+    {
+      type: "string",
+      name: "title",
+      label: "Title",
+    },
     {
       type: "object",
       name: "members",
