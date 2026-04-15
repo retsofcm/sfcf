@@ -211,7 +211,7 @@ export default function CalendarBlock({
       )}
 
       {selectedEvent && (
-        <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity/50 z-10">
+        <div className="fixed inset-0 flex justify-center items-center bg-black/50 z-10">
           <div className="bg-white p-8 prose prose-lg">
             <h2 className="text-xl font-semibold">{selectedEvent.summary}</h2>
             <p className="text-sm">{format(new Date(selectedEvent.start), "MMM d, h:mm")} - {format(new Date(selectedEvent.end), "h:mm a")}</p>
