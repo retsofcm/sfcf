@@ -2,6 +2,10 @@
 metaTitle: 'Coffee Morning '
 metaDescription: 'Join us for our Coffee Morning every Sunday at 10:15am at Stenson Fields Christian Fellowship.'
 blocks:
+  - pageTitle: Coffee Morning
+    pageDescription: |
+      Join us every Tuesday at 10:15am for our free coffee morning at Stenson Fields Christian Fellowship.
+    _template: pageTitle
   - imageSrc: /uploads/coffee-morning-mobile.png
     imagePosition: left
     title: Coffee Morning
@@ -16,9 +20,15 @@ blocks:
     buttonText: Get in touch
     buttonUrl: /get-in-touch
     _template: ImageWithText
-  - pageTitle: Coffee Morning
-    pageDescription: |
-      Join us every Tuesday at 10:15am for our free coffee morning at Stenson Fields Christian Fellowship. 
-    _template: pageTitle
+  - headline: |
+      See our other upcoming events
+    actions:
+      - label: Upcoming Events
+        type: button
+        link: /upcoming-events
+    imageOrVideo:
+      imageSrc: /uploads/coffee.png
+      mobileImageSrc: /uploads/coffee-mobile.png
+    _template: footer_hero
 ---
 
