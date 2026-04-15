@@ -80,12 +80,12 @@ const NavItem = ({ item }: NavItemProps) => {
   );
 };
 
-export const Header = () => {
+export const Header = ({ isHome: isHomeProp }: { isHome?: boolean }) => {
   const { globalSettings } = useLayout();
   const header = globalSettings?.header;
   const pathname = usePathname();
   const normalizedPath = pathname.replace(/\/+$/, '') || '/';
-  const isIndex = normalizedPath === '/';
+  const isIndex = isHomeProp !== undefined ? isHomeProp : (normalizedPath === '/');
 
   const [menuState, setMenuState] = useState(false);
   const [scrollY, setScrollY] = useState(0);
@@ -123,7 +123,7 @@ export const Header = () => {
       <nav
         data-state={menuState && "active"}
         className={`
-          bg-white fixed top-0 left-0 z-20 w-full transition-colors duration-300 lg:hover:!bg-white
+          bg-white z-20 transition-colors duration-300 lg:hover:!bg-white
           ${
             isIndex
               ? scrollY < 108

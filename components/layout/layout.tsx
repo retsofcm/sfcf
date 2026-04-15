@@ -8,9 +8,10 @@ import { PageWrapper } from "./PageWrapper";
 
 type LayoutProps = PropsWithChildren & {
   rawPageData?: any;
+  isHome?: boolean;
 };
 
-export default async function Layout({ children, rawPageData }: LayoutProps) {
+export default async function Layout({ children, rawPageData, isHome = false }: LayoutProps) {
   let globalData: any = { global: {} };
   
   try {
@@ -32,8 +33,8 @@ export default async function Layout({ children, rawPageData }: LayoutProps) {
 
   return (
     <LayoutProvider globalSettings={globalData.global} pageData={pageData}>
-      <Header />
-      <PageWrapper>{children}</PageWrapper>
+      <Header isHome={isHome} />
+      <PageWrapper isHome={isHome}>{children}</PageWrapper>
       <Footer />
     </LayoutProvider>
   );

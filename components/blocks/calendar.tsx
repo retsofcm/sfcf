@@ -129,6 +129,8 @@ export default function CalendarBlock({
     }
   
     // Cache and set
+    allEvents.sort((a, b) => a.start.getTime() - b.start.getTime());
+
     setCache((c) => ({ ...c, [cacheKey]: allEvents }));
     setEvents(allEvents);
     isFetching.current = false;
@@ -161,13 +163,17 @@ export default function CalendarBlock({
       <div className="mb-4 flex gap-2">
         <button
           onClick={() => setView("week")}
-          className={`px-3 py-1 ${view === "week" ? "bg-green text-white" : "bg-gray-200"}`}
+          className={`px-3 py-1 rounded-none cursor-pointer transition-colors ${
+            view === "week" ? "bg-green text-white hover:bg-green-90" : "bg-gray-200 hover:bg-gray-300"
+          }`}
         >
           Weekly Schedule
         </button>
         <button
           onClick={() => setView("month")}
-          className={`px-3 py-1 ${view === "month" ? "bg-green text-white" : "bg-gray-200"}`}
+          className={`px-3 py-1 rounded-none cursor-pointer transition-colors ${
+            view === "month" ? "bg-green text-white hover:bg-green-90" : "bg-gray-200 hover:bg-gray-300"
+          }`}
         >
           Monthly Schedule
         </button>
@@ -176,6 +182,7 @@ export default function CalendarBlock({
       <div className="relative flex items-center justify-center mb-4 h-10">
         <div className="flex items-center gap-2">
           <button
+            className="cursor-pointer hover:text-green transition-colors"
             onClick={() => {
               setCurrentDate(prev => {
                 return view === "month" ? subMonths(prev, 1) : subWeeks(prev, 1);
@@ -193,6 +200,7 @@ export default function CalendarBlock({
         </div>
         <div className="flex items-center gap-2">
             <button
+              className="cursor-pointer hover:text-green transition-colors"
               onClick={() => {
                 setCurrentDate(prev => {
                   return view === "month" ? addMonths(prev, 1) : addWeeks(prev, 1);
@@ -211,12 +219,15 @@ export default function CalendarBlock({
       )}
 
       {selectedEvent && (
-        <div className="fixed inset-0 flex justify-center items-center bg-black/50 z-10">
+        <div className="fixed inset-0 flex justify-center items-center bg-black/50 z-50">
           <div className="bg-white p-8 prose prose-lg">
             <h2 className="text-xl font-semibold">{selectedEvent.summary}</h2>
             <p className="text-sm">{format(new Date(selectedEvent.start), "MMM d, h:mm")} - {format(new Date(selectedEvent.end), "h:mm a")}</p>
-            <p className="mt-2">{selectedEvent.description || "No description available."}</p>
-            <button onClick={closeEventPopup} className="mt-4 border border-black px-4 py-2">
+            <div 
+              className="mt-2 prose prose-sm max-w-none" 
+              dangerouslySetInnerHTML={{ __html: selectedEvent.description?.replaceAll("\n", "<br />") || "No description available." }} 
+            />
+            <button onClick={closeEventPopup} className="mt-4 border border-black px-4 py-2 cursor-pointer rounded-none hover:bg-black hover:text-white transition-colors">
               Close
             </button>
           </div>

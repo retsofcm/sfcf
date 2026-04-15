@@ -24,7 +24,7 @@ export default function MonthView({
   const gridStart = getDay(start); // 0 = Sunday
 
   return (
-    <div className="border rounded-lg overflow-hidden">
+    <div className="border overflow-hidden">
       {/* Day headings */}
       <div className="grid grid-cols-7 bg-gray-50 border-b text-sm font-semibold text-center">
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
@@ -54,12 +54,14 @@ export default function MonthView({
           return (
             <div
               key={day.toISOString()}
-              className="h-28 border-r border-b p-1.5 flex flex-col bg-white"
+              className={`h-28 border-r border-b p-1.5 flex flex-col ${
+                isToday(day) ? "bg-green-10" : "bg-white"
+              }`}
             >
               <div
-                className={`text-xs mb-1 font-medium ${
+                className={`text-xs mb-1 font-medium flex items-center justify-center w-6 h-6 transition-colors ${
                   isToday(day)
-                    ? "text-green-900"
+                    ? "bg-green text-white"
                     : "text-gray-500"
                 }`}
               >
@@ -70,7 +72,7 @@ export default function MonthView({
                 {dayEvents.map((event, i) => (
                   <button
                     key={i}
-                    className="block w-full px-1 py-0.5 bg-gray-200 text-xs text-left hover:text-white hover:bg-green"
+                    className="block w-full px-1 py-0.5 bg-gray-200 text-xs text-left hover:text-white hover:bg-green cursor-pointer transition-colors"
                     onClick={() => onEventClick(event)}
                   >
                     {event.summary}

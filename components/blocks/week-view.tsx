@@ -1,6 +1,6 @@
 import { 
   startOfWeek, endOfWeek, eachDayOfInterval, format,
-  startOfDay, endOfDay
+  startOfDay, endOfDay, isToday
 } from "date-fns";
 
 export default function WeekView({ events, currentDate, onEventClick }) {
@@ -10,7 +10,7 @@ export default function WeekView({ events, currentDate, onEventClick }) {
   const days  = eachDayOfInterval({ start, end });
 
   return (
-    <div className="prose prose-lg mx-auto space-y-4">
+    <div className="prose prose-lg mx-auto">
       {days.map((day) => {
         const dayStart = startOfDay(day);
         const dayEnd   = endOfDay(  day);
@@ -24,13 +24,20 @@ export default function WeekView({ events, currentDate, onEventClick }) {
         if (dayEvents.length === 0) return null;
 
         return (
-          <div key={day.toISOString()} className="border-b pb-2">
-            <h3 className="font-semibold text-lg">{format(day, "EEEE, MMM d")}</h3>
-            <ul className="text-sm mt-1 space-y-1">
+          <div 
+            key={day.toISOString()} 
+            className={`flex flex-col gap-4 border-b last:border-0 transition-colors py-4 px-6 ${
+              isToday(day) ? "bg-green-10" : ""
+            }`}
+          >
+            <h3 className={`font-semibold text-lg !m-0 ${isToday(day) ? "text-green" : ""}`}>
+              {format(day, "EEEE, MMM d")}
+            </h3>
+            <ul className="flex flex-col text-sm gap-2 list-none p-0 !m-0">
               {dayEvents.map((event, i) => (
                 <li
                   key={`${event.summary}-${event.start}-${i}`}
-                  className="cursor-pointer"
+                  className="cursor-pointer p-0 !m-0 hover:text-green transition-colors"
                   onClick={() => onEventClick(event)}
                 >
                   <span className="font-medium">{event.summary}</span> —{" "}

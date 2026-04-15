@@ -82,7 +82,7 @@ export default async function Home() {
   if (!initialData) return null;
 
   return (
-    <Layout>
+    <Layout isHome={true}>
       <ClientPageWrapper initialData={initialData} />
     </Layout>
   );
