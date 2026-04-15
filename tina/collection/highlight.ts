@@ -11,10 +11,16 @@ const Highlight: Collection = {
     };
   },
   ui: {
+    filename: {
+      slugify: (values) => {
+        return values?.title?.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '');
+      },
+    },
     router: ({ document }) => {
       return `/highlights/${document._sys.breadcrumbs.join("/")}`;
     },
   },
+
 
   fields: [
     {
@@ -22,8 +28,17 @@ const Highlight: Collection = {
       label: "Title",
       name: "title",
       isTitle: true,
+      description: "This is the primary title used for listings (squares) and as the main heading above the content section.",
       required: true,
     },
+    {
+      type: "string",
+      label: "Subtitle",
+      name: "subtitle",
+      description: "This is the inner title that displays inside the content block itself (e.g., 'Finding Hope').",
+      required: false,
+    },
+
     {
       type: "datetime",
       label: "Date",

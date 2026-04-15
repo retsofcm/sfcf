@@ -5,7 +5,8 @@ import { useTina } from "tinacms/dist/react";
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import { format } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
+
 
 export default function ClientPage({ query, variables, data }: { query: string; variables: object; data: any }) {
   const { data: tinaData } = useTina({ query, variables, data });
@@ -75,8 +76,9 @@ export default function ClientPage({ query, variables, data }: { query: string; 
           <div className="mb-4 text-gray-600 space-y-1">
             {series && <div><strong>Series:</strong> {series}</div>}
             {date && (
-              <div><strong>Date:</strong> {format(new Date(date), 'MMMM d, yyyy')}</div>
+              <div><strong>Date:</strong> {formatInTimeZone(new Date(date), 'Europe/London', 'MMMM d, yyyy')}</div>
             )}
+
           </div>
 
           <div className="prose prose-lg text-gray-700 mt-8">

@@ -6,10 +6,16 @@ const Sermon: Collection = {
   path: "content/sermons",
   format: "mdx",
   ui: {
+    filename: {
+      slugify: (values) => {
+        return values?.title?.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '');
+      },
+    },
     router: ({ document }) => {
       return `/sermons/${document._sys.breadcrumbs.join("/")}`;
     },
   },
+
   fields: [
     {
       type: "string",
@@ -21,8 +27,10 @@ const Sermon: Collection = {
       type: "string",
       label: "Title",
       name: "title",
+      isTitle: true,
       required: true,
     },
+
     {
       type: "string",
       label: "Series",

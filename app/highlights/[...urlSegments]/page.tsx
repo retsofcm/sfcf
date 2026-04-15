@@ -7,12 +7,14 @@ const QUERY = `
   query Highlight($relativePath: String!) {
     highlight(relativePath: $relativePath) {
       title
+      subtitle
       date
       image
       content
       buttonText
       buttonUrl
     }
+
   }
 `;
 

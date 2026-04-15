@@ -19,15 +19,14 @@ export const LatestHighlightBlock = ({ data, latestHighlight }: Props) => {
   const mappedData = {
     imageSrc: latestHighlight.image,
     imagePosition: data.imagePosition || "left",
-    title: latestHighlight.title,
+    title: latestHighlight.subtitle,
     content: latestHighlight.content,
     buttonText: latestHighlight.buttonText,
     buttonUrl: latestHighlight.buttonUrl,
   };
 
-
-
   return <ImageWithTextBlock data={mappedData} />;
+
 
 };
 

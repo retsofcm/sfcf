@@ -32,10 +32,6 @@
             "url": "/sundays"
           },
           {
-            "label": "Children & Youth",
-            "url": "/children-and-youth"
-          },
-          {
             "label": "Highlights",
             "url": "/highlights"
           },
@@ -46,6 +42,24 @@
           {
             "label": "Upcoming events",
             "url": "/events"
+          }
+        ]
+      },
+      {
+        "title": "Children & Youth",
+        "url": "/children-and-youth",
+        "links": [
+          {
+            "label": "Smiley Tots",
+            "url": "/smiley-tots"
+          },
+          {
+            "label": "Explorers",
+            "url": "/explorers"
+          },
+          {
+            "label": "LIFE Group",
+            "url": "/life"
           }
         ]
       },
@@ -126,15 +140,32 @@
         ]
       },
       {
+        "title": "Children & Youth",
+        "links": [
+          {
+            "label": "Overview",
+            "url": "/children-and-youth"
+          },
+          {
+            "label": "Smiley Tots",
+            "url": "/smiley-tots"
+          },
+          {
+            "label": "Explorers",
+            "url": "/explorers"
+          },
+          {
+            "label": "LIFE Group",
+            "url": "/life"
+          }
+        ]
+      },
+      {
         "title": "What's on",
         "links": [
           {
             "label": "Sundays",
             "url": "/sundays"
-          },
-          {
-            "label": "Children & Youth",
-            "url": "/children-and-youth"
           },
           {
             "label": "Weekly programme",

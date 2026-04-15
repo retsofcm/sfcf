@@ -4,7 +4,9 @@ export interface HighlightSummary {
 
   id: string;
   title: string;
+  subtitle?: string | null;
   date: string;
+
   image: string;
   content: TinaMarkdownContent | TinaMarkdownContent[];
   buttonText?: string | null;

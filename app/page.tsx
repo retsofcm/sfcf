@@ -39,6 +39,8 @@ export default async function Home() {
         body: node.body ?? null,
       }));
 
+
+
     const highlights = (highlightsQuery.data.highlightConnection.edges ?? [])
       .map((edge) => edge?.node)
       .filter((node): node is NonNullable<typeof node> => !!node)
@@ -51,6 +53,7 @@ export default async function Home() {
     const latestHighlight: HighlightSummary | null = highlights.length > 0 ? {
       id: highlights[0].id,
       title: highlights[0].title,
+      subtitle: highlights[0].subtitle ?? null,
       date: highlights[0].date ?? "",
       image: highlights[0].image,
       content: highlights[0].content,
@@ -58,6 +61,7 @@ export default async function Home() {
       buttonUrl: highlights[0].buttonUrl ?? null,
       filename: highlights[0]._sys.filename,
     } : null;
+
 
 
 

@@ -6,10 +6,16 @@ const Event: Collection = {
   path: "content/events",
   format: "mdx",
   ui: {
+    filename: {
+      slugify: (values) => {
+        return values?.eventName?.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '');
+      },
+    },
     router: ({ document }) => {
       return `/events/${document._sys.breadcrumbs.join("/")}`;
     },
   },
+
   fields: [
     {
       type: "string",

@@ -40,7 +40,11 @@ export default function RootLayout({
           gtag('config', 'G-DM46F7931S');
         `}
       </Script>
-      <body className="min-h-screen bg-background font-lato antialiased flex flex-col">
+      <body 
+        className="min-h-screen bg-background font-lato antialiased flex flex-col"
+        suppressHydrationWarning
+      >
+
         <VideoDialogProvider>
           {children}
           <VideoDialog />

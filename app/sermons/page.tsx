@@ -2,7 +2,8 @@ import Layout from '@/components/layout/layout';
 import ClientPageWrapper from "./../[...urlSegments]/ClientPageWrapper";
 import client from '@/tina/__generated__/client';
 import Link from 'next/link';
-import { format } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
+
 import { EventSummary } from "@/types/EventSummary";
 
 export const metadata = {
@@ -70,7 +71,8 @@ export default async function SermonsPage() {
               const startDate = sermon.date ? new Date(sermon.date) : undefined;
 
               // Format date for display (without time)
-              const formattedDate = startDate ? format(startDate, 'MMMM dd, yyyy') : '';
+              const formattedDate = startDate ? formatInTimeZone(startDate, 'Europe/London', 'MMMM dd, yyyy') : '';
+
 
               return (
                 <Link

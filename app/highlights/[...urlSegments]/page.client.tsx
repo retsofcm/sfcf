@@ -14,13 +14,12 @@ export default function ClientPage({ query, variables, data }: { query: string; 
 
   const {
     title,
+    subtitle,
     image,
     content,
     buttonText,
     buttonUrl,
   } = highlight;
-
-
 
   return (
     <div className="container px-4 md:px-20 py-12">
@@ -31,6 +30,12 @@ export default function ClientPage({ query, variables, data }: { query: string; 
         <ArrowLeft className="mr-2 h-4 w-4" />
         Back to Highlights
       </Link>
+
+      <h1 className="text-[32px] md:text-[48px] font-light mb-12 md:mb-16 leading-[1.2]">
+        {title}
+      </h1>
+
+
 
 
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
@@ -49,11 +54,14 @@ export default function ClientPage({ query, variables, data }: { query: string; 
 
         {/* Right column: Content */}
         <div>
-          <h1 className="mb-6 text-4xl font-light text-gray-900 underline decoration-green-500 underline-offset-[16px]" style={{ textDecorationThickness: '3px' }}>
-            {title}
-          </h1>
+          {subtitle && (
+            <h2 className="mb-6 text-2xl md:text-3xl font-light text-gray-900 underline decoration-green-500 underline-offset-[16px] leading-[1.2]" style={{ textDecorationThickness: '3px' }}>
+              {subtitle}
+            </h2>
+          )}
 
-          <div className="prose prose-lg text-gray-700 mt-12">
+
+          <div className={`prose prose-lg text-gray-700 ${subtitle ? 'mt-12' : 'mt-0'}`}>
             <TinaMarkdown content={content} />
           </div>
 

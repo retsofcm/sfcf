@@ -25,17 +25,27 @@ const Page: Collection = {
     };
   },
   ui: {
+    filename: {
+      slugify: (values) => {
+        return values?.metaTitle?.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '');
+      },
+    },
     router: ({ document }) => {
       const filepath = document._sys.breadcrumbs.join('/');
       return filepath === 'home' ? '/' : `/${filepath}`;
     }
   },
+
   fields: [
     {
       type: "string",
       name: "metaTitle",
       label: "Meta Title",
+      isTitle: true,
+      required: true,
     },
+
+
     {
       type: "string",
       name: "metaDescription",

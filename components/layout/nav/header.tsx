@@ -54,27 +54,28 @@ const NavItem = ({ item }: NavItemProps) => {
       {hasDropdown && (
         <div
           className={`
-            absolute -left-6 top-0 z-30 pt-8 transition-all duration-300
+            absolute -left-6 top-full z-30 pt-2 w-max min-w-[calc(100%+3rem)] transition-all duration-300
             ${showDropdown ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-2 invisible"}
           `}
         >
-          <div className="absolute left-0 top-full z-30 pt-4">
-            <div className="transition-all duration-300 bg-white p-6">
-              <div className="grid gap-4">
-                {item.links?.map((link, linkIndex) => (
-                  <Link
-                    key={linkIndex}
-                    href={link?.url || ""}
-                    className="block whitespace-nowrap text-base text-black"
-                  >
-                    {link?.label}
-                  </Link>
-                ))}
-              </div>
+          <div className="bg-white p-6 shadow-lg w-full">
+
+            <div className="grid gap-4">
+
+              {item.links?.map((link, linkIndex) => (
+                <Link
+                  key={linkIndex}
+                  href={link?.url || ""}
+                  className="block whitespace-nowrap text-base text-black hover:text-green transition-colors"
+                >
+                  {link?.label}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
       )}
+
     </li>
   );
 };
