@@ -28,12 +28,12 @@
         "title": "What's on",
         "links": [
           {
-            "label": "Coffee Morning",
-            "url": "/coffee-morning-"
-          },
-          {
             "label": "Sundays",
             "url": "/sundays"
+          },
+          {
+            "label": "Coffee Morning",
+            "url": "/coffee-morning-"
           },
           {
             "label": "Highlights",
