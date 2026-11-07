@@ -8,7 +8,12 @@ const Event: Collection = {
   ui: {
     filename: {
       slugify: (values) => {
-        return values?.eventName?.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '');
+        return values?.eventName
+          ?.toLowerCase()
+          ?.trim()
+          ?.replace(/[^a-z0-9\s-]/g, '')
+          ?.replace(/\s+/g, '-')
+          ?.replace(/-+/g, '-');
       },
     },
     router: ({ document }) => {
